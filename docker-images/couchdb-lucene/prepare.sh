@@ -10,6 +10,7 @@
 
 set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#echo "dir is $DIR"
 BRANCH="v2.1.0"
 TARGET="couchdb-lucene-2.1.0-dist.zip"
 
@@ -21,8 +22,9 @@ if [[ $1 == "--cleanup" ]]; then
 fi
 
 if [ ! -f "$DIR/$TARGET" ]; then
-    if [[ -f $DIR/../../proxy.env ]]; then
-        source $DIR/../../proxy.env
+    if [[ -f $DIR/../../configuration/proxy.env ]]; then
+        #echo "proxy.env is find"
+	source $DIR/../../configuration/proxy.env
     fi
 
     ################################################################################
