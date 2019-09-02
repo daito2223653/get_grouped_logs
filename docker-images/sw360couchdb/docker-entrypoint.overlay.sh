@@ -30,7 +30,7 @@ fi
 # written by daito
 echo "------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------"
 sed -e "s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g"  /usr/local/etc/couchdb/default.ini
-echo "sed -e "s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  /usr/local/etc/couchdb/default.ini"
+echo "sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini"
 echo "------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------"
 
 
