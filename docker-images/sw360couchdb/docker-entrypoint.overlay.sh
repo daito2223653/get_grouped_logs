@@ -28,10 +28,10 @@ if [ -f "$COUCHDB_PASSWORD_FILE" ]; then
 fi
 
 # written by daito
+# couchdb's log file = /dev/null -> file = /usr/local/var/log/couchdb/couch.log 
 echo "------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------"
-sed -e "s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g"  /usr/local/etc/couchdb/default.ini
+sed -i -e "s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g"  /usr/local/etc/couchdb/default.ini
 echo "sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini"
-echo "------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------"
 
 
 exec /docker-entrypoint.sh "$@"
