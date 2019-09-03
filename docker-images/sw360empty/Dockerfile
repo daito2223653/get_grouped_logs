@@ -31,12 +31,6 @@ WORKDIR /opt/sw360
 
 EXPOSE 8080
 
-# setup ssh between docker fossology and sw360chores 
-# NOTE this is written daito
-RUN mkdir /root/.ssh && echo "mkdir ~/.ssh" \ 
-    && chmod 700 /root/.ssh && echo "chmod 700 ~/.ssh"
-
-
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["tail", "-f", "/opt/sw360/logs/catalina.out"]

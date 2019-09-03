@@ -210,14 +210,7 @@ fi
 
 ################################################################################
 # Setup for FOSSology
-# this is to connect FOSSOLOGY behind ssh.  written daito.
-# FOSSOLOGY_HOST="127.0.0.1"
-# echo "--------------------- written by daito --------------------------------"
-# echo "fossology.host = $FOSSOLOGY_HOST"
-# FOSSOLOGY_PORT=8081
-echo "fossology.port = $FOSSOLOGY_PORT"
-echo "--------------------- written by daito --------------------------------"
-echo "fossology.host = $FOSSOLOGY_HOST"
+
 if [ "$FOSSOLOGY_HOST" ] && [ "$FOSSOLOGY_PORT" ]; then
     echo "fossology.host = $FOSSOLOGY_HOST" > /etc/sw360/fossology.properties
     echo "fossology.port = $FOSSOLOGY_PORT" >> /etc/sw360/fossology.properties
