@@ -58,8 +58,9 @@ my $postgresql_path = '';
 my $nginx_path      = '';
 my $csv_search_path = '';
 
-# targetCompornents
-my @targets = ();
+# target
+my @targets = (); # compornent no of sw360chores
+my @paths   = (); # path of logFile copied by this script.
 # PROJECT NAME
 my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
 
@@ -77,7 +78,7 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
 
     # not still firture 
     $sw360 = $config->{'sw360'} // $sw360;
-      if ($sw360 == 1){ push(@targets, 0); } #$COMPORNENtS[$SW360]);  }  # // $sw360;
+      if ($sw360 == 1){ push(@targets, 0); } #NOTE: $COMPORNENtS[$SW360]); not furtured  }  # // $sw360;
     $couchdb = $config->{'couchdb'} // $couchdb;
       if ($couchdb == 1){ push(@targets, 1); } 
     $fossology = $config->{'fossology'} // $fossology;
@@ -103,6 +104,13 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
     $postgresql_path = $target->{'postgresql'} // $postgresql;
     $nginx_path = $target->{'nginx'} // $nginx;
     $csv_search_path = $target->{'csv_search'} // $csv_search;
+  
+    push(@paths, $sw360_path);
+    push(@paths, $couchdb_path);
+    push(@paths, $fossology_path);
+    push(@paths, $postgresql_path);
+    push(@paths, $nginx_path);
+    push(@paths, $csv_search_path);
   }
 }
  
@@ -129,37 +137,60 @@ if($debug) {
   say STDERR "    \$postgresql_path = $postgresql_path";
   say STDERR "    \$nginx_path      = $nginx_path";
   say STDERR "    \$csv_search_path = $csv_search_path";
+  say STDERR "";
 
-  say STDERR "  \@targets(str)    = @targets"; # NOTE: change string is not still gurtured.
-
+  say STDERR "  [targets: @targets]"; # NOTE: change string is not still gurtured.
 }
 
-{ # get logs
-  my $cmd = "docker logs";
+{ # get log.
+  my $cmd = ("docker");
+
+  sub generate_toCall{
+    
+  }
 
   sub get_log{
-    my @toCall = ($cmd); 
+    my @toCall; 
+    push(@toCall, $cmd);
+    my $target = $PROJECT_NAME . "_sw360";
+    my $path = '';
     my $no;
     ($no) = @_;
-    my $target = $PROJECT_NAME . "_sw360";
+
+    # error hundler
     if ($no < 0 and 5 < $no){
       say STDERR "error at line 141. get_log function";
       exit 
+      #NOTE: target is ok? not featured.
+      #NOTE: path   is ok? not featured.
     }
+
+    # set target
     if ($no != $SW360){
-      $target = $target . $COMPORNENTS[$no];#}
+      $target = $target . $COMPORNENTS[$no];
     }
 
-    push (@toCall, $target);
-    say STDERR "test at get_log no=$no: \@toCall = @toCall";
-  }
+    # set path
+    $path = $logFolder . "/" . $paths[$no] . ".log";
 
-  
+    # set toCall
+    push (@toCall, "logs");
+    push (@toCall, $target);
+    ##push (@toCall, ">");
+    ##push (@toCall, $path);
+
+    say STDERR "  $no(string is not futured)"; 
+    say STDERR "    -toCall = @toCall";
+    say STDERR "    -path   = $paths[$no]";
+    # NOTE: ファイルがないときに作成する / 出力先をファイルに #####
+    0 == system(@toCall)  #"docker logs sw360_dev_sw360")#@toCall)
+      or die "failed...";
+  }
 }
 
 
+# main -----------
 foreach my $no (@targets) {
-  say STDERR "test at 156. $no";
-  get_log($no)
+  get_log($no);
 }
 

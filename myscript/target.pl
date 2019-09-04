@@ -1,5 +1,5 @@
 {
-    folder => "./log",
+    folder => "./logs",
     sw360 => "catalina",
     couchdb => "couchdb",
     fossology   => "fossology",
