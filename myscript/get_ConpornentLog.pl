@@ -46,6 +46,7 @@ my $fossology_path = '';
 my $postgresql_path = '';
 my $nginx_path      = '';
 
+
 ##########################################################
 #
 { # parse config and read command line arguments
@@ -72,18 +73,18 @@ my $nginx_path      = '';
       die "Error reading $targetLogFile: $!" unless defined $targetLogFile;
 
     $sw360_path = $target->{'sw360'} // $sw360_;
-    $couchdb_path = $target-->{'couchdb'} // $couchdb;
-    $fossology_path = $target-->{'fossology'} // $fossology;
-    $postgresql_path = $target-->{'postgresql'} // $postgresql;
-    $nginx_path = $target-->{'nginx'} // $nginx;
-    $debug_path = $target-->{'debug'} // $debug;
+    $couchdb_path = $target->{'couchdb'} // $couchdb;
+    $fossology_path = $target->{'fossology'} // $fossology;
+    $postgresql_path = $target->{'postgresql'} // $postgresql;
+    $nginx_path = $target->{'nginx'} // $nginx;
+    $debug_path = $target->{'debug'} // $debug;
   }
 }
  
  
    if($debug) {
-    say STDERR "  variables:";
-    say STDERR "    \$sw360  = $sw360";
+    say STDERR "  variables (custum):";
+    say STDERR "    \$sw360      = $sw360";
     say STDERR "    \$couchdb    = $couchdb";
     say STDERR "    \$fossology  = $fossology";
     say STDERR "    \$postgresql = $postgresql";
@@ -94,10 +95,12 @@ my $nginx_path      = '';
     # else 
     #   say STDERR "  target ~ (custum)
     say STDERR "  targetLog_path (default):";
-    say STDERR "    \$sw360_path  = $sw360_path";
+    if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
     say STDERR "    \$couchdb_path    = $couchdb_path";
     say STDERR "    \$fossology_path  = $fossology_path";
     say STDERR "    \$postgresql_path = $postgresql_path";
     say STDERR "    \$nginx_path      = $nginx_path";
   }
+
+
 
