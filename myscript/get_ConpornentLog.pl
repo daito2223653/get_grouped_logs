@@ -8,6 +8,10 @@ use warnings;
 # symbol
 use Fcntl;
 
+use Getopt::Long qw(GetOptions);
+use Pod::Usage;
+
+use feature qw(say);
 
 ######################################################################################
  # written by daito 
@@ -23,11 +27,10 @@ use Fcntl;
  #   nginx
  #   inconfig : コンフィグファイルを読んで, 作成する. 
  # [option]
- #   -t : include timestamp
- #   -a : all compornent. when you use this option 
- #   -f : target ilfe. NOTE: default is compornentName_[no].log written path.pl
- #   -n : 
- #   --inconfig : コンフィグファイルを読んで, 作成する. 
+ #   --timestamp : include timestamp
+ #   --a : all compornent. when you use this option 
+ #   --f : target ilfe. NOTE: default is compornentName_[no].log written path.pl 
+ #   --inconfig : コンフィグファイルを読んで, 作成する. (default)
  #   
  # evironmental variables---
  # $COMPORNENT
@@ -48,6 +51,9 @@ my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_se
 
 
 # read options
+my $timestamp = '';
+my $inconfig  = '';
+
 # variables 
 my $sw360 = ''; # $sw360 = catalina / liferay
 my $couchdb = '';
@@ -119,11 +125,41 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
     push(@paths, $logFolder . "/" . $nginx_path);
     push(@paths, $logFolder . "/" . $csv_search_path);
   }
+
+  GetOptions (
+    # handle imgaes
+    'timestamp' => \$timestamp,
+    'inconfig' => \$inconfig
+  ) or pod2usage();
+
 }
  
- 
+sub yesno{
+    my $comment = shift;
+    my $default = shift;
+    if($default){
+        $comment .= " ([y]/n)> ";
+    }else{
+        $comment .= " (y/[n])> ";
+        $default = 0;
+    }
+    my $prv = $|;
+    $| = 1;
+    print $comment;
+    $| = $prv;
+    my $ans = <STDIN>;
+    chomp($ans);
+    $ans = uc($ans);
+    if($ans eq 'Y'){
+        return(1);
+    }elsif($ans eq 'N'){
+        return(0);
+    }
+    return($default);
+}
+
 if($debug) {
-  say STDERR "  variables (custum):";
+  say STDERR "  variables: ";
   say STDERR "    \$sw360      = $sw360";
   say STDERR "    \$couchdb    = $couchdb";
   say STDERR "    \$fossology  = $fossology";
@@ -136,7 +172,7 @@ if($debug) {
   #   say STDERR "  targetLog_path(default):
   # else 
   #   say STDERR "  target ~ (custum)
-  say STDERR "  targetLog_path (default):";
+  say STDERR "  targetLog_path: ";
   if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
   say STDERR "    \$folder          = $logFolder";
   say STDERR "    \$couchdb_path    = $couchdb_path";
@@ -146,12 +182,17 @@ if($debug) {
   say STDERR "    \$csv_search_path = $csv_search_path";
   say STDERR "";
 
-  say STDERR "  [targets: @targets]"; # NOTE: change string is not still gurtured.
-  say STDERR "";
+  my $isYes = yesno("are you ok ?");
+  if(!$isYes){ exit }
+}
+
+{ # get docker info.
+  my $cmd = ("docker", "info");
+
 }
 
 { # get log.
-  my $cmd = ("docker");
+  my @cmd = ("docker", "logs");
 
   sub set_toCall{
     
@@ -163,13 +204,26 @@ if($debug) {
   
   }
 
+  sub get_target_status{
+    my @cmd = ("docker", "stats");
+    my $target = $PROJECT_NAME . "_sw360";
+    my $c_no;
+    ($c_no) = @_;
+    my @_toCall;
+        
+    
+  }
+
   sub get_log{
     my @toCall; 
-    push(@toCall, $cmd);
+    push(@toCall, @cmd);
     my $target = $PROJECT_NAME . "_sw360";
     my $file = '';
     my $c_no;
     ($c_no) = @_;
+
+    # docker compornent is not exist error:
+    # get_target_status < 0
 
     # error hundler
     if ($c_no < 0 and 5 < $c_no){
@@ -188,10 +242,12 @@ if($debug) {
     $file = $paths[$c_no] . ".log";
 
     # set toCall
-    push (@toCall, "logs");
+    if ($timestamp){
+      push (@toCall, "-t") if $timestamp;
+    }
     push (@toCall, $target);
 
-    say STDERR "  [$c_no(string is not futured)] ---"; 
+    say STDERR "  [$COMPORNENTS[$c_no]] ---"; 
     say STDERR "    -ToCall     = @toCall";
     say STDERR "    -FilePath   = $file";
     # NOTE: ファイルがないときに作成する / 出力先をファイルに #####
@@ -204,6 +260,7 @@ if($debug) {
       # NOTE: ERROR HUNDLER > when `toCall` is missed
       if (-z $fh){ 
         say STDERR "ERROR: toCall is missed!. exit";
+	close ($fh );
 	exit;
       }
       print $fh "$echos";
