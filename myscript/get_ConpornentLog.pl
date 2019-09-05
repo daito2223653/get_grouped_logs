@@ -2,6 +2,13 @@
 
 use Pod::Usage;
 
+use strict;
+use warnings;
+
+# symbol
+use Fcntl;
+
+
 ######################################################################################
  # written by daito 
  # this script is to get logs from sw360chore's Container.
@@ -37,7 +44,7 @@ my $POSTGRESQL = 3;
 my $NGINX = 4;
 my $CSV_SEARCH = 5;
 # COMPORNENT_NAME
-my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgresql", "nginx", "csv_search"); # $sw360 = catalina / liferay
+my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search"); # $sw360 = catalina / liferay
 
 
 # read options
@@ -67,50 +74,50 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
 ##########################################################
 #
 { # parse config and read command line arguments
-  my $configFile = "./configuration.pl";
+  my $targetFile = "./target.pl";
   # my $pathFile = "./path.pl";
-  my $targetLogFile = "./target.pl";
+  my $pathFile   = "./path.pl";
 
-  if(-e $configFile) {
-    my $config=do($configFile);
-      die "Error parsing $configFile: $@" if $@;
-      die "Error reading $configFile: $!" unless defined $config;
+  if(-e $targetFile) {
+    my $target=do($targetFile);
+      die "Error parsing $targetFile: $@" if $@;
+      die "Error reading $targetFile: $!" unless defined $target;
 
     # not still firture 
-    $sw360 = $config->{'sw360'} // $sw360;
+    $sw360 = $target->{'sw360'} // $sw360;
       if ($sw360 == 1){ push(@targets, 0); } #NOTE: $COMPORNENtS[$SW360]); not furtured  }  # // $sw360;
-    $couchdb = $config->{'couchdb'} // $couchdb;
+    $couchdb = $target->{'couchdb'} // $couchdb;
       if ($couchdb == 1){ push(@targets, 1); } 
-    $fossology = $config->{'fossology'} // $fossology;
+    $fossology = $target->{'fossology'} // $fossology;
       if ($fossology == 1){ push(@targets, 2); } 
-    $postgresql = $config->{'postgresql'} // $postgresql;
+    $postgresql = $target->{'postgresql'} // $postgresql;
       if ($postgresql == 1){ push(@targets, 3); } 
-    $nginx = $config->{'nginx'} // $nginx;
+    $nginx = $target->{'nginx'} // $nginx;
       if ($nginx == 1){ push(@targets, 4); } 
-    $csv_search = $config->{'csv_search'} // $csv_search;
+    $csv_search = $target->{'csv_search'} // $csv_search;
       if ($csv_search == 1){ push(@targets, 5); };
-    $debug = $config->{'debug'} // $debug;
+    $debug = $target->{'debug'} // $debug;
   }
 
-  if (-e $targetLogFile){
-    my $target=do($targetLogFile);
-      die "Error parsing $targetLogFile: $@" if $@;
-      die "Error reading $targetLogFile: $!" unless defined $targetLogFile;
+  if (-e $pathFile){
+    my $path=do($pathFile);
+      die "Error parsing $pathFile: $@" if $@;
+      die "Error reading $pathFile: $!" unless defined $pathFile;
 
-    $logFolder  = $target->{'folder'} // $folder;
-    $sw360_path = $target->{'sw360'} // $sw360_;
-    $couchdb_path = $target->{'couchdb'} // $couchdb;
-    $fossology_path = $target->{'fossology'} // $fossology;
-    $postgresql_path = $target->{'postgresql'} // $postgresql;
-    $nginx_path = $target->{'nginx'} // $nginx;
-    $csv_search_path = $target->{'csv_search'} // $csv_search;
+    $logFolder  = $path->{'folder'} // $logFolder;
+    $sw360_path = $path->{'sw360'} // $sw360_path;
+    $couchdb_path = $path->{'couchdb'} // $couchdb_path;
+    $fossology_path = $path->{'fossology'} // $fossology_path;
+    $postgresql_path = $path->{'postgresql'} // $postgresql_path;
+    $nginx_path = $path->{'nginx'} // $nginx;
+    $csv_search_path = $path->{'csv_search'} // $csv_search_path;
   
-    push(@paths, $sw360_path);
-    push(@paths, $couchdb_path);
-    push(@paths, $fossology_path);
-    push(@paths, $postgresql_path);
-    push(@paths, $nginx_path);
-    push(@paths, $csv_search_path);
+    push(@paths, $logFolder . "/" . $sw360_path);
+    push(@paths, $logFolder . "/" . $couchdb_path);
+    push(@paths, $logFolder . "/" . $fossology_path);
+    push(@paths, $logFolder . "/" . $postgresql_path);
+    push(@paths, $logFolder . "/" . $nginx_path);
+    push(@paths, $logFolder . "/" . $csv_search_path);
   }
 }
  
@@ -140,25 +147,32 @@ if($debug) {
   say STDERR "";
 
   say STDERR "  [targets: @targets]"; # NOTE: change string is not still gurtured.
+  say STDERR "";
 }
 
 { # get log.
   my $cmd = ("docker");
 
-  sub generate_toCall{
+  sub set_toCall{
     
+  }
+  sub set_path{
+  
+  }
+  sub set_target{
+  
   }
 
   sub get_log{
     my @toCall; 
     push(@toCall, $cmd);
     my $target = $PROJECT_NAME . "_sw360";
-    my $path = '';
-    my $no;
-    ($no) = @_;
+    my $file = '';
+    my $c_no;
+    ($c_no) = @_;
 
     # error hundler
-    if ($no < 0 and 5 < $no){
+    if ($c_no < 0 and 5 < $c_no){
       say STDERR "error at line 141. get_log function";
       exit 
       #NOTE: target is ok? not featured.
@@ -166,31 +180,44 @@ if($debug) {
     }
 
     # set target
-    if ($no != $SW360){
-      $target = $target . $COMPORNENTS[$no];
+    if ($c_no != $SW360){
+      $target = $target . $COMPORNENTS[$c_no];
     }
 
-    # set path
-    $path = $logFolder . "/" . $paths[$no] . ".log";
+    # set file_path
+    $file = $paths[$c_no] . ".log";
 
     # set toCall
     push (@toCall, "logs");
     push (@toCall, $target);
-    ##push (@toCall, ">");
-    ##push (@toCall, $path);
 
-    say STDERR "  $no(string is not futured)"; 
-    say STDERR "    -toCall = @toCall";
-    say STDERR "    -path   = $paths[$no]";
+    say STDERR "  [$c_no(string is not futured)] ---"; 
+    say STDERR "    -ToCall     = @toCall";
+    say STDERR "    -FilePath   = $file";
     # NOTE: ファイルがないときに作成する / 出力先をファイルに #####
-    0 == system(@toCall)  #"docker logs sw360_dev_sw360")#@toCall)
-      or die "failed...";
+    
+    # if (-ne $file) { say STDERR "    [INFO]  create file named $file"; }
+    sysopen(my $fh, $file, O_WRONLY | O_CREAT) 
+      or die "Couldn't open $file : $!";
+      say STDERR "   [INFO] EXEC: @toCall > $file ";
+      my $echos = `@toCall`;
+      # NOTE: ERROR HUNDLER > when `toCall` is missed
+      if (-z $fh){ 
+        say STDERR "ERROR: toCall is missed!. exit";
+	exit;
+      }
+      print $fh "$echos";
+      say STDERR "   [INFO] success. next cmd will be ready...";
+    close( $fh );
   }
 }
 
 
 # main -----------
-foreach my $no (@targets) {
-  get_log($no);
+foreach my $c_no (@targets) {
+  get_log($c_no);
+  say STDERR "";
 }
+say STDERR "all ok!";
+
 

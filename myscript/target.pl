@@ -1,9 +1,9 @@
 {
-    folder => "./logs",
-    sw360 => "catalina",
-    couchdb => "couchdb",
-    fossology   => "fossology",
-    postgresql  => "postgresql",
-    nginx  => "nginx",
-    csv_search => "csv_search"
+    sw360 => 1,
+    couchdb => 1,
+    fossology   => 0,
+    postgresql       => 1,
+    nginx  => 0,
+    csv_search => 0,
+    debug => 1
 }
