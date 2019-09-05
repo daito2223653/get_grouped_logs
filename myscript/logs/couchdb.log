@@ -1,140 +1,203 @@
-2019-09-05T02:39:31.687346515Z Data directory not empty, will not provision.
-2019-09-05T02:39:31.689701651Z ------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------
-2019-09-05T02:39:31.694062273Z sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini
-2019-09-05T02:39:33.326755686Z Apache CouchDB 1.7.1 (LogLevel=info) is starting.
-2019-09-05T02:39:40.985233330Z Apache CouchDB has started. Time to relax.
-2019-09-05T02:39:40.985394617Z [info] [<0.32.0>] Apache CouchDB has started on http://0.0.0.0:5984/
-2019-09-05T02:41:26.321658739Z [info] [<0.119.0>] 192.168.240.5 - - HEAD /sw360oauthclients/ 200
-2019-09-05T02:41:26.360138862Z [info] [<0.119.0>] 192.168.240.5 - - HEAD /sw360oauthclients/_design/OAuthClientEntity 200
-2019-09-05T02:41:26.377627777Z [info] [<0.119.0>] 192.168.240.5 - - GET /sw360oauthclients/_design/OAuthClientEntity 200
-2019-09-05T02:41:36.936056395Z [info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
-2019-09-05T02:41:36.976084054Z [info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_security 200
-2019-09-05T02:41:37.273939594Z [info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
-2019-09-05T02:41:37.280226090Z [info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/_design/Vulnerability 200
-2019-09-05T02:41:37.295855906Z [info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_design/Vulnerability 200
-2019-09-05T02:41:37.465750460Z [info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
-2019-09-05T02:41:37.470331491Z [info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/_design/ReleaseVulnerabilityRelation 200
-2019-09-05T02:41:37.474662566Z [info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_design/ReleaseVulnerabilityRelation 200
-2019-09-05T02:41:37.645308911Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:37.651356428Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:37.672157306Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:37.676901797Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:37.688684465Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:37.693449223Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:37.697569963Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:37.864112847Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:37.872165593Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:37.886372872Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:37.891592775Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:37.898254418Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:37.933493402Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:37.938741489Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:37.951820388Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:37.957900310Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
-2019-09-05T02:41:37.964784968Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
-2019-09-05T02:41:37.996085831Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.003543889Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.015450669Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.023275487Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
-2019-09-05T02:41:38.029290261Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
-2019-09-05T02:41:38.083078885Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.088449468Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.100660096Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.106255129Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Vendor 200
-2019-09-05T02:41:38.111890199Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Vendor 200
-2019-09-05T02:41:38.249260470Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.254858930Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Release 200
-2019-09-05T02:41:38.261212196Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Release 200
-2019-09-05T02:41:38.288111872Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.293528547Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Component 200
-2019-09-05T02:41:38.299437616Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Component 200
-2019-09-05T02:41:38.318629491Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.324208800Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
-2019-09-05T02:41:38.330077161Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
-2019-09-05T02:41:38.357171737Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.362584677Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/User 200
-2019-09-05T02:41:38.368047561Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
-2019-09-05T02:41:38.381614643Z [info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.385597919Z [info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:38.401830420Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.405509763Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:38.414074944Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.417698395Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:38.425438992Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.429530634Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:38.433281594Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:38.447868282Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.451629849Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.460504900Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.465053348Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:38.470048324Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:38.489136637Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.493590096Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.500789067Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.505494492Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
-2019-09-05T02:41:38.509627465Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
-2019-09-05T02:41:38.526899746Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.531642456Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.540099184Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.546176188Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
-2019-09-05T02:41:38.552580364Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
-2019-09-05T02:41:38.572268344Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.576819687Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:38.585286042Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.589890893Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Vendor 200
-2019-09-05T02:41:38.594824983Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Vendor 200
-2019-09-05T02:41:38.706470637Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.710924107Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Release 200
-2019-09-05T02:41:38.715147844Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Release 200
-2019-09-05T02:41:38.721278942Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.732905013Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Component 200
-2019-09-05T02:41:38.737995111Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Component 200
-2019-09-05T02:41:38.744086369Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.749040207Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
-2019-09-05T02:41:38.754893516Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
-2019-09-05T02:41:38.761776926Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:38.766182478Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/User 200
-2019-09-05T02:41:38.770594517Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
-2019-09-05T02:41:38.777647864Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.781699796Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:38.790807561Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:38.795067236Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:39.104823972Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:39.108656038Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:41:39.116175552Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:39.120799764Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:39.125138467Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
-2019-09-05T02:41:39.139977294Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.145205653Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:39.155309555Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.159812684Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:39.164699056Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
-2019-09-05T02:41:39.185157311Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.190749280Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:39.200814868Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.205607588Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
-2019-09-05T02:41:39.211429509Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
-2019-09-05T02:41:39.227319347Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.231819008Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:39.241406087Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.246920544Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
-2019-09-05T02:41:39.252232799Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
-2019-09-05T02:41:39.270533898Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.274583051Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
-2019-09-05T02:41:39.281552561Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.286272585Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
-2019-09-05T02:41:39.290257088Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
-2019-09-05T02:41:39.305400408Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
-2019-09-05T02:41:39.313033441Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
-2019-09-05T02:41:39.317866412Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
-2019-09-05T02:41:39.327529829Z [info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:41:39.331551520Z [info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:42:08.926451982Z [info] [<0.290.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:42:08.956083703Z [info] [<0.290.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:42:10.751749643Z [info] [<0.104.0>] 192.168.240.5 - - HEAD /sw360fossologykeys/ 200
-2019-09-05T02:42:10.758575043Z [info] [<0.104.0>] 192.168.240.5 - - GET /sw360fossologykeys/_security 200
-2019-09-05T02:42:10.774177591Z [info] [<0.104.0>] 192.168.240.5 - - HEAD /sw360fossologykeys/ 200
-2019-09-05T02:42:21.250824054Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+Data directory not empty, will not provision.
+------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------
+sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini
+Apache CouchDB 1.7.1 (LogLevel=info) is starting.
+Apache CouchDB has started. Time to relax.
+[info] [<0.32.0>] Apache CouchDB has started on http://0.0.0.0:5984/
+[info] [<0.119.0>] 192.168.240.5 - - HEAD /sw360oauthclients/ 200
+[info] [<0.119.0>] 192.168.240.5 - - HEAD /sw360oauthclients/_design/OAuthClientEntity 200
+[info] [<0.119.0>] 192.168.240.5 - - GET /sw360oauthclients/_design/OAuthClientEntity 200
+[info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
+[info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_security 200
+[info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
+[info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/_design/Vulnerability 200
+[info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_design/Vulnerability 200
+[info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/ 200
+[info] [<0.118.0>] 192.168.240.5 - - HEAD /sw360vm/_design/ReleaseVulnerabilityRelation 200
+[info] [<0.118.0>] 192.168.240.5 - - GET /sw360vm/_design/ReleaseVulnerabilityRelation 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Vendor 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Vendor 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Release 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Release 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Component 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Component 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360db/_design/User 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
+[info] [<0.117.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.117.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Vendor 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Vendor 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Release 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Release 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Component 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Component 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/User 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
+[info] [<0.279.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.279.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.290.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.290.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.104.0>] 192.168.240.5 - - HEAD /sw360fossologykeys/ 200
+[info] [<0.104.0>] 192.168.240.5 - - GET /sw360fossologykeys/_security 200
+[info] [<0.104.0>] 192.168.240.5 - - HEAD /sw360fossologykeys/ 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
+[info] [<0.116.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/AttachmentUsage 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Attachment 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Attachment 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Source 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Source 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_security 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Vendor 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Vendor 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Release 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Release 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Component 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Component 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/Project 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/Project 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/ 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360db/_design/User 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
+[info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+[info] [<0.257.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
+09-05T02:42:21.250824054Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
 2019-09-05T02:42:21.285002312Z [info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
 2019-09-05T02:42:21.425134005Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
 2019-09-05T02:42:21.430031828Z [info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200

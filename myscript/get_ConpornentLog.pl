@@ -14,30 +14,34 @@ use Pod::Usage;
 use feature qw(say);
 
 ######################################################################################
- # written by daito 
- # this script is to get logs from sw360chore's Container.
+# NOTE: ?
+=head1 SYNOPSIS
+ written by daito 
+ this script is to get logs from sw360chore's Container.
 
  # how to use---
- # ./get_conpornentlog.pl [compornent] [targetFile]  [option]
- # [conpornent]
- #   sw360=liferay=tomcat
- #   couchdb
- #   fossology
- #   postgresql
- #   nginx
- #   inconfig : コンフィグファイルを読んで, 作成する. 
- # [option]
- #   --timestamp : include timestamp
- #   --a : all compornent. when you use this option 
- #   --f : target ilfe. NOTE: default is compornentName_[no].log written path.pl 
- #   --inconfig : コンフィグファイルを読んで, 作成する. (default)
- #   
+   ./get_conpornentlog.pl [compornent] [targetFile]  [option]
+  ## [conpornent]
+     sw360=liferay=tomcat
+     couchdb
+     fossology
+     postgresql
+     nginx
+     inconfig : コンフィグファイルを読んで, 作成する. 
+  ## [option]
+     --timestamp : include timestamp
+     --a : all compornent. when you use this option 
+     --f : target ilfe. NOTE: default is compornentName_[no].log written path.pl 
+     --inconfig : コンフィグファイルを読んで, 作成する. (default)
+    
  # evironmental variables---
- # $COMPORNENT
- #   is the compornent name of the chores containers
- # $TARGET
- #   is the target file name of the $COMPORNENT's log. Default is $COMPORNET_{no}.log
-##############################################################################
+ ## $COMPORNENT
+    is the compornent name of the chores containers
+ ## $TARGET
+    is the target file name of the $COMPORNENT's log. Default is $COMPORNET_{no}.log
+=cut
+
+ ##############################################################################
 
 # COMPORNENT_NO
 my $SW360 = 0;
@@ -48,7 +52,6 @@ my $NGINX = 4;
 my $CSV_SEARCH = 5;
 # COMPORNENT_NAME
 my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search"); # $sw360 = catalina / liferay
-
 
 # read options
 my $timestamp = '';
@@ -78,7 +81,6 @@ my @paths   = (); # path of logFile copied by this script.
 my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
 
 ##########################################################
-#
 { # parse config and read command line arguments
   my $targetFile = "./target.pl";
   # my $pathFile = "./path.pl";
@@ -89,7 +91,7 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
       die "Error parsing $targetFile: $@" if $@;
       die "Error reading $targetFile: $!" unless defined $target;
 
-    # not still firture 
+    # not still featured
     $sw360 = $target->{'sw360'} // $sw360;
       if ($sw360 == 1){ push(@targets, 0); } #NOTE: $COMPORNENtS[$SW360]); not furtured  }  # // $sw360;
     $couchdb = $target->{'couchdb'} // $couchdb;
@@ -172,7 +174,7 @@ if($debug) {
   #   say STDERR "  targetLog_path(default):
   # else 
   #   say STDERR "  target ~ (custum)
-  say STDERR "  targetLog_path: ";
+  say STDERR "  Log_path: ";
   if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
   say STDERR "    \$folder          = $logFolder";
   say STDERR "    \$couchdb_path    = $couchdb_path";
@@ -184,11 +186,11 @@ if($debug) {
 
   my $isYes = yesno("are you ok ?");
   if(!$isYes){ exit }
+  
 }
 
 { # get docker info.
   my $cmd = ("docker", "info");
-
 }
 
 { # get log.

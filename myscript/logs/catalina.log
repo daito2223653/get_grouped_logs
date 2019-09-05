@@ -1,189 +1,250 @@
-2019-09-05T02:39:48.359996481Z Trust certificates in /run/secrets/certificates ...
-2019-09-05T02:39:48.891941603Z keytool error: java.lang.Exception: Input not an X.509 certificate
-2019-09-05T02:39:50.048446292Z INFO: certificate cert_extracted_from_certificates.cer was not imported
-2019-09-05T02:39:50.058449993Z Tomcat started.
-2019-09-05T02:39:50.065250968Z 01:47:34,738 INFO  [localhost-startStop-1][PortletHotDeployListener:344] Registering portlets for vendors
-2019-09-05T02:39:50.065309038Z 01:47:34,800 INFO  [localhost-startStop-1][PortletHotDeployListener:492] 1 portlet for vendors is available for use
-2019-09-05T02:39:50.065319299Z Sep 05, 2019 1:47:36 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:39:50.065332213Z INFO: Deployment of web application directory /opt/sw360/webapps/vendors has finished in 7,723 ms
-2019-09-05T02:39:50.065346145Z Sep 05, 2019 1:47:36 AM org.apache.coyote.AbstractProtocol start
-2019-09-05T02:39:50.065360134Z INFO: Starting ProtocolHandler ["http-apr-8080"]
-2019-09-05T02:39:50.065373971Z Sep 05, 2019 1:47:36 AM org.apache.coyote.AbstractProtocol start
-2019-09-05T02:39:50.065388815Z INFO: Starting ProtocolHandler ["ajp-apr-8009"]
-2019-09-05T02:39:50.065398277Z Sep 05, 2019 1:47:36 AM org.apache.catalina.startup.Catalina start
-2019-09-05T02:39:50.065419038Z INFO: Server startup in 279837 ms
-2019-09-05T02:39:51.065379086Z Listening for transport dt_socket at address: 5005
-2019-09-05T02:39:52.065961075Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066008786Z INFO: Server version:        Apache Tomcat/7.0.62
-2019-09-05T02:39:52.066018275Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066026966Z INFO: Server built:          May 7 2015 17:14:55 UTC
-2019-09-05T02:39:52.066035294Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066043727Z INFO: Server number:         7.0.62.0
-2019-09-05T02:39:52.066051975Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066060276Z INFO: OS Name:               Linux
-2019-09-05T02:39:52.066068539Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066076791Z INFO: OS Version:            4.15.0-58-generic
-2019-09-05T02:39:52.066085056Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066093437Z INFO: Architecture:          amd64
-2019-09-05T02:39:52.066101688Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066110026Z INFO: Java Home:             /usr/lib/jvm/java-1.8-openjdk/jre
-2019-09-05T02:39:52.066118365Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066126752Z INFO: JVM Version:           1.8.0_212-b04
-2019-09-05T02:39:52.066166469Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066176935Z INFO: JVM Vendor:            IcedTea
-2019-09-05T02:39:52.066185906Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066211740Z INFO: CATALINA_BASE:         /opt/sw360
-2019-09-05T02:39:52.066226727Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066241055Z INFO: CATALINA_HOME:         /opt/sw360
-2019-09-05T02:39:52.066317946Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066327626Z INFO: Command line argument: -Djava.util.logging.config.file=/opt/sw360/conf/logging.properties
-2019-09-05T02:39:52.066336488Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066345209Z INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
-2019-09-05T02:39:52.066353870Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066362467Z INFO: Command line argument: -Dfile.encoding=UTF8
-2019-09-05T02:39:52.066371044Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066379573Z INFO: Command line argument: -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false
-2019-09-05T02:39:52.066391186Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066399988Z INFO: Command line argument: -Duser.timezone=GMT
-2019-09-05T02:39:52.066408502Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066433980Z INFO: Command line argument: -Xms2g
-2019-09-05T02:39:52.066448913Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066462740Z INFO: Command line argument: -Xmx4g
-2019-09-05T02:39:52.066474896Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066483815Z INFO: Command line argument: -XX:+UseParNewGC
-2019-09-05T02:39:52.066492349Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066500962Z INFO: Command line argument: -XX:+UseConcMarkSweepGC
-2019-09-05T02:39:52.066509435Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066518070Z INFO: Command line argument: -XX:+CMSParallelRemarkEnabled
-2019-09-05T02:39:52.066527009Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066535947Z INFO: Command line argument: -XX:SurvivorRatio=20
-2019-09-05T02:39:52.066544425Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066552972Z INFO: Command line argument: -Dspring.config.location=file:/etc/sw360/rest/
-2019-09-05T02:39:52.066579941Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066589970Z INFO: Command line argument: -Dorg.ektorp.support.AutoUpdateViewOnChange=true
-2019-09-05T02:39:52.066598625Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066607264Z INFO: Command line argument: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
-2019-09-05T02:39:52.066615897Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066624485Z INFO: Command line argument: -Djava.endorsed.dirs=/opt/sw360/endorsed
-2019-09-05T02:39:52.066632962Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066641616Z INFO: Command line argument: -Dcatalina.base=/opt/sw360
-2019-09-05T02:39:52.066650104Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066662833Z INFO: Command line argument: -Dcatalina.home=/opt/sw360
-2019-09-05T02:39:52.066680426Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
-2019-09-05T02:39:52.066690650Z INFO: Command line argument: -Djava.io.tmpdir=/opt/sw360/temp
-2019-09-05T02:39:52.066705306Z Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
-2019-09-05T02:39:52.066720390Z INFO: Loaded APR based Apache Tomcat Native library 1.2.21 using APR version 1.6.5.
-2019-09-05T02:39:52.066787483Z Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
-2019-09-05T02:39:52.066803611Z INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-2019-09-05T02:39:52.066812561Z Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener initializeSSL
-2019-09-05T02:39:52.066821229Z INFO: OpenSSL successfully initialized (OpenSSL 1.1.1b  26 Feb 2019)
-2019-09-05T02:39:52.066829841Z Sep 05, 2019 2:39:51 AM org.apache.coyote.AbstractProtocol init
-2019-09-05T02:39:52.066838374Z INFO: Initializing ProtocolHandler ["http-apr-8080"]
-2019-09-05T02:39:52.066847070Z Sep 05, 2019 2:39:51 AM org.apache.coyote.AbstractProtocol init
-2019-09-05T02:39:52.066855609Z INFO: Initializing ProtocolHandler ["ajp-apr-8009"]
-2019-09-05T02:39:52.066864260Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.Catalina load
-2019-09-05T02:39:52.066872879Z INFO: Initialization processed in 1093 ms
-2019-09-05T02:39:52.066881332Z Sep 05, 2019 2:39:51 AM org.apache.catalina.core.StandardService startInternal
-2019-09-05T02:39:52.066889923Z INFO: Starting service Catalina
-2019-09-05T02:39:52.066898504Z Sep 05, 2019 2:39:51 AM org.apache.catalina.core.StandardEngine startInternal
-2019-09-05T02:39:52.066907123Z INFO: Starting Servlet Engine: Apache Tomcat/7.0.62
-2019-09-05T02:39:52.066915597Z Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.HostConfig deployDescriptor
-2019-09-05T02:39:52.066943924Z INFO: Deploying configuration descriptor /opt/sw360/conf/Catalina/localhost/ROOT.xml
-2019-09-05T02:40:11.070318932Z Sep 05, 2019 2:40:10 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:40:11.070398206Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:40:11.070426416Z Loading jar:file:/opt/sw360/webapps/ROOT/WEB-INF/lib/portal-impl.jar!/system.properties
-2019-09-05T02:40:12.084610816Z Loading jar:file:/opt/sw360/webapps/ROOT/WEB-INF/lib/portal-impl.jar!/portal.properties
-2019-09-05T02:40:12.089873476Z Loading file:/opt/portal-bundle.properties
-2019-09-05T02:40:12.089919552Z Loading file:/etc/sw360/portal-ext.properties
-2019-09-05T02:40:14.080181314Z Sep 05, 2019 2:40:13 AM org.apache.catalina.core.ApplicationContext log
-2019-09-05T02:40:14.080234447Z INFO: Initializing Spring root WebApplicationContext
-2019-09-05T02:40:20.081420491Z 02:40:19,958 INFO  [localhost-startStop-1][DialectDetector:71] Determine dialect for PostgreSQL 9
-2019-09-05T02:40:20.081487091Z 02:40:20,008 INFO  [localhost-startStop-1][DialectDetector:136] Found dialect org.hibernate.dialect.PostgreSQLDialect
-2019-09-05T02:40:57.088019254Z Starting Liferay Portal Community Edition 6.2 CE GA5 (Newton / Build 6204 / November 25, 2015)
-2019-09-05T02:40:57.088075489Z 02:40:56,961 INFO  [localhost-startStop-1][StartupAction:97] There are no patches installed
-2019-09-05T02:40:58.088226699Z 02:40:57,889 INFO  [localhost-startStop-1][BaseDB:481] Database supports case sensitive queries
-2019-09-05T02:40:59.088530242Z 02:40:58,507 INFO  [localhost-startStop-1][ServerDetector:140] Server supports hot deploy
-2019-09-05T02:40:59.088580811Z 02:40:58,519 INFO  [localhost-startStop-1][PluginPackageUtil:1013] Reading plugin package for the root context
-2019-09-05T02:41:03.089448906Z 02:41:02,244 INFO  [localhost-startStop-1][AutoDeployDir:139] Auto deploy scanner started for /opt/sw360/deploy
-2019-09-05T02:41:09.091833950Z Sep 05, 2019 2:41:08 AM org.apache.catalina.core.ApplicationContext log
-2019-09-05T02:41:09.091896820Z INFO: Initializing Spring FrameworkServlet 'Remoting Servlet'
-2019-09-05T02:41:10.092080191Z Sep 05, 2019 2:41:09 AM org.apache.catalina.startup.HostConfig deployDescriptor
-2019-09-05T02:41:10.092202784Z INFO: Deployment of configuration descriptor /opt/sw360/conf/Catalina/localhost/ROOT.xml has finished in 77,549 ms
-2019-09-05T02:41:10.092233558Z Sep 05, 2019 2:41:09 AM org.apache.catalina.startup.HostConfig deployDescriptor
-2019-09-05T02:41:10.092254133Z INFO: Deploying configuration descriptor /opt/sw360/conf/Catalina/localhost/logs.xml
-2019-09-05T02:41:11.092337582Z Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:11.092397490Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:11.092453786Z Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.HostConfig deployDescriptor
-2019-09-05T02:41:11.092476192Z INFO: Deployment of configuration descriptor /opt/sw360/conf/Catalina/localhost/logs.xml has finished in 1,121 ms
-2019-09-05T02:41:11.092494477Z Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:11.092522688Z INFO: Deploying web application directory /opt/sw360/webapps/schedule
-2019-09-05T02:41:14.092950425Z Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:14.093008743Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:14.093028874Z 02:41:13,456 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin schedule requires marketplace-portlet
-2019-09-05T02:41:14.093044943Z 02:41:13,504 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing schedule for deploy because it is missing marketplace-portlet
-2019-09-05T02:41:14.093059555Z 2019-09-05 02:41:13 INFO  ScheduleServlet:45 - Auto-starting scheduling tasks in schedule service...
-2019-09-05T02:41:14.093073091Z  2019-09-05 02:41:13 INFO  ScheduleServlet:53 - Auto-start completed.
-2019-09-05T02:41:14.093088048Z  Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:14.093098460Z INFO: Deployment of web application directory /opt/sw360/webapps/schedule has finished in 3,324 ms
-2019-09-05T02:41:14.093107964Z Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:14.093116884Z INFO: Deploying web application directory /opt/sw360/webapps/authorization
-2019-09-05T02:41:18.093878757Z Sep 05, 2019 2:41:17 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:18.093933969Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:18.093952306Z Sep 05, 2019 2:41:17 AM org.apache.catalina.core.ApplicationContext log
-2019-09-05T02:41:18.093966098Z INFO: 2 Spring WebApplicationInitializers detected on classpath
-2019-09-05T02:41:20.094517760Z #
-2019-09-05T02:41:20.094576782Z # Copyright Siemens AG, 2017. Part of the SW360 Portal Project.
-2019-09-05T02:41:20.094595145Z #
-2019-09-05T02:41:20.094605059Z # All rights reserved. This configuration file is provided to you under the
-2019-09-05T02:41:20.094613964Z # terms and conditions of the Eclipse Distribution License v1.0 which
-2019-09-05T02:41:20.094622685Z # accompanies this distribution, and is available at
-2019-09-05T02:41:20.094631292Z # http://www.eclipse.org/org/documents/edl-v10.php
-2019-09-05T02:41:20.094669962Z #
-2019-09-05T02:41:20.094686837Z 
-2019-09-05T02:41:20.094706762Z                 ________   _______________
-2019-09-05T02:41:20.094723562Z   ________  _  _\_____  \ /  _____/\   _  \
-2019-09-05T02:41:20.094737576Z  /  ___/\ \/ \/ / _(__  </   __  \ /  /_\  \
-2019-09-05T02:41:20.094751154Z  \___ \  \     / /       \  |__\  \\  \_/   \
-2019-09-05T02:41:20.094769195Z /____  >  \/\_/ /______  /\_____  / \_____  /
-2019-09-05T02:41:20.094783293Z      \/                \/       \/        \/
-2019-09-05T02:41:20.094804290Z :: sw360 Authorization Server :: Running Spring Boot 1.5.8.RELEASE ::
-2019-09-05T02:41:20.094820814Z 
-2019-09-05T02:41:20.094837839Z 2019-09-05 02:41:19 INFO  Sw360AuthorizationServer:48 - Starting Sw360AuthorizationServer on 3487f5377d95 with PID 47 (/opt/sw360/webapps/authorization/WEB-INF/classes/org/eclipse/sw360/rest/authserver/Sw360AuthorizationServer.class started by root in /opt/sw360)
-2019-09-05T02:41:20.094854524Z  2019-09-05 02:41:19 INFO  Sw360AuthorizationServer:593 - No active profile set, falling back to default profiles: default
-2019-09-05T02:41:24.095674551Z  Sep 05, 2019 2:41:23 AM org.apache.catalina.core.ApplicationContext log
-2019-09-05T02:41:24.095748139Z INFO: Initializing Spring embedded WebApplicationContext
-2019-09-05T02:41:26.096286341Z 2019-09-05 02:41:25 INFO  Sw360CustomHeaderAuthenticationFilter:105 - AuthenticationFilter is NOT active!
-2019-09-05T02:41:29.097100977Z  2019-09-05 02:41:28 INFO  Sw360CustomHeaderAuthenticationProvider:80 - AuthenticationProvider is NOT active!
-2019-09-05T02:41:32.098060248Z  2019-09-05 02:41:31 INFO  Sw360AuthorizationServer:57 - Started Sw360AuthorizationServer in 13.793 seconds (JVM running for 101.6)
-2019-09-05T02:41:32.098123129Z  02:41:31,672 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin authorization requires marketplace-portlet
-2019-09-05T02:41:32.098149738Z 02:41:31,676 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing authorization for deploy because it is missing marketplace-portlet
-2019-09-05T02:41:32.098165736Z 2019-09-05 02:41:31 INFO  Sw360CustomHeaderAuthenticationFilter:105 - AuthenticationFilter is NOT active!
-2019-09-05T02:41:32.098175753Z  Sep 05, 2019 2:41:31 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:32.098189371Z INFO: Deployment of web application directory /opt/sw360/webapps/authorization has finished in 17,951 ms
-2019-09-05T02:41:32.098198787Z Sep 05, 2019 2:41:31 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:32.098208046Z INFO: Deploying web application directory /opt/sw360/webapps/vulnerabilities
-2019-09-05T02:41:35.098947131Z Sep 05, 2019 2:41:34 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:35.099006602Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:35.099058160Z 02:41:34,786 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin vulnerabilities requires marketplace-portlet
-2019-09-05T02:41:35.099076881Z 02:41:34,786 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing vulnerabilities for deploy because it is missing marketplace-portlet
-2019-09-05T02:41:40.100120132Z Sep 05, 2019 2:41:39 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:40.100194701Z INFO: Deployment of web application directory /opt/sw360/webapps/vulnerabilities has finished in 7,655 ms
-2019-09-05T02:41:40.100215334Z Sep 05, 2019 2:41:39 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:40.100231077Z INFO: Deploying web application directory /opt/sw360/webapps/sw360-portlet
-2019-09-05T02:41:44.100931130Z Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:44.100985973Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:44.101004936Z 02:41:43,517 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin sw360-portlet requires marketplace-portlet
-2019-09-05T02:41:44.101015355Z 02:41:43,518 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing sw360-portlet for deploy because it is missing marketplace-portlet
-2019-09-05T02:41:44.101024943Z Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:44.101034316Z INFO: Deployment of web application directory /opt/sw360/webapps/sw360-portlet has finished in 4,184 ms
-2019-09-05T02:41:44.101043659Z Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.HostConfig deployDirectory
-2019-09-05T02:41:44.101053085Z INFO: Deploying web application directory /opt/sw360/webapps/resource
-2019-09-05T02:41:48.101917554Z Sep 05, 2019 2:41:47 AM org.apache.catalina.startup.TldConfig execute
-2019-09-05T02:41:48.101957913Z INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2019-09-05T02:41:48.101968675Z Sep 05, 2019 2:41:47 AM org.apache.catalina.core.ApplicationContext log
-2019-09-05T02:41:48.101977736Z INFO: 2 Spring WebApplicationInitializers detected on classpath
-2019-09-05T02:41:49.102315846Z #
-2019-09-05T02:41:49.102375382Z # Copyright Siemens AG, 2017. Part of the SW360 Portal Project.
+Trust certificates in /run/secrets/certificates ...
+keytool error: java.lang.Exception: Input not an X.509 certificate
+INFO: certificate cert_extracted_from_certificates.cer was not imported
+Tomcat started.
+01:47:34,738 INFO  [localhost-startStop-1][PortletHotDeployListener:344] Registering portlets for vendors
+01:47:34,800 INFO  [localhost-startStop-1][PortletHotDeployListener:492] 1 portlet for vendors is available for use
+Sep 05, 2019 1:47:36 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/vendors has finished in 7,723 ms
+Sep 05, 2019 1:47:36 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-apr-8080"]
+Sep 05, 2019 1:47:36 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-apr-8009"]
+Sep 05, 2019 1:47:36 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 279837 ms
+Listening for transport dt_socket at address: 5005
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.62
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          May 7 2015 17:14:55 UTC
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.62.0
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Linux
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            4.15.0-58-generic
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             /usr/lib/jvm/java-1.8-openjdk/jre
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.8.0_212-b04
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            IcedTea
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         /opt/sw360
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         /opt/sw360
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=/opt/sw360/conf/logging.properties
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dfile.encoding=UTF8
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Duser.timezone=GMT
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xms2g
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Xmx4g
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -XX:+UseParNewGC
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -XX:+UseConcMarkSweepGC
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -XX:+CMSParallelRemarkEnabled
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -XX:SurvivorRatio=20
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dspring.config.location=file:/etc/sw360/rest/
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dorg.ektorp.support.AutoUpdateViewOnChange=true
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=/opt/sw360/endorsed
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=/opt/sw360
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=/opt/sw360
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=/opt/sw360/temp
+Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: Loaded APR based Apache Tomcat Native library 1.2.21 using APR version 1.6.5.
+Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+Sep 05, 2019 2:39:51 AM org.apache.catalina.core.AprLifecycleListener initializeSSL
+INFO: OpenSSL successfully initialized (OpenSSL 1.1.1b  26 Feb 2019)
+Sep 05, 2019 2:39:51 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-apr-8080"]
+Sep 05, 2019 2:39:51 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-apr-8009"]
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1093 ms
+Sep 05, 2019 2:39:51 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Sep 05, 2019 2:39:51 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.62
+Sep 05, 2019 2:39:51 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor /opt/sw360/conf/Catalina/localhost/ROOT.xml
+Sep 05, 2019 2:40:10 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Loading jar:file:/opt/sw360/webapps/ROOT/WEB-INF/lib/portal-impl.jar!/system.properties
+Loading jar:file:/opt/sw360/webapps/ROOT/WEB-INF/lib/portal-impl.jar!/portal.properties
+Loading file:/opt/portal-bundle.properties
+Loading file:/etc/sw360/portal-ext.properties
+Sep 05, 2019 2:40:13 AM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring root WebApplicationContext
+02:40:19,958 INFO  [localhost-startStop-1][DialectDetector:71] Determine dialect for PostgreSQL 9
+02:40:20,008 INFO  [localhost-startStop-1][DialectDetector:136] Found dialect org.hibernate.dialect.PostgreSQLDialect
+Starting Liferay Portal Community Edition 6.2 CE GA5 (Newton / Build 6204 / November 25, 2015)
+02:40:56,961 INFO  [localhost-startStop-1][StartupAction:97] There are no patches installed
+02:40:57,889 INFO  [localhost-startStop-1][BaseDB:481] Database supports case sensitive queries
+02:40:58,507 INFO  [localhost-startStop-1][ServerDetector:140] Server supports hot deploy
+02:40:58,519 INFO  [localhost-startStop-1][PluginPackageUtil:1013] Reading plugin package for the root context
+02:41:02,244 INFO  [localhost-startStop-1][AutoDeployDir:139] Auto deploy scanner started for /opt/sw360/deploy
+Sep 05, 2019 2:41:08 AM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'Remoting Servlet'
+Sep 05, 2019 2:41:09 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deployment of configuration descriptor /opt/sw360/conf/Catalina/localhost/ROOT.xml has finished in 77,549 ms
+Sep 05, 2019 2:41:09 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor /opt/sw360/conf/Catalina/localhost/logs.xml
+Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deployment of configuration descriptor /opt/sw360/conf/Catalina/localhost/logs.xml has finished in 1,121 ms
+Sep 05, 2019 2:41:10 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/schedule
+Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02:41:13,456 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin schedule requires marketplace-portlet
+02:41:13,504 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing schedule for deploy because it is missing marketplace-portlet
+2019-09-05 02:41:13 INFO  ScheduleServlet:45 - Auto-starting scheduling tasks in schedule service...
+ 2019-09-05 02:41:13 INFO  ScheduleServlet:53 - Auto-start completed.
+ Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/schedule has finished in 3,324 ms
+Sep 05, 2019 2:41:13 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/authorization
+Sep 05, 2019 2:41:17 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 05, 2019 2:41:17 AM org.apache.catalina.core.ApplicationContext log
+INFO: 2 Spring WebApplicationInitializers detected on classpath
+#
+# Copyright Siemens AG, 2017. Part of the SW360 Portal Project.
+#
+# All rights reserved. This configuration file is provided to you under the
+# terms and conditions of the Eclipse Distribution License v1.0 which
+# accompanies this distribution, and is available at
+# http://www.eclipse.org/org/documents/edl-v10.php
+#
+
+                ________   _______________
+  ________  _  _\_____  \ /  _____/\   _  \
+ /  ___/\ \/ \/ / _(__  </   __  \ /  /_\  \
+ \___ \  \     / /       \  |__\  \\  \_/   \
+/____  >  \/\_/ /______  /\_____  / \_____  /
+     \/                \/       \/        \/
+:: sw360 Authorization Server :: Running Spring Boot 1.5.8.RELEASE ::
+
+2019-09-05 02:41:19 INFO  Sw360AuthorizationServer:48 - Starting Sw360AuthorizationServer on 3487f5377d95 with PID 47 (/opt/sw360/webapps/authorization/WEB-INF/classes/org/eclipse/sw360/rest/authserver/Sw360AuthorizationServer.class started by root in /opt/sw360)
+ 2019-09-05 02:41:19 INFO  Sw360AuthorizationServer:593 - No active profile set, falling back to default profiles: default
+ Sep 05, 2019 2:41:23 AM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring embedded WebApplicationContext
+2019-09-05 02:41:25 INFO  Sw360CustomHeaderAuthenticationFilter:105 - AuthenticationFilter is NOT active!
+ 2019-09-05 02:41:28 INFO  Sw360CustomHeaderAuthenticationProvider:80 - AuthenticationProvider is NOT active!
+ 2019-09-05 02:41:31 INFO  Sw360AuthorizationServer:57 - Started Sw360AuthorizationServer in 13.793 seconds (JVM running for 101.6)
+ 02:41:31,672 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin authorization requires marketplace-portlet
+02:41:31,676 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing authorization for deploy because it is missing marketplace-portlet
+2019-09-05 02:41:31 INFO  Sw360CustomHeaderAuthenticationFilter:105 - AuthenticationFilter is NOT active!
+ Sep 05, 2019 2:41:31 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/authorization has finished in 17,951 ms
+Sep 05, 2019 2:41:31 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/vulnerabilities
+Sep 05, 2019 2:41:34 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02:41:34,786 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin vulnerabilities requires marketplace-portlet
+02:41:34,786 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing vulnerabilities for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:41:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/vulnerabilities has finished in 7,655 ms
+Sep 05, 2019 2:41:39 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/sw360-portlet
+Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02:41:43,517 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin sw360-portlet requires marketplace-portlet
+02:41:43,518 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing sw360-portlet for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/sw360-portlet has finished in 4,184 ms
+Sep 05, 2019 2:41:43 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/resource
+Sep 05, 2019 2:41:47 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 05, 2019 2:41:47 AM org.apache.catalina.core.ApplicationContext log
+INFO: 2 Spring WebApplicationInitializers detected on classpath
+#
+# Copyright Siemens AG, 2017. Part of the SW360 Portal Project.
+#
+# All rights reserved. This configuration file is provided to you under the
+# terms and conditions of the Eclipse Distribution License v1.0 which
+# accompanies this distribution, and is available at
+# http://www.eclipse.org/org/documents/edl-v10.php
+#
+
+                ________   _______________
+  ________  _  _\_____  \ /  _____/\   _  \
+ /  ___/\ \/ \/ / _(__  </   __  \ /  /_\  \
+ \___ \  \     / /       \  |__\  \\  \_/   \
+/____  >  \/\_/ /______  /\_____  / \_____  /
+     \/                \/       \/        \/
+:: sw360 Resource Server :: Running Spring Boot 1.5.8.RELEASE ::
+
+2019-09-05 02:41:49 INFO  Sw360ResourceServer:48 - Starting Sw360ResourceServer on 3487f5377d95 with PID 47 (/opt/sw360/webapps/resource/WEB-INF/classes/org/eclipse/sw360/rest/resourceserver/Sw360ResourceServer.class started by root in /opt/sw360)
+ 2019-09-05 02:41:49 INFO  Sw360ResourceServer:593 - No active profile set, falling back to default profiles: default
+ Sep 05, 2019 2:41:54 AM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring embedded WebApplicationContext
+2019-09-05 02:41:59 INFO  KeycloakAccessTokenConverter:44 - Configured  KeycloakAccessTokenConverter
+ 2019-09-05 02:42:03 INFO  Sw360ResourceServer:57 - Started Sw360ResourceServer in 15.884 seconds (JVM running for 133.612)
+ 02:42:03,681 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin resource requires marketplace-portlet
+02:42:03,682 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing resource for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:42:03 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/resource has finished in 20,156 ms
+Sep 05, 2019 2:42:03 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/fossology
+02:42:06,469 INFO  [com.liferay.portal.kernel.deploy.auto.AutoDeployScanner][AutoDeployDir:204] Processing marketplace-portlet-6.2.0.1.war
+02:42:06,488 INFO  [com.liferay.portal.kernel.deploy.auto.AutoDeployScanner][PortletAutoDeployListener:79] Copying portlets for /opt/sw360/deploy/marketplace-portlet-6.2.0.1.war
+02:42:06,602 INFO  [com.liferay.portal.kernel.deploy.auto.AutoDeployScanner][BaseDeployer:863] Deploying marketplace-portlet-6.2.0.1.war
+02:42:06,609 INFO  [com.liferay.portal.kernel.deploy.auto.AutoDeployScanner][BaseDeployer:966] Updating Marketplace from version 6.2.0.3 to version 6.2.0.1
+02:42:06,609 INFO  [com.liferay.portal.kernel.deploy.auto.AutoDeployScanner][BaseDeployer:975] Not updating Marketplace because version 6.2.0.3 is newer than version 6.2.0.1
+Sep 05, 2019 2:42:06 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 05, 2019 2:42:06 AM org.apache.catalina.core.ApplicationContext log
+INFO: No Spring WebApplicationInitializer types detected on classpath
+02:42:06,908 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin fossology requires marketplace-portlet
+02:42:06,909 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing fossology for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:42:07 AM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'FossologyService'
+Sep 05, 2019 2:42:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/fossology has finished in 7,582 ms
+Sep 05, 2019 2:42:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/wsimport
+Sep 05, 2019 2:42:15 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02:42:15,576 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin wsimport requires marketplace-portlet
+02:42:15,577 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing wsimport for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:42:15 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/wsimport has finished in 4,440 ms
+Sep 05, 2019 2:42:15 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/licenseinfo
+Sep 05, 2019 2:42:20 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02:42:20,134 INFO  [localhost-startStop-1][HotDeployEvent:145] Plugin licenseinfo requires marketplace-portlet
+02:42:20,135 INFO  [localhost-startStop-1][HotDeployImpl:276] Queueing licenseinfo for deploy because it is missing marketplace-portlet
+Sep 05, 2019 2:42:22 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /opt/sw360/webapps/licenseinfo has finished in 6,527 ms
+Sep 05, 2019 2:42:22 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /opt/sw360/webapps/users
+:41:49.102375382Z # Copyright Siemens AG, 2017. Part of the SW360 Portal Project.
 2019-09-05T02:41:49.102391797Z #
 2019-09-05T02:41:49.102405606Z # All rights reserved. This configuration file is provided to you under the
 2019-09-05T02:41:49.102419598Z # terms and conditions of the Eclipse Distribution License v1.0 which
