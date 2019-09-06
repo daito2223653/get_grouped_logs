@@ -14,6 +14,7 @@ my $projectName = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function 
 
 my @cmd = ("docker", "logs");
 
+sub main {
 my @toCall; 
 push(@toCall, @cmd);
 my $target = $projectName . "_sw360";
@@ -45,7 +46,7 @@ my $c_no;
 
 say STDERR "  cno = $c_no [$COMPORNENTS[$c_no]] ---"; 
 my $echos = `@toCall`;
-return "$echos";
+return $echos;
  
     #my @toCall = "less";
     #push(@toCall, $echos);
@@ -53,5 +54,6 @@ return "$echos";
     # or die "failed...";
     # NOTE: ERROR HUNDLER > when `toCall` is missed
     #say STDERR "   [INFO] success. next cmd will be ready...";
+}
 
-
+main()
