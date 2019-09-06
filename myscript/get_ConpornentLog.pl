@@ -89,9 +89,7 @@ my @paths   = (); # path of logFile copied by this script.
     die "Error reading $configFile: $!" unless defined $config;
     $project_name = $config->{'projectName'} // $project_name;
     #$cveSearch = $config->{'cveSearch'} // $cveSearch;
-  } 
-
-	
+  } 	
 	
   my $targetFile = "./target.pl";
   # my $pathFile = "./path.pl";
@@ -208,7 +206,6 @@ if($debug) {
 
   my $isYes = yesno("are you ok ?");
   if(!$isYes){ exit }
-  
 }
 
 { # get log.
@@ -223,14 +220,6 @@ if($debug) {
   }
   sub set_target{
   
-  }
-
-  sub get_target_status{
-    my @cmd = ("docker", "stats");
-    my $target = $project_name . "_sw360";
-    my $c_no;
-    ($c_no) = @_;
-    my @_toCall;
   }
 
   sub look_log{
@@ -305,8 +294,7 @@ if($debug) {
 
 
 # main -----------
-foreach my $c_no (@targets) {
-  
+foreach my $c_no (@targets) {  
   get_log($c_no);
   say STDERR "";
 }

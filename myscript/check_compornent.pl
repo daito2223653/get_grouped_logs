@@ -15,14 +15,14 @@ use feature qw(say);
 
 ######################################################################################
  # written by daito 
- # this script is to check logs of sw360chore's Container.
+ # this script is to check setting of port / proxy and so on of sw360chore's Container.
 
  # how to use---
  # ./check_conpornentlog.pl [mode]
  # [option]
- #   --intaractive: intaractive mode.
- #   --less: use less cmd. 
- #   
+ #   --port : 
+ #   --proxy: 
+ #   --all: 
  # evironmental variables---
  # $COMPORNENT
  #   is the compornent name of the chores containers
