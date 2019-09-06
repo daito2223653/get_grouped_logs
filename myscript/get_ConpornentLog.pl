@@ -27,13 +27,12 @@ use feature qw(say);
      fossology
      postgresql
      nginx
-     inconfig : コンフィグファイルを読んで, 作成する. 
   ## [option]
      --timestamp : include timestamp
-     --a : all compornent. when you use this option 
-     --f : target ilfe. NOTE: default is compornentName_[no].log written path.pl 
-     --inconfig : コンフィグファイルを読んで, 作成する. (default)
-    
+     --config : コンフィグファイルを読んで, 作成する. (default)
+     --interactive 
+     --lokkOnly
+
  # evironmental variables---
  ## $COMPORNENT
     is the compornent name of the chores containers
@@ -52,10 +51,13 @@ my $NGINX = 4;
 my $CSV_SEARCH = 5;
 # COMPORNENT_NAME
 my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search"); # $sw360 = catalina / liferay
+my $project_name;; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
 
 # read options
 my $timestamp = '';
-my $inconfig  = '';
+my $config  = '1';
+my $lookonly = '';
+my $interactive = '';
 
 # variables 
 my $sw360 = ''; # $sw360 = catalina / liferay
@@ -77,11 +79,20 @@ my $csv_search_path = '';
 # target
 my @targets = (); # compornent no of sw360chores
 my @paths   = (); # path of logFile copied by this script.
-# PROJECT NAME
-my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
 
 ##########################################################
 { # parse config and read command line arguments
+  my $configFile = "../configuration/configuration.pl";
+  if(-e $configFile) {
+    my $config=do($configFile);
+    die "Error parsing $configFile: $@" if $@;
+    die "Error reading $configFile: $!" unless defined $config;
+    $project_name = $config->{'projectName'} // $project_name;
+    #$cveSearch = $config->{'cveSearch'} // $cveSearch;
+  } 
+
+	
+	
   my $targetFile = "./target.pl";
   # my $pathFile = "./path.pl";
   my $pathFile   = "./path.pl";
@@ -91,19 +102,14 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
       die "Error parsing $targetFile: $@" if $@;
       die "Error reading $targetFile: $!" unless defined $target;
 
-    # not still featured
-    $sw360 = $target->{'sw360'} // $sw360;
-      if ($sw360 == 1){ push(@targets, 0); } #NOTE: $COMPORNENtS[$SW360]); not furtured  }  # // $sw360;
-    $couchdb = $target->{'couchdb'} // $couchdb;
-      if ($couchdb == 1){ push(@targets, 1); } 
-    $fossology = $target->{'fossology'} // $fossology;
-      if ($fossology == 1){ push(@targets, 2); } 
-    $postgresql = $target->{'postgresql'} // $postgresql;
-      if ($postgresql == 1){ push(@targets, 3); } 
-    $nginx = $target->{'nginx'} // $nginx;
-      if ($nginx == 1){ push(@targets, 4); } 
-    $csv_search = $target->{'csv_search'} // $csv_search;
-      if ($csv_search == 1){ push(@targets, 5); };
+    if(!$interactive) {
+      $sw360 = $target->{'sw360'} // $sw360;
+      $couchdb = $target->{'couchdb'} // $couchdb;
+      $fossology = $target->{'fossology'} // $fossology;
+      $postgresql = $target->{'postgresql'} // $postgresql;
+      $nginx = $target->{'nginx'} // $nginx;
+      $csv_search = $target->{'csv_search'} // $csv_search;
+    }
     $debug = $target->{'debug'} // $debug;
   }
 
@@ -131,7 +137,9 @@ my $PROJECT_NAME = "sw360_dev"; # NOTE: not furtured . get PROJECT NAME function
   GetOptions (
     # handle imgaes
     'timestamp' => \$timestamp,
-    'inconfig' => \$inconfig
+    'config' => \$config,
+    'interactive' => \$interactive,
+    'lookonly' => \$lookonly 
   ) or pod2usage();
 
 }
@@ -140,9 +148,9 @@ sub yesno{
     my $comment = shift;
     my $default = shift;
     if($default){
-        $comment .= " ([y]/n)> ";
+        $comment .= " [y]/n> ";
     }else{
-        $comment .= " (y/[n])> ";
+        $comment .= " y/[n]> ";
         $default = 0;
     }
     my $prv = $|;
@@ -162,6 +170,14 @@ sub yesno{
 
 if($debug) {
   say STDERR "  variables: ";
+  if($interactive){
+    if(!yesno("    sw360")){ $sw360 = 0;  }else {$sw360 = 1;}
+    if(!yesno("    couchdb")){ $couchdb = 0;  }else {$couchdb = 1;}
+    if(!yesno("    fossology")){ $fossology = 0;  }else {$fossology = 1;}
+    if(!yesno("    postgresql")){ $postgresql = 0;  }else {$postgresql = 1;}
+    if(!yesno("    nginx")){ $nginx = 0;  }else {$nginx = 1;}
+    if(!yesno("    csv_search")){ $csv_search = 0;  } else {$csv_search = 1;}
+  }
   say STDERR "    \$sw360      = $sw360";
   say STDERR "    \$couchdb    = $couchdb";
   say STDERR "    \$fossology  = $fossology";
@@ -169,28 +185,30 @@ if($debug) {
   say STDERR "    \$nginx      = $nginx";
   say STDERR "    \$csv_search = $csv_search";
   say STDERR "    \$debug      = $debug";
+  if ($sw360 == 1){ push(@targets, 0); } 
+  if ($couchdb == 1){ push(@targets, 1); } 
+  if ($fossology == 1){ push(@targets, 2); } 
+  if ($postgresql == 1){ push(@targets, 3); } 
+  if ($nginx == 1){ push(@targets, 4); } 
+  if ($csv_search == 1){ push(@targets, 5); };
 
   # if default 
   #   say STDERR "  targetLog_path(default):
   # else 
   #   say STDERR "  target ~ (custum)
   say STDERR "  Log_path: ";
-  if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
   say STDERR "    \$folder          = $logFolder";
-  say STDERR "    \$couchdb_path    = $couchdb_path";
-  say STDERR "    \$fossology_path  = $fossology_path";
-  say STDERR "    \$postgresql_path = $postgresql_path";
-  say STDERR "    \$nginx_path      = $nginx_path";
-  say STDERR "    \$csv_search_path = $csv_search_path";
-  say STDERR "";
+  if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
+  if ($couchdb){say STDERR "    \$couchdb_path    = $couchdb_path";}
+  if ($fossology){say STDERR "    \$fossology_path  = $fossology_path";}
+  if ($postgresql){say STDERR "    \$postgresql_path = $postgresql_path";}
+  if ($nginx){say STDERR "    \$nginx_path      = $nginx_path";}
+  if ($csv_search){ say STDERR "    \$csv_search_path = $csv_search_path";}
+  say STDERR ""; 
 
   my $isYes = yesno("are you ok ?");
   if(!$isYes){ exit }
   
-}
-
-{ # get docker info.
-  my $cmd = ("docker", "info");
 }
 
 { # get log.
@@ -208,18 +226,16 @@ if($debug) {
 
   sub get_target_status{
     my @cmd = ("docker", "stats");
-    my $target = $PROJECT_NAME . "_sw360";
+    my $target = $project_name . "_sw360";
     my $c_no;
     ($c_no) = @_;
     my @_toCall;
-        
-    
   }
 
   sub get_log{
     my @toCall; 
     push(@toCall, @cmd);
-    my $target = $PROJECT_NAME . "_sw360";
+    my $target = $project_name . "_sw360";
     my $file = '';
     my $c_no;
     ($c_no) = @_;
@@ -274,7 +290,12 @@ if($debug) {
 
 # main -----------
 foreach my $c_no (@targets) {
-  get_log($c_no);
+  if($lookonly){
+    say STDERR "lookonly option is not still." 
+  }
+  else{
+    get_log($c_no);
+  }
   say STDERR "";
 }
 say STDERR "all ok!";
