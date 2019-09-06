@@ -197,11 +197,13 @@ Apache CouchDB has started. Time to relax.
 [info] [<0.257.0>] 192.168.240.5 - - GET /sw360db/_design/User 200
 [info] [<0.257.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
 [info] [<0.257.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-09-05T02:42:21.250824054Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:42:21.285002312Z [info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:42:21.425134005Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
-2019-09-05T02:42:21.430031828Z [info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_security 200
-2019-09-05T02:42:21.447494907Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/ 200
+Data directory not empty, will not provision.
+------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------
+sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini
+Apache CouchDB 1.7.1 (LogLevel=info) is starting.
+Apache CouchDB has started. Time to relax.
+[info] [<0.32.0>] Apache CouchDB has started on http://0.0.0.0:5984/
+40.5 - - HEAD /sw360attachments/ 200
 2019-09-05T02:42:21.453583234Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
 2019-09-05T02:42:21.467202197Z [info] [<0.116.0>] 192.168.240.5 - - GET /sw360attachments/_design/AttachmentContent 200
 2019-09-05T02:42:21.552234579Z [info] [<0.116.0>] 192.168.240.5 - - HEAD /sw360db/ 200

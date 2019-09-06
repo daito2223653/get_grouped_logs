@@ -213,6 +213,7 @@ if($debug) {
 
 { # get log.
   my @cmd = ("docker", "logs");
+  
 
   sub set_toCall{
     
@@ -230,6 +231,10 @@ if($debug) {
     my $c_no;
     ($c_no) = @_;
     my @_toCall;
+  }
+
+  sub look_log{
+  
   }
 
   sub get_log{
@@ -269,33 +274,40 @@ if($debug) {
     say STDERR "    -ToCall     = @toCall";
     say STDERR "    -FilePath   = $file";
     # NOTE: ファイルがないときに作成する / 出力先をファイルに #####
+   
+
+
+    if (!(-e $file)) { say STDERR "    [INFO]  create file named $file"; }
     
-    # if (-ne $file) { say STDERR "    [INFO]  create file named $file"; }
-    sysopen(my $fh, $file, O_WRONLY | O_CREAT) 
-      or die "Couldn't open $file : $!";
+    if($lookonly){
+      open(my $fh, "| less")
+        or die "Couldn't open less cmd : $!";
+      say STDERR "   [INFO] EXEC: @toCall | less ";
+      print $fh `@toCall`;
+    }
+    else{
+      sysopen(my $fh, $file, O_WRONLY | O_CREAT) 
+        or die "Couldn't open $file : $!";
       say STDERR "   [INFO] EXEC: @toCall > $file ";
-      my $echos = `@toCall`;
+      #my $echos = `@toCall`;
       # NOTE: ERROR HUNDLER > when `toCall` is missed
+      print $fh `@toCall`;
       if (-z $fh){ 
-        say STDERR "ERROR: toCall is missed!. exit";
-	close ($fh );
-	exit;
+       say STDERR "ERROR: toCall is missed!. exit";
+      	close ($fh );
+      	exit;
       }
-      print $fh "$echos";
       say STDERR "   [INFO] success. next cmd will be ready...";
-    close( $fh );
+      close( $fh );
+    }
   }
 }
 
 
 # main -----------
 foreach my $c_no (@targets) {
-  if($lookonly){
-    say STDERR "lookonly option is not still." 
-  }
-  else{
-    get_log($c_no);
-  }
+  
+  get_log($c_no);
   say STDERR "";
 }
 say STDERR "all ok!";
