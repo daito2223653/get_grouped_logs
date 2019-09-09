@@ -32,6 +32,8 @@ use feature qw(say);
      --config : コンフィグファイルを読んで, 作成する. (default)
      --interactive 
      --lokkOnly
+     --save
+     --html
 
  # evironmental variables---
  ## $COMPORNENT
@@ -58,16 +60,18 @@ my $timestamp = '';
 my $config  = '1';
 my $lookonly = '';
 my $interactive = '';
+my $save = "";
+my $html = "";
+my $debug      = '1';
 
-# variables 
+# variables of compornents
 my $sw360 = ''; # $sw360 = catalina / liferay
 my $couchdb = '';
 my $fossology = '';
 my $postgresql = '';
 my $nginx      = '';
 my $csv_search = '';
-my $debug      = '';
-# log's path  
+#  path of logFiles.
 my $logFolder     = '';
 my $sw360_path = '';
 my $couchdb_path = '';
@@ -137,7 +141,8 @@ my @paths   = (); # path of logFile copied by this script.
     'timestamp' => \$timestamp,
     'config' => \$config,
     'interactive' => \$interactive,
-    'lookonly' => \$lookonly 
+    'lookonly' => \$lookonly, 
+    'save'     => \$save,
   ) or pod2usage();
 
 }
@@ -208,73 +213,73 @@ if($debug) {
   if(!$isYes){ exit }
 }
 
-{ # get log.
-  my @cmd = ("docker", "logs");
-  
+{ # get_log(): get_log from @_(cname),
+  # save()   : And save to @paths when user select --save option,
+  # look()   : And look,  when user select --look option.
+ 
+  # set ENV
+  ## cmd
+  my @cmd = ("docker", "logs");    
+  my @toCall; push(@toCall, @cmd); # cmd and arguments
+  ## compornent_name
+  my $cname;                  
+  my $cno;
 
-  sub set_toCall{
+  sub save{
+    my $cno;
+    my $path = '';
+    ($cno, $path) = @_;
     
-  }
-  sub set_path{
-  
-  }
-  sub set_target{
-  
+    # open
+    open(my $fh, ">", $path)
+      or die "Cannot open $path: $!";
+    my $echos = `@toCall 2>&1`;
+    # error hundler
+    if ($echos =~ "^Error"){
+      print "   [ERROR] $echos";
+      exit;
+    }
+    # write
+    print $fh `@toCall 2>&1`;
+    # close and debug
+    close($fh);
+    say STDERR "   [INFO] path=$path, write COMPORNENT's log.";
   }
 
-  sub look_log{
-  
+  sub look{
+    open(my $fh, "| less")
+      or die "Couldn't open less cmd : $!";
+    print $fh `@toCall`;
+    close($fh);
   }
 
   sub get_log{
-    my @toCall; 
-    push(@toCall, @cmd);
-    my $target = $project_name . "_sw360";
-    my $file = '';
-    my $c_no;
-    ($c_no) = @_;
-
-    # docker compornent is not exist error:
-    # get_target_status < 0
-
+    my $cno = -1;
+    ($cno, $cname) = @_; 
     # error hundler
-    if ($c_no < 0 and 5 < $c_no){
+    if ($cno < 0 and 5 < $cno){ # NOTE: dokcer_compornent is not exist error
       say STDERR "error at line 141. get_log function";
       exit 
-      #NOTE: target is ok? not featured.
-      #NOTE: path   is ok? not featured.
-    }
-
-    # set target
-    if ($c_no != $SW360){
-      $target = $target . $COMPORNENTS[$c_no];
-    }
-
-    # set file_path
-    $file = $paths[$c_no] . ".log";
-
+    } 
     # set toCall
     if ($timestamp){
       push (@toCall, "-t") if $timestamp;
     }
-    push (@toCall, $target);
+    push (@toCall, $cname);
 
-    say STDERR "  [$COMPORNENTS[$c_no]] ---"; 
-    say STDERR "    -ToCall     = @toCall";
-    say STDERR "    -FilePath   = $file";
-    # NOTE: ファイルがないときに作成する / 出力先をファイルに #####
-   
-
-
-    if (!(-e $file)) { say STDERR "    [INFO]  create file named $file"; }
     
     if($lookonly){
-      open(my $fh, "| less")
-        or die "Couldn't open less cmd : $!";
-      say STDERR "   [INFO] EXEC: @toCall | less ";
-      print $fh `@toCall`;
+      say STDERR "   [INFO] @toCall | less ";
+      look();
     }
-    else{
+    if($save){ 
+      my $path = '';
+      # set file_path
+      $path = $paths[$cno] . ".log";
+      
+      say STDERR "   [INFO] @toCall > $path ";
+      save($cno, $path);
+=pod
       sysopen(my $fh, $file, O_WRONLY | O_CREAT) 
         or die "Couldn't open $file : $!";
       say STDERR "   [INFO] EXEC: @toCall > $file ";
@@ -288,16 +293,74 @@ if($debug) {
       }
       say STDERR "   [INFO] success. next cmd will be ready...";
       close( $fh );
+=cut
     }
+    pop(@toCall);
+    return 1;
+  }
+}
+
+sub get_compornent_name{
+  my $cno;
+  ($cno) = @_;
+  my $cname;
+  $cname = $project_name . "_sw360";
+
+  if($cno == $FOSSOLOGY){
+    say STDERR "  [ERROR] NOT_FURTURED!!  EXIT: get_fossology_cname(\$cno:$cno)";
+    # get_fossology_cname
+    exit;
+  }
+  if($cno != $SW360){
+    $cname = $cname . $COMPORNENTS[$cno];
+  }
+
+  return "$cname";
+  
+}
+
+# main -----------
+sub main{ # exec ALL cmd, it is based on option.
+  my $cname; # compornent_name # = $project_name . "_sw360";
+  my $cno;   # compornent_no;
+  
+  say STDERR "------ [main] ------";
+  foreach my $cno (@targets) {  
+    $cname = get_compornent_name($cno);
+    
+    say STDERR " [COMORNENT]-$cname/[OPTION]-\@options";
+    # say STDERR "    -ToCall     = @toCall";
+    # say STDERR "    -FilePath   = $file";
+    #print "yesorno()";
+  
+    if ($html){
+      say STDERR "  ---[html]---";
+      say STDERR "   exec:html_function()"; # modify_logine.pl. and generate_html.
+      #html_modify_logfile();
+    }
+    if ($save || $lookonly){
+      if ($save){
+        say STDERR "  ---[save]---";
+      }
+      if ($lookonly){
+        say STDERR "  ---[lookonly]---";
+      }
+      say STDERR "    exec:get_log(\$compornent=\"$cname\")"; # 
+      get_log($cno, $cname);
+    }
+    say STDERR "   [INFO] CMD ok! \n";
   }
 }
 
 
 # main -----------
-foreach my $c_no (@targets) {  
+=pod
+  foreach my $c_no (@targets) {  
   get_log($c_no);
   say STDERR "";
-}
-say STDERR "all ok!";
+  }
+=cut
+main();
+say STDERR "-----------  all ok!! ------------";
 
 
