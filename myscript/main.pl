@@ -143,6 +143,7 @@ my @paths   = (); # path of logFile copied by this script.
     'interactive' => \$interactive,
     'lookonly' => \$lookonly, 
     'save'     => \$save,
+    'html'     => \$html,
   ) or pod2usage();
 
 }
@@ -226,30 +227,28 @@ if($debug) {
   my $cno;
 
   sub save{
-    my $cno;
-    my $path = '';
-    ($cno, $path) = @_;
+    my $path;
+    my $echos;
+    ($path, $echos) = @_;
+    say STDERR "   [INFO] \$logStr >  $path ";
     
     # open
     open(my $fh, ">", $path)
       or die "Cannot open $path: $!";
-    my $echos = `@toCall 2>&1`;
-    # error hundler
-    if ($echos =~ "^Error"){
-      print "   [ERROR] $echos";
-      exit;
-    }
     # write
-    print $fh `@toCall 2>&1`;
+    print $fh "$echos";
     # close and debug
     close($fh);
     say STDERR "   [INFO] path=$path, write COMPORNENT's log.";
   }
 
   sub look{
+    my $echos;
+    ($echos) = @_;
+    say STDERR "   [INFO] \$logStr | less ";
     open(my $fh, "| less")
       or die "Couldn't open less cmd : $!";
-    print $fh `@toCall`;
+    print $fh "$echos";
     close($fh);
   }
 
@@ -266,37 +265,16 @@ if($debug) {
       push (@toCall, "-t") if $timestamp;
     }
     push (@toCall, $cname);
-
     
-    if($lookonly){
-      say STDERR "   [INFO] @toCall | less ";
-      look();
-    }
-    if($save){ 
-      my $path = '';
-      # set file_path
-      $path = $paths[$cno] . ".log";
-      
-      say STDERR "   [INFO] @toCall > $path ";
-      save($cno, $path);
-=pod
-      sysopen(my $fh, $file, O_WRONLY | O_CREAT) 
-        or die "Couldn't open $file : $!";
-      say STDERR "   [INFO] EXEC: @toCall > $file ";
-      #my $echos = `@toCall`;
-      # NOTE: ERROR HUNDLER > when `toCall` is missed
-      print $fh `@toCall`;
-      if (-z $fh){ 
-       say STDERR "ERROR: toCall is missed!. exit";
-      	close ($fh );
-      	exit;
-      }
-      say STDERR "   [INFO] success. next cmd will be ready...";
-      close( $fh );
-=cut
+    my $echos = `@toCall 2>&1`;
+    # error hundler
+    if ($echos =~ "^Error"){
+      print "   [ERROR] $echos";
+      exit;
     }
     pop(@toCall);
-    return 1;
+    if($timestamp) { pop(@toCall);}
+    return $echos;
   }
 }
 
@@ -321,32 +299,43 @@ sub get_compornent_name{
 
 # main -----------
 sub main{ # exec ALL cmd, it is based on option.
+  my $count = 0; #exec count.
   my $cname; # compornent_name # = $project_name . "_sw360";
-  my $cno;   # compornent_no;
+  my $cno;   # compornent_no.
   
   say STDERR "------ [main] ------";
   foreach my $cno (@targets) {  
+    $count = $count+1;
     $cname = get_compornent_name($cno);
     
-    say STDERR " [COMORNENT]-$cname/[OPTION]-\@options";
+    say STDERR "[COMORNENT]-$cname, [OPTION]-\@options      :$count";
     # say STDERR "    -ToCall     = @toCall";
     # say STDERR "    -FilePath   = $file";
     #print "yesorno()";
-  
+
+    # get_log. $res
+    my $logStr = get_log($cno, $cname);
+
+    if ($lookonly){
+      say STDERR "  ---[lookonly]---";
+      say STDERR "   exec:look(\$logStr)"; # 
+      look($logStr);
+    }
+    if ($save){
+      say STDERR "  ---[save]---";
+      say STDERR "   exec:save(\$path, \$logStr)"; 
+      my $path = '';
+      # set file_path
+      $path = $paths[$cno] . ".log";
+      save($path, $logStr);
+    }
     if ($html){
       say STDERR "  ---[html]---";
-      say STDERR "   exec:html_function()"; # modify_logine.pl. and generate_html.
-      #html_modify_logfile();
-    }
-    if ($save || $lookonly){
-      if ($save){
-        say STDERR "  ---[save]---";
-      }
-      if ($lookonly){
-        say STDERR "  ---[lookonly]---";
-      }
-      say STDERR "    exec:get_log(\$compornent=\"$cname\")"; # 
-      get_log($cno, $cname);
+      say STDERR "   exec: ./html_script/make_modifiedLog.pl arg=(\$logStr, \$compornent_no=$cno)"; # modify_log.pl. and generate_html.
+      0 == system(`./html_script/make_modifiedLog.pl $logStr $cno`) or die "   [ERROR] Can't execute make_modifiedLog.pl: $!";
+      if ($count == $#targets){
+        print ("EXEC generate_html() ");
+      } 
     }
     say STDERR "   [INFO] CMD ok! \n";
   }
