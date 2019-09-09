@@ -1,19 +1,26 @@
+#!/usr/bin/env perl
+
+use Pod::Usage;
+
 use strict;
 use warnings;
 
-# my perl module
-BEGIN {unshift @INC, "./"}
-use HtmlPackage;
+# symbol
+use Fcntl;
+
+use Getopt::Long qw(GetOptions);
+use Pod::Usage;
 
 # use for time stamp
 use Time::Piece;
 
-# 読み込みたいファイル名
+# files
 my $info_file = "./info.pl";
 my $main_file = "./main.html"; 
 my $menu_file = "./menu.html"; 
 
-our @datas = (); # it is made from cmd arguments . cmd arg is gived :  ( (target_name01, write_data01, option01), (target_name02, write_data02, option02), ...).
+our @datas = (); # it is made from cmd arguments .
+# cmd arg is gived like c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN} 
 my $sum_datas = 0; # sum of datas. ()
 my $data_index = 0; # data index
 my $logs_no;
@@ -30,14 +37,27 @@ sub get_new_logs_menu($$$);
   my $index = 0; # argindex
   my @data = ();
 
-  while ($index != ($#ARGV + 1) ){ # ARGV = target_name01 write_data01 option01 target_name02 write_data02 option02 ...
-    $target = $ARGV[$index];     $index = $index+1;
-    $write_data = $ARGV[$index]; $index = $index+1;
-    $option = $ARGV[$index];     $index = $index+1;
-    @data = ($target, $write_data, $option);
+  my $cno;
+  my $cname;
+  my $anything;
+  my $greps = ""; 
+  my $grep = "";
+
+  while ($index != ($#ARGV + 1) ){ # ARGV  = c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN}
+    $cno   = $ARGV[$index];     $index = $index+1;
+    $cname = $ARGV[$index];     $index = $index+1;
+    $anything = $ARGV[$index]; $index = $index+1;
+    $greps = "";
+    while ($index != ($#ARGV + 1) && $ARGV[$index] !~ /^[0-9]$/){
+      $greps = "$greps" . "$ARGV[$index] ";     
+      $index = $index+1;
+    }
+    @data = ($cno, $cname, $anything, $greps);
     $datas[$sum_datas] = [ @data ];     
     $sum_datas = $sum_datas + 1;
+    print("greps     : $greps\n");
   }
+  print("sum_datas : $sum_datas\n");
 } 
 
 { # parse info.pl
@@ -76,7 +96,7 @@ sub read_html(){
     return (@lines);
 }
 
-sub get_new_logs_menu($$$){ # return new_logs_menu(string of html type).
+sub get_new_logs_menu($$$){ # return new_logs_menu.html (string of html type).
   my $logs_name;
   my $time_stamp_day;
   my $time_stamp_time;
@@ -87,7 +107,7 @@ sub get_new_logs_menu($$$){ # return new_logs_menu(string of html type).
   my $spaces;
   $spaces = $space x 12;
 
-  my $t = "";
+  my $cname= "";
   my $opt = "";
   # set logs link. 
   $result = "$spaces<!--$logs_no-->\n";
@@ -96,9 +116,9 @@ sub get_new_logs_menu($$$){ # return new_logs_menu(string of html type).
   # set targets list with each options.
   $spaces = $space x 16;
   for (my $i = 0; $i < $sum_datas; $i++){
-    $t = $datas[$i][0];
-    $opt = $datas[$i][2];
-    $result = $result . "$spaces<li>$t $opt</li>\n";
+    $cname = $datas[$i][1];
+    $opt    = $datas[$i][3];
+    $result = $result . "$spaces<li>$cname $opt</li>\n";
   }
   $spaces = $space x 12;
   $result = $result . "$spaces</ul>\n";
@@ -108,7 +128,7 @@ sub get_new_logs_menu($$$){ # return new_logs_menu(string of html type).
 }
 
 # add menu to new logs link.
-sub print_updata_menu{
+sub updata_menu_page{
   my @lines;
 
   # read All lines.
@@ -150,15 +170,14 @@ sub update_info_file{
   close($fh);
 }
 
-print_updata_menu();
+updata_menu_page();
 update_info_file();
 
-
-$HtmlPackage::datas = \@datas;
-$HtmlPackage::sum_datas = $sum_datas;
+#$HtmlPackage::datas = \@datas;
+#$HtmlPackage::sum_datas = $sum_datas;
 
 # 変数の共有 ???
-system("echo_make_logsGUI.pl @ARGV $") == 0 or die "Can't execute echo_make_logs_GUI.pl: $!";
+#system("echo_make_logsGUI.pl @ARGV $") == 0 or die "Can't execute echo_make_logs_GUI.pl: $!";
 
 # --- ??? 
 #my @test = $HtmlPackage::datas;
@@ -168,4 +187,49 @@ system("echo_make_logsGUI.pl @ARGV $") == 0 or die "Can't execute echo_make_logs
 #my $target01 = $data1[0];
 #print "test: $target01 ";
 
+### make_logs_GUI_page ### 変数の共有ができなかったから、ここで直接打つ, 本来なら -> make_logs_GUI_page　へ
+# set file_name.
+
+my $logs_gui_folder = "$logs_name" . "_" . "$time_stamp_day" . "_" . "$time_stamp_time";
+my $logs_gui_HTML = "logs_gui_" . "$logs_name" . ".html";
+#print "$logs_gui_folder\n";
+#print "$logs_gui_HTML\n";
+#mkdir "./" . "$logs_GUIfolder" # NOTE: In windows, can't do
+  #or die "$logs_GUIfolder is not maked error at <> : $!";
+
+sub make_logs_GUI_page{
+  my $space = " ";
+  my $spaces;
+  open my $fh, ">", "./html_logs/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
+    or die "$logs_gui_HTML を書き込みモードでオープンすることができません。: $!";
+    print $fh "<!DOCTYPE html>\n";
+    print $fh "\n";
+    print $fh "<html>\n";
+    $spaces = $space x 4;
+    my $t;
+    my $opt;
+    my $name;
+    print $fh "$spaces<h1>$logs_name</h1>\n";
+    for (my $i = 0; $i < $sum_datas; $i++){
+      $cname = $datas[$i][1];
+      $opt    = $datas[$i][3];
+      $result = $result . "$spaces<li>$cname $opt</li>\n";
+      $name = "$logs_name" . "-" . "$i";
+      print $fh "$space<font color=\"green\" size=\"4\">$cname:option{$opt}</font><br>\n";
+      print $fh "$spaces<iframe src=\"$name.html\" width=1000 height=300></iframe>\n";
+      make_log_page($name, $i);
+    }
+    print $fh "</html>\n";
+  close $fh;
+}
+
+sub make_log_page{
+  my $log_page_file;
+  my $index;
+  ($name, $index) = @_;
+  $log_page_file = "./html_logs/" . "$name" . ".html";
+
+  my $tmp_file = "tmp_" . "$index" . ".html";
+  copy($tmp_file, $log_page_file) or die "Can't copy \"$tmp_file\" to \"$log_page_file\": $!";
+}
 
