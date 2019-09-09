@@ -1,0 +1,219 @@
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal<br>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal<br>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal<br>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal<br>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: oem20.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+<font color=red>2019-03-28 15:20:04, Error                 DISM   DISM Driver Manager: PID=1904 TID=8584 Error, file not found 'oem20.inf'. - CDriverManager::OpenPackageByFile(hr:0x80070002)
+</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\heci.inf_amd64_61ea518ffd0290a4\heci.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: oem54.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+<font color=red>2019-03-28 15:20:04, Error                 DISM   DISM Driver Manager: PID=1904 TID=8584 Error, file not found 'oem54.inf'. - CDriverManager::OpenPackageByFile(hr:0x80070002)
+</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\esif_manager.inf_amd64_4f29c4aa4703f95b\esif_manager.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: oem51.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+<font color=red>2019-03-28 15:20:04, Error                 DISM   DISM Driver Manager: PID=1904 TID=8584 Error, file not found 'oem51.inf'. - CDriverManager::OpenPackageByFile(hr:0x80070002)
+</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 ExecuteLoop: CommandQueue signaled - CCommandThread::ExecuteLoop
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command object - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=1068 Successfully dequeued command <font color=tan>object</font> - CCommandThread::DequeueCommand<font color=sandybrown>Object</font>
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is boot-critical. - CDriverPackage::FillInPackageDetails
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   DISM Driver Manager: PID=1904 TID=8584 Signature status of driver C:\Windows\System32\DriverStore\FileRepository\surfacepro1786digitizerintegration.inf_amd64_5380f7bba1276afa\surfacepro1786digitizerintegration.inf is: SIGNED - CDriverPackage::InitSignatureStatus
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Leave DismDeleteInternal - DismDeleteInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Enter DismGetDriverInfoInternal - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Input parameters: Session: 2, DriverPath: oem59.inf - DismGetDriverInfoInternal
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command object - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommandObject
+
+2019-03-28 15:20:04, <font color=brue>Info</font>                  DISM   API: PID=4592 TID=6524 Successfully enqueued command <font color=tan>object</font> - CCommandThread::EnqueueCommand<font color=sandybrown>Object</font>
+
