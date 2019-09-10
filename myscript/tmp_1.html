@@ -1,6 +1,17 @@
 Data directory not empty, will not provision.
 <br>------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------
 <br>sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini
+<br>****************************************************
+<br><font color=yellow>WARNING: CouchDB is running in Admin Party mode.
+</font>
+<br>         This will allow anyone with access to the
+<br>         CouchDB port to access your database. In
+<br>         Docker's default configuration, this is
+<br>         effectively any other container on the same
+<br>         system.
+<br>         Use "-e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password"
+<br>         to set it in "docker run".
+<br>****************************************************
 <br><font color=blue>Apache CouchDB 1.7.1 (LogLevel=info) is starting.
 </font>
 <br>Apache CouchDB has started. Time to relax.
@@ -96,9 +107,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -178,9 +189,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -242,15 +253,15 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
-<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
 <br><font color=blue>[info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
 </font>
@@ -378,9 +389,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -476,9 +487,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -540,15 +551,15 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
-<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
 <br><font color=blue>[info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
 </font>
@@ -734,9 +745,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -798,15 +809,15 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
 </font>
@@ -880,9 +891,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -920,9 +931,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.435.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.435.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.443.0>] 172.21.0.5 - - HEAD /sw360users/ 200
 </font>
@@ -1046,9 +1057,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -1168,9 +1179,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
@@ -1232,15 +1243,15 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
-<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ectVulnerabilityRating 200
+<br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
 </font>
 <br><font color=blue>[info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
 </font>
@@ -1266,9 +1277,9 @@ Data directory not empty, will not provision.
 </font>
 <br><font color=blue>[info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>
-<br><font color=blue>[info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
 </font>
-<br><font color=blue>[info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Pr<font color=sandybrown>oj</font>ect 200
+<br><font color=blue>[info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
 </font>
 <br><font color=blue>[info] [<0.326.0>] 172.21.0.5 - - HEAD /sw360db/ 200
 </font>

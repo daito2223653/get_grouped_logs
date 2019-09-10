@@ -1,0 +1,1300 @@
+2019-09-06T05:51:16.792790370Z Data directory not empty, will not provision.
+<br>2019-09-06T05:51:16.795284840Z ------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------
+<br>2019-09-06T05:51:16.800942771Z sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini
+<br>2019-09-06T05:51:16.826636202Z ****************************************************
+<br><font color=yellow>2019-09-06T05:51:16.826690021Z WARNING: CouchDB is running in Admin Party mode.
+</font>
+<br>2019-09-06T05:51:16.826706421Z          This will allow anyone with access to the
+<br>2019-09-06T05:51:16.826721625Z          CouchDB port to access your database. In
+<br>2019-09-06T05:51:16.826737646Z          Docker's default configuration, this is
+<br>2019-09-06T05:51:16.826752184Z          effectively any other container on the same
+<br>2019-09-06T05:51:16.826766129Z          system.
+<br>2019-09-06T05:51:16.826776084Z          Use "-e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password"
+<br>2019-09-06T05:51:16.826785186Z          to set it in "docker run".
+<br>2019-09-06T05:51:16.826794194Z ****************************************************
+<br><font color=blue>2019-09-06T05:51:18.452564911Z Apache CouchDB 1.7.1 (LogLevel=info) is starting.
+</font>
+<br>2019-09-06T05:51:23.181589933Z Apache CouchDB has started. Time to relax.
+<br><font color=blue>2019-09-06T05:51:23.508599005Z [info] [<0.32.0>] Apache CouchDB has started on http://0.0.0.0:5984/
+</font>
+<br><font color=blue>2019-09-06T05:54:00.405106678Z [info] [<0.115.0>] 172.21.0.5 - - HEAD /sw360oauthclients/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:00.456273402Z [info] [<0.115.0>] 172.21.0.5 - - HEAD /sw360oauthclients/_design/OAuthClientEntity 200
+</font>
+<br><font color=blue>2019-09-06T05:54:00.480260430Z [info] [<0.115.0>] 172.21.0.5 - - GET /sw360oauthclients/_design/OAuthClientEntity 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.657444806Z [info] [<0.306.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.695170537Z [info] [<0.306.0>] 172.21.0.5 - - GET /sw360vm/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.844103665Z [info] [<0.306.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.854527082Z [info] [<0.306.0>] 172.21.0.5 - - HEAD /sw360vm/_design/Vulnerability 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.876155181Z [info] [<0.306.0>] 172.21.0.5 - - GET /sw360vm/_design/Vulnerability 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.980186235Z [info] [<0.306.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.985626851Z [info] [<0.306.0>] 172.21.0.5 - - HEAD /sw360vm/_design/ReleaseVulnerabilityRelation 200
+</font>
+<br><font color=blue>2019-09-06T05:54:09.991690663Z [info] [<0.306.0>] 172.21.0.5 - - GET /sw360vm/_design/ReleaseVulnerabilityRelation 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.064166878Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.069902602Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.089109665Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.093669376Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.107618038Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.113394231Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.120512519Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.196526381Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.203426006Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.214599467Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.219220580Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.224328490Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.248436580Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.253697005Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.264135130Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.268966828Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.273887004Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.298691207Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.307200339Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.317508534Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.323978735Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.331393331Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.387446816Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.395650775Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.410288515Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.416493438Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.422135562Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.451280179Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.456786958Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.462711249Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.491749244Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.498734015Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.505572715Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.528875089Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.535473729Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.540945959Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.572874950Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.578339638Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.584119622Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.600509714Z [info] [<0.114.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.606511239Z [info] [<0.114.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.628798939Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.635467559Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.648520055Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.654326491Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.665667477Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.672779501Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.678888696Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.701355554Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.706724141Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.716319767Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.722522771Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.728972939Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.748473942Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.752984338Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.761799147Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.768110944Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.774085656Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.793178919Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.797747527Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.806818630Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.811869165Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.816673355Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.838453711Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.844235785Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.852067329Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.856371196Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.861376904Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.880110248Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.886195775Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.891583539Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.899838491Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.907694876Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.914764446Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.922875525Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.930173029Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.938468704Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.947294650Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.953608331Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.959787865Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.968899683Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.974821839Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.985557720Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:10.991490890Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.004133395Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.010786198Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.019189748Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.024112182Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.030127530Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.045524927Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.049911157Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.058756192Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.064382635Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.069707513Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.085643205Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.090772574Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.099974842Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.104873820Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.110660109Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.128654635Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.133164349Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.142625840Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.147564892Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.152852052Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.170569321Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.175520417Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.185486454Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.193379759Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.198698026Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.213230813Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.218211177Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.222711433Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.235677715Z [info] [<0.113.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:11.241350449Z [info] [<0.113.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:44.342167411Z [info] [<0.356.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:44.378204047Z [info] [<0.356.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:44.634610415Z [info] [<0.116.0>] 172.21.0.5 - - HEAD /sw360fossologykeys/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:44.640626513Z [info] [<0.116.0>] 172.21.0.5 - - GET /sw360fossologykeys/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:44.655693194Z [info] [<0.116.0>] 172.21.0.5 - - HEAD /sw360fossologykeys/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.185300279Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.221447841Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.376404597Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.380936206Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.400208813Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.407731627Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.422985506Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.515068679Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.519559758Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.529086762Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.536302060Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.542384178Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.569970270Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.574668707Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.583312056Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.587623790Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.594793299Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.622901320Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.627165171Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.635296971Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.641697559Z [info] [<0.112.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.648641509Z [info] [<0.112.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.703311339Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.708378225Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.720108122Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.724923211Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.734414679Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.740730929Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.746249355Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.767625069Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.772732188Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.783827613Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.788695419Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.794314112Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.815127128Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.819634751Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.829323661Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.834474142Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.839659831Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.861146419Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.865159829Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.872627077Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.878068005Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.883514091Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.930111247Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.937184569Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.947874671Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.952707900Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.957864774Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.987127484Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.993080104Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:55.998589113Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.026758003Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.032043138Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.037474870Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.057565053Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.063468187Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.068500012Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.096088450Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.101946422Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.107167172Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.123877544Z [info] [<0.337.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:54:56.128638784Z [info] [<0.337.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.262940058Z [info] [<0.391.0>] 172.21.0.5 - - HEAD /sw360users/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.299842410Z [info] [<0.391.0>] 172.21.0.5 - - GET /sw360users/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.457386443Z [info] [<0.391.0>] 172.21.0.5 - - HEAD /sw360users/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.465683502Z [info] [<0.391.0>] 172.21.0.5 - - HEAD /sw360users/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.482144697Z [info] [<0.391.0>] 172.21.0.5 - - GET /sw360users/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.656071759Z [info] [<0.391.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.677882025Z [info] [<0.391.0>] 172.21.0.5 - - HEAD /sw360users/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:00.683804543Z [info] [<0.391.0>] 172.21.0.5 - - GET /sw360users/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:04.900028091Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:04.933182484Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.094374517Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.099715940Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.115200376Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.123550509Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.138764221Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.228331928Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.232763544Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.242348974Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.248209496Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.252757759Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.284720936Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.289361630Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.310660895Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.315795301Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.322587714Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.356273256Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.360578847Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.371087183Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.375726327Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.380187351Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.441998677Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.446967478Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.456616307Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.462035506Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.467207503Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.493384945Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.499340874Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.504473647Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.531721603Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.537037498Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.542286480Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.563337871Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.568888493Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.574209122Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.603189789Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.608440726Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.613361497Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.627543399Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.631855535Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.642371723Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.646156273Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.657302822Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.662263415Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.671583303Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.675566528Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.679778427Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.694792713Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.698414740Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.705384070Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.709675574Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.713916573Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.729212855Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.732829376Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.740396764Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.744646535Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.748805536Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.762859711Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.766549625Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.773256363Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.777260864Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.782587941Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.801738843Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.806413943Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.813372788Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.817516895Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.821383380Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.835903360Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.839678764Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.843308039Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.854307605Z [info] [<0.413.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.858430039Z [info] [<0.413.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.875440514Z [info] [<0.420.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.878736511Z [info] [<0.420.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.915917777Z [info] [<0.420.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.934085826Z [info] [<0.420.0>] 172.21.0.5 - - HEAD /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:05.939247670Z [info] [<0.420.0>] 172.21.0.5 - - GET /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.544597546Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.576972173Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.734779357Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.742939059Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/License 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.757103687Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/License 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.850915088Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.856261683Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/Obligation 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.861339095Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/Obligation 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.872937066Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.876838087Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/Todo 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.882014449Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/Todo 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.896421361Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.901452061Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/Risk 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.907020652Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/Risk 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.918130819Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.922216691Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/RiskCategory 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.928033798Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/RiskCategory 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.941047157Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.944524033Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/LicenseType 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.950072208Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/LicenseType 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.959615465Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.966918386Z [info] [<0.111.0>] 172.21.0.5 - - HEAD /sw360db/_design/CustomProperties 200
+</font>
+<br><font color=blue>2019-09-06T05:55:11.972607460Z [info] [<0.111.0>] 172.21.0.5 - - GET /sw360db/_design/CustomProperties 200
+</font>
+<br><font color=blue>2019-09-06T05:55:17.845800755Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:17.879647474Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.071093155Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.079562359Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/ModerationRequest 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.095620558Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/ModerationRequest 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.211112099Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.215608507Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.229563137Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.235314549Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/License 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.240991530Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/License 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.278233607Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.283689598Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Obligation 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.289553818Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Obligation 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.302023240Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.308831853Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Todo 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.315013617Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Todo 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.329395294Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.336139587Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Risk 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.342226229Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Risk 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.353957564Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.359984463Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/RiskCategory 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.365986117Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/RiskCategory 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.377276235Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.382579773Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/LicenseType 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.389619717Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/LicenseType 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.402897391Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.408469751Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/CustomProperties 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.413955230Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/CustomProperties 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.472594826Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.476854877Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.492215874Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.496624505Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.509076503Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.516107469Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.520981460Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.558595260Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.562269222Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.572014874Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.576424773Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.580653972Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.608774063Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.612400209Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.620380746Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.624504463Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.628427112Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.649907861Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.653473541Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.662234901Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.666506868Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.670672570Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.692443161Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.696648947Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.706900815Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.711105639Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.716092707Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.739768091Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.743982220Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.748722703Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.772420666Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.777452830Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.782768980Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.800678597Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.805532626Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.811406267Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.846586708Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.851535089Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.857057806Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.879838602Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.884772875Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.896729245Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.901105862Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.910886575Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.915807833Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.925247785Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.930876150Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.936513413Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.954908141Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.960019784Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.968727413Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.975133757Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:18.981543668Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.003659099Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.007886825Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.016302756Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.020974605Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.026401436Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.044734930Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.049394150Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.057495565Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.062397507Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.067324866Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.085232831Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.090220977Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.098627145Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.106384055Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.112353771Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.130251243Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.134847120Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.140179033Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.151923926Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.156252688Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.166555020Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.171108325Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.180933329Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.185615397Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.193491562Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.198365812Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.203067332Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.218662310Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.222841487Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.231871960Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.236523277Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.241490007Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.257696841Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.262129585Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.270584843Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.275447565Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.280289257Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.294988262Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.299491058Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.307757821Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.313371419Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.319028543Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.337135333Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.341729311Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.350532744Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.355547900Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.361539254Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.378852795Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.383625486Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.388853001Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.395288651Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.400245325Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.405574111Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.411630538Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.416567835Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.421871300Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.427900017Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.433540580Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.438673904Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.446613241Z [info] [<0.437.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:19.451499133Z [info] [<0.437.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:39.663567509Z [info] [<0.414.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:39.668163279Z [info] [<0.414.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:39.700330122Z [info] [<0.451.0>] 172.21.0.5 - - HEAD /sw360fossologykeys/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:39.705204948Z [info] [<0.451.0>] 172.21.0.5 - - GET /sw360fossologykeys/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:39.715803852Z [info] [<0.451.0>] 172.21.0.5 - - HEAD /sw360fossologykeys/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.385962780Z [info] [<0.392.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.417961787Z [info] [<0.392.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.583369782Z [info] [<0.392.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.602877166Z [info] [<0.392.0>] 172.21.0.5 - - HEAD /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.612331294Z [info] [<0.392.0>] 172.21.0.5 - - GET /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.691647623Z [info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.697188575Z [info] [<0.435.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.708104486Z [info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.716756306Z [info] [<0.435.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.729602680Z [info] [<0.435.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.811119553Z [info] [<0.443.0>] 172.21.0.5 - - HEAD /sw360users/ 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.816736225Z [info] [<0.443.0>] 172.21.0.5 - - GET /sw360users/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.828095039Z [info] [<0.443.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.835016385Z [info] [<0.443.0>] 172.21.0.5 - - HEAD /sw360users/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:55:58.840303643Z [info] [<0.443.0>] 172.21.0.5 - - GET /sw360users/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.320984962Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.355840163Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.508475737Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.513691025Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.532587666Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.540625578Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.554453996Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.643898225Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.647849577Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.656693037Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.661932136Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.667403856Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.694007241Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.698929632Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.708842096Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.715180354Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.723656367Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.756457059Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.761710465Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.773410487Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.779325260Z [info] [<0.494.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:04.787395952Z [info] [<0.494.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.196397434Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.228715038Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.377560562Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.382502338Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.397717119Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.407459755Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.422551065Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.509025659Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.513721738Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.523907565Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.530204659Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.535091662Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.562089335Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.566432771Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.575542099Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.580244909Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.587100563Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.617358738Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.621279188Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.630909660Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.635164247Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.639320191Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.687066836Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.691100392Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.701070882Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.706209205Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.711850356Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.739151141Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.743485132Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.748112109Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.775278487Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.780310091Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.785301944Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.806230793Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.826751205Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.831711676Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.857531138Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.862347363Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.867246866Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.880859038Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.884813011Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.907586410Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.911268413Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.947808408Z [info] [<0.503.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.965649693Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.973176525Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:10.998844618Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:11.002433520Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:11.010442269Z [info] [<0.503.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:56:11.015946453Z [info] [<0.503.0>] 172.21.0.5 - - HEAD /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:11.020538941Z [info] [<0.503.0>] 172.21.0.5 - - GET /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.477362550Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.521070225Z [info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.684572279Z [info] [<0.497.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.688737927Z [info] [<0.497.0>] 172.21.0.5 - - GET /sw360vm/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.704324676Z [info] [<0.497.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.710335145Z [info] [<0.497.0>] 172.21.0.5 - - HEAD /sw360vm/_design/Vulnerability 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.722307382Z [info] [<0.497.0>] 172.21.0.5 - - GET /sw360vm/_design/Vulnerability 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.860518173Z [info] [<0.497.0>] 172.21.0.5 - - HEAD /sw360vm/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.865414496Z [info] [<0.497.0>] 172.21.0.5 - - HEAD /sw360vm/_design/ReleaseVulnerabilityRelation 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.870554165Z [info] [<0.497.0>] 172.21.0.5 - - GET /sw360vm/_design/ReleaseVulnerabilityRelation 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.937300847Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.942016866Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.958476726Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.963479186Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.975100845Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.979959264Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:16.986072161Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.015013917Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.020211607Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.028791159Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.034099320Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.039718552Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.066250694Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.071128429Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.080627727Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.085958493Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.092361576Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.120060631Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.124831290Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.135978815Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.141167233Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.146517543Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.211543299Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.216152725Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.227855551Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.232786526Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.237729528Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.270272915Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.275614186Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.280849356Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.307886710Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.314203606Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.320645936Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.344615279Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.349986175Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.354445082Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.381340374Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.387242796Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.392673783Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/User 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.408195428Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.412761329Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.422526951Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.426975064Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.436313838Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.440192471Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.448263139Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.452407885Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.456463147Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_design/AttachmentContent 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.474542125Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.478010504Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.487573870Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.492672411Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.498721319Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/AttachmentUsage 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.515421960Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.520047936Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.531358814Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.537460030Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.543091157Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Attachment 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.561582093Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.566538550Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.575908589Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.580846986Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.586209975Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Source 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.610395043Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.615789364Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.625303973Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.634418963Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.640454946Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.663698240Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.670716380Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.678521803Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360db/_design/ProjectVulnerabilityRating 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.690064685Z [info] [<0.117.0>] 172.21.0.5 - - HEAD /sw360attachments/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.694378318Z [info] [<0.117.0>] 172.21.0.5 - - GET /sw360attachments/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.703808758Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.709911984Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.715404441Z [info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.730920197Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.736692684Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.743232384Z [info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Release 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.751226685Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.756845959Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.762474054Z [info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Component 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.769420447Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.778798170Z [info] [<0.495.0>] 172.21.0.5 - - HEAD /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:17.784436533Z [info] [<0.495.0>] 172.21.0.5 - - GET /sw360db/_design/Project 200
+</font>
+<br><font color=blue>2019-09-06T05:56:23.673061242Z [info] [<0.326.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:23.705286519Z [info] [<0.326.0>] 172.21.0.5 - - GET /sw360db/_security 200
+</font>
+<br><font color=blue>2019-09-06T05:56:23.859082543Z [info] [<0.326.0>] 172.21.0.5 - - HEAD /sw360db/ 200
+</font>
+<br><font color=blue>2019-09-06T05:56:23.867668118Z [info] [<0.326.0>] 172.21.0.5 - - HEAD /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:23.884348520Z [info] [<0.326.0>] 172.21.0.5 - - GET /sw360db/_design/Vendor 200
+</font>
+<br><font color=blue>2019-09-06T05:56:24.025539200Z [info] [<0.326.0>] 172.21.0.5 - - GET / 200
+</font>
+<br><font color=blue>2019-09-06T05:56:24.047319794Z [info] [<0.326.0>] 172.21.0.5 - - HEAD /sw360db/_design/lucene 200
+</font>
+<br><font color=blue>2019-09-06T05:56:24.053181145Z [info] [<0.326.0>] 172.21.0.5 - - GET /sw360db/_design/lucene 200
+</font>
+<br>

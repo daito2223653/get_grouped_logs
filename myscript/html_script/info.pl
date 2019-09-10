@@ -1,3 +1,3 @@
 {
-nextLogsNo => 23
+nextLogsNo => 6
 }

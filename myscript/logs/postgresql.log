@@ -1,15 +1,15 @@
-2019-09-06T05:51:16.226342379Z LOG:  database system was interrupted; last known up at 2019-09-06 04:55:39 UTC
-2019-09-06T05:51:25.580578183Z LOG:  database system was not properly shut down; automatic recovery in progress
-2019-09-06T05:51:25.634049970Z LOG:  invalid record length at 0/1D69DF0: wanted 24, got 0
-2019-09-06T05:51:25.634111396Z LOG:  redo is not required
-2019-09-06T05:51:26.007733858Z LOG:  MultiXact member wraparound protections are now enabled
-2019-09-06T05:51:26.014288438Z LOG:  autovacuum launcher started
-2019-09-06T05:51:26.014455880Z LOG:  database system is ready to accept connections
-2019-09-06T05:53:24.642316642Z ERROR:  column "state_" of relation "release_" already exists
-2019-09-06T05:53:24.642445473Z STATEMENT:  alter table Release_ add state_ integer
-2019-09-06T05:53:25.006285393Z ERROR:  relation "resourcecode" does not exist at character 22
-2019-09-06T05:53:25.006352995Z STATEMENT:  select count(*) from ResourceCode
-2019-09-06T08:49:17.046655990Z LOG:  received smart shutdown request
-2019-09-06T08:49:17.046743964Z LOG:  autovacuum launcher shutting down
-2019-09-06T08:49:17.052933716Z LOG:  shutting down
-2019-09-06T08:49:17.206541243Z LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2019-09-06 04:55:39 UTC
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1D69DF0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  column "state_" of relation "release_" already exists
+STATEMENT:  alter table Release_ add state_ integer
+ERROR:  relation "resourcecode" does not exist at character 22
+STATEMENT:  select count(*) from ResourceCode
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

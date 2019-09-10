@@ -14,21 +14,29 @@ use Pod::Usage;
 # use for time stamp
 use Time::Piece;
 
+use File::Copy;
+
 # files
-my $info_file = "./info.pl";
-my $main_file = "./main.html"; 
-my $menu_file = "./menu.html"; 
+my $info_file = "./html_script/info.pl";
+my $main_file = "./html_script/main.html"; 
+my $menu_file = "./html_script/menu.html"; 
 
 our @datas = (); # it is made from cmd arguments .
 # cmd arg is gived like c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN} 
 my $sum_datas = 0; # sum of datas. ()
 my $data_index = 0; # data index
 my $logs_no;
+my $logs_name;
+my $time_stamp_day;
+my $time_stamp_time;
 
 # is used temporatory in some functions.
 my $target ="";    
 my $write_data = "";
 my $option = "";
+
+# NOTE: get COMPORNENTS config
+my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search");
 
 # prottype 
 sub get_new_logs_menu($$$);
@@ -45,7 +53,6 @@ sub get_new_logs_menu($$$);
 
   while ($index != ($#ARGV + 1) ){ # ARGV  = c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN}
     $cno   = $ARGV[$index];     $index = $index+1;
-    $cname = $ARGV[$index];     $index = $index+1;
     $anything = $ARGV[$index]; $index = $index+1;
     $greps = "";
     while ($index != ($#ARGV + 1) && $ARGV[$index] !~ /^[0-9]$/){
@@ -55,9 +62,8 @@ sub get_new_logs_menu($$$);
     @data = ($cno, $cname, $anything, $greps);
     $datas[$sum_datas] = [ @data ];     
     $sum_datas = $sum_datas + 1;
-    print("greps     : $greps\n");
   }
-  print("sum_datas : $sum_datas\n");
+  say STDERR "  sum_datas : $sum_datas";
 } 
 
 { # parse info.pl
@@ -66,6 +72,7 @@ sub get_new_logs_menu($$$);
         die "Error parsing $info_file: $@" if $@;
         die "Error reading $info_file: $!" unless defined $info;
     $logs_no = $info -> {'nextLogsNo'}   // $logs_no;
+    say STDERR "  log group NO: $logs_no";
   }
 }
 
@@ -76,6 +83,7 @@ sub get_time_stamp(){ # return now-time_stamp_daya and  now-time_stamp_time.
   $year = $year+1900; $mon = $mon +1; 
   my $time_stamp_day  = "$year" . "/" . "$mon" . "/" . "$mday" . "(" . "$wdays[$wday]" . ")";
   my $time_stamp_time = "$hour" . ":" . "$min" . ":" ."$sec" ;
+  say STDERR "  timestamp : $time_stamp_day  $time_stamp_time";
 
   return ($time_stamp_day, $time_stamp_time);
 }
@@ -111,14 +119,14 @@ sub get_new_logs_menu($$$){ # return new_logs_menu.html (string of html type).
   my $opt = "";
   # set logs link. 
   $result = "$spaces<!--$logs_no-->\n";
-  $result = $result . "$spaces<li><a href=\"./html_logs/logs_date/logs_gui_$logs_name.html\" target=logs_gui>$logs_name $time_stamp_day $time_stamp_time</a></li>\n";
+  $result = $result . "$spaces<li><a href=\"./html_logs/logs_gui_$logs_name.html\" target=logs_gui>$logs_name $time_stamp_day $time_stamp_time</a></li>\n";
   $result = $result . "$spaces<ul class=\"$logs_name\">\n";
   # set targets list with each options.
   $spaces = $space x 16;
   for (my $i = 0; $i < $sum_datas; $i++){
-    $cname = $datas[$i][1];
+    $cname  = $COMPORNENTS[$datas[$i][0]];
     $opt    = $datas[$i][3];
-    $result = $result . "$spaces<li>$cname $opt</li>\n";
+    $result = $result . "$spaces<li><a href=\"./html_logs/$logs_name-$datas[$i][0].html\" target=logs_gui>$cname</a> $opt</li>\n";
   }
   $spaces = $space x 12;
   $result = $result . "$spaces</ul>\n";
@@ -128,7 +136,7 @@ sub get_new_logs_menu($$$){ # return new_logs_menu.html (string of html type).
 }
 
 # add menu to new logs link.
-sub updata_menu_page{
+sub update_menu_page{
   my @lines;
 
   # read All lines.
@@ -148,15 +156,16 @@ sub updata_menu_page{
     }
     else{
       # if <!--next-->
-      my $logs_name = "logs" . "$logs_no";
+      $logs_name = "logs" . "$logs_no";
       # get timeStamp 
-      my ($time_stamp_day, $time_stamp_time) = get_time_stamp();
+      ($time_stamp_day, $time_stamp_time) = get_time_stamp();
       # get option 
       # print 
       my $logs_menu = get_new_logs_menu($logs_name, $time_stamp_day, $time_stamp_time);
       print $menu_fh2 "$logs_menu";
     }
   }
+  say STDERR "  updateed menu.html!";
   close($menu_fh);
 }
 
@@ -170,7 +179,7 @@ sub update_info_file{
   close($fh);
 }
 
-updata_menu_page();
+update_menu_page();
 update_info_file();
 
 #$HtmlPackage::datas = \@datas;
@@ -197,39 +206,48 @@ my $logs_gui_HTML = "logs_gui_" . "$logs_name" . ".html";
 #mkdir "./" . "$logs_GUIfolder" # NOTE: In windows, can't do
   #or die "$logs_GUIfolder is not maked error at <> : $!";
 
+sub make_log_page{
+  my $log_page_file;
+  my $index;
+  my $cno;
+  my $name;
+  ($name, $cno) = @_;
+  $log_page_file = "./html_script/html_logs/" . "$name" . ".html";
+
+  my $tmp_file = "./tmp/tmp_" . "$cno" . ".html";
+  copy($tmp_file, $log_page_file) or die "Can't copy \"$tmp_file\" to \"$log_page_file\": $!";
+}
+
 sub make_logs_GUI_page{
   my $space = " ";
   my $spaces;
-  open my $fh, ">", "./html_logs/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
-    or die "$logs_gui_HTML を書き込みモードでオープンすることができません。: $!";
+  open my $fh, ">", "./html_script/html_logs/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
+    or die "./html_script/html_logs/$logs_gui_HTML を書き込みモードでオープンすることができません。: $!";
     print $fh "<!DOCTYPE html>\n";
     print $fh "\n";
     print $fh "<html>\n";
     $spaces = $space x 4;
-    my $t;
+    my $cno;
+    my $cname;
     my $opt;
     my $name;
+    my $result;
     print $fh "$spaces<h1>$logs_name</h1>\n";
     for (my $i = 0; $i < $sum_datas; $i++){
-      $cname = $datas[$i][1];
+      $cno   = $datas[$i][0]; 
+      $cname = $COMPORNENTS[$cno];
       $opt    = $datas[$i][3];
-      $result = $result . "$spaces<li>$cname $opt</li>\n";
-      $name = "$logs_name" . "-" . "$i";
+      # "$spaces<li>$cname $opt</li>\n";
+      $name = "$logs_name" . "-" . "$cno";
       print $fh "$space<font color=\"green\" size=\"4\">$cname:option{$opt}</font><br>\n";
-      print $fh "$spaces<iframe src=\"$name.html\" width=1000 height=300></iframe>\n";
-      make_log_page($name, $i);
+      print $fh "$spaces<iframe src=\"$name.html\" width=1100 height=400></iframe>\n";
+      make_log_page($name, $cno);
+      say STDERR "  maked log page [$cname, $opt]";
     }
+    say STDERR "  updateed logs page!!";
     print $fh "</html>\n";
   close $fh;
 }
 
-sub make_log_page{
-  my $log_page_file;
-  my $index;
-  ($name, $index) = @_;
-  $log_page_file = "./html_logs/" . "$name" . ".html";
 
-  my $tmp_file = "tmp_" . "$index" . ".html";
-  copy($tmp_file, $log_page_file) or die "Can't copy \"$tmp_file\" to \"$log_page_file\": $!";
-}
-
+make_logs_GUI_page();

@@ -34,7 +34,7 @@ use feature qw(say);
      --lokkOnly
      --save
      --html
-
+     grep-patturn: cmd arguments
  # evironmental variables---
  ## $COMPORNENT
     is the compornent name of the chores containers
@@ -81,8 +81,11 @@ my $nginx_path      = '';
 my $csv_search_path = '';
 
 # target
-my @targets = (); # compornent no of sw360chores
+my @targets = (); # compornent no.
 my @paths   = (); # path of logFile copied by this script.
+
+# greps
+my @greps = (); #
 
 ##########################################################
 { # parse config and read command line arguments
@@ -146,6 +149,30 @@ my @paths   = (); # path of logFile copied by this script.
     'html'     => \$html,
   ) or pod2usage();
 
+  sub grep_interactive(){
+    foreach my $cno (@targets){
+      say STDERR("    $COMPORNENTS[$cno]: ");
+      say STDERR("    It is not still. EXIT!! ");
+      # exit;
+        
+    }  
+  }
+
+  sub get_grep_patturn{ # get grep-patturns, it is gived as this-> ./main.pl error warn network connect GET
+    # --interactive : you can type grep_patturns each compornents. when greps gived as cmd_argument, all compornents target.
+    my $grep = "";
+    #if ($interactive){
+      #say STDERR "greps interactive mode start [not still!!] ---";
+      #$grep = grep_interactive();
+      #exit;
+      #}
+    #else{     
+      foreach my $arg (@ARGV){
+	$grep = $grep . "$arg ";
+      }
+      push(@greps, $grep);
+    #}
+  }
 }
  
 sub yesno{
@@ -172,6 +199,27 @@ sub yesno{
     return($default);
 }
 
+sub get_yesOrNo{
+  my $isyes;
+  ($isyes) = @_;
+
+  if($isyes){
+    return "yes";
+  }
+  else{
+    return "no";
+  }
+}
+
+sub get_oneStr_targets(){
+  my $str = "";
+
+  foreach my $cno (@targets){
+    $str = $str . "$COMPORNENTS[$cno] ";
+  }
+  return $str;
+}
+
 if($debug) {
   say STDERR "  variables: ";
   if($interactive){
@@ -182,12 +230,12 @@ if($debug) {
     if(!yesno("    nginx")){ $nginx = 0;  }else {$nginx = 1;}
     if(!yesno("    csv_search")){ $csv_search = 0;  } else {$csv_search = 1;}
   }
-  say STDERR "    \$sw360      = $sw360";
-  say STDERR "    \$couchdb    = $couchdb";
-  say STDERR "    \$fossology  = $fossology";
-  say STDERR "    \$postgresql = $postgresql";
-  say STDERR "    \$nginx      = $nginx";
-  say STDERR "    \$csv_search = $csv_search";
+  say STDERR "    \$sw360      = " . get_yesOrNo($sw360);
+  say STDERR "    \$couchdb    = " . get_yesOrNo($couchdb);
+  say STDERR "    \$fossology  = " . get_yesOrNo($fossology);
+  say STDERR "    \$postgresql = " . get_yesOrNo($postgresql);
+  say STDERR "    \$nginx      = " . get_yesOrNo($nginx);
+  say STDERR "    \$csv_search = " . get_yesOrNo($csv_search);
   say STDERR "    \$debug      = $debug";
   if ($sw360 == 1){ push(@targets, 0); } 
   if ($couchdb == 1){ push(@targets, 1); } 
@@ -200,16 +248,24 @@ if($debug) {
   #   say STDERR "  targetLog_path(default):
   # else 
   #   say STDERR "  target ~ (custum)
-  say STDERR "  Log_path: ";
-  say STDERR "    \$folder          = $logFolder";
-  if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
-  if ($couchdb){say STDERR "    \$couchdb_path    = $couchdb_path";}
-  if ($fossology){say STDERR "    \$fossology_path  = $fossology_path";}
-  if ($postgresql){say STDERR "    \$postgresql_path = $postgresql_path";}
-  if ($nginx){say STDERR "    \$nginx_path      = $nginx_path";}
-  if ($csv_search){ say STDERR "    \$csv_search_path = $csv_search_path";}
+  if ($save){
+    say STDERR "  Log_path: ";
+    say STDERR "    \$folder          = $logFolder";
+    if ($sw360) { say STDERR "    \$sw360_path      = $sw360_path"; }
+    if ($couchdb){say STDERR "    \$couchdb_path    = $couchdb_path";}
+    if ($fossology){say STDERR "    \$fossology_path  = $fossology_path";}
+    if ($postgresql){say STDERR "    \$postgresql_path = $postgresql_path";}
+    if ($nginx){say STDERR "    \$nginx_path      = $nginx_path";}
+    if ($csv_search){ say STDERR "    \$csv_search_path = $csv_search_path";}
+  }
+}
+get_grep_patturn();
+if ($debug){
+  say STDERR "  greps:";
+  say STDERR "    patturn => @greps";
+  say STDERR "    targets => " . get_oneStr_targets();
+  
   say STDERR ""; 
-
   my $isYes = yesno("are you ok ?");
   if(!$isYes){ exit }
 }
@@ -303,17 +359,23 @@ sub main{ # exec ALL cmd, it is based on option.
   my $cname; # compornent_name # = $project_name . "_sw360";
   my $cno;   # compornent_no.
   
+  my $arg = ""; # for generate_html.pl 
+
   say STDERR "------ [main] ------";
   foreach my $cno (@targets) {  
     $count = $count+1;
     $cname = get_compornent_name($cno);
-    
-    say STDERR "[COMORNENT]-$cname, [OPTION]-\@options      :$count";
+   
+    # if  ($interactive){ say STDERR "[COMORNENT]-$cname, greps-$greps[$count-1]      :$count";}
+    # else{
+    say STDERR "[COMORNENT]-$cname, greps-$greps[0]      :$count";
+    # }
     # say STDERR "    -ToCall     = @toCall";
     # say STDERR "    -FilePath   = $file";
     #print "yesorno()";
 
     # get_log. $res
+    say STDERR "  \$logStr =  docker logs $cname";
     my $logStr = get_log($cno, $cname);
 
     if ($lookonly){
@@ -331,25 +393,33 @@ sub main{ # exec ALL cmd, it is based on option.
     }
     if ($html){
       say STDERR "  ---[html]---";
-      say STDERR "   exec: ./html_script/make_modifiedLog.pl arg=(\$logStr, \$compornent_no=$cno)"; # modify_log.pl. and generate_html.
-      0 == system(`./html_script/make_modifiedLog.pl $logStr $cno`) or die "   [ERROR] Can't execute make_modifiedLog.pl: $!";
-      if ($count == $#targets){
-        print ("EXEC generate_html() ");
-      } 
+      # if $interactive say STDERR "   exec: \$logStr | ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[$count-1])"; # modify_log.pl. and generate_html.
+      say STDERR "   [INFO] EXEC \$logStr | ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[0])"; # modify_log.pl. and generate_html.
+      #if ($interactive){ my $grep = $greps[$count-1]; }
+      #else {  
+      my $grep = $greps[0];
+      #}
+      open(my $fh, "| ./html_script/make_modifiedLog.pl  $cno $grep")
+        or die "Couldn't open less cmd : $!";
+      print $fh "$logStr";
+      close($fh);
+
+      $arg = $arg ."$cno " . "none " . "$greps[0] ";
+      if ($count == ($#targets+1)){
+        say STDERR   " [INFO] EXEC generate_html (arg:$arg)";
+	# arg : cno anything greps cno2 anything greps2...
+        system(`./html_script/generate_html.pl $arg`) == 0
+		or die " [ERROR]Couldn't system ./html_script/generate_html.pl: $!";
+      }
     }
     say STDERR "   [INFO] CMD ok! \n";
   }
+  return 1;
 }
 
 
 # main -----------
-=pod
-  foreach my $c_no (@targets) {  
-  get_log($c_no);
-  say STDERR "";
-  }
-=cut
-main();
-say STDERR "-----------  all ok!! ------------";
-
+if (main()){
+  say STDERR "-----------  all ok!! ------------";
+}
 

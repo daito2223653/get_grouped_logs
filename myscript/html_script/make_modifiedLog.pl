@@ -48,17 +48,18 @@ my $cno = -1;
 for ( my $i = 1; $i <= $#ARGV; $i++ ) { 
   push(@patturns, $ARGV[$i]);
 }
-print "PATTURNS: @patturns\n";
-print "COLORS  : @colors\n";
+print "     greps : @patturns\n";
+print "     colors: @colors\n";
 
 #  main
 sub modify_log{
   my $toCall;
-  $tmp_HTML = "./" . "tmp_" . "$cno" . ".html";
+  $tmp_HTML = "./tmp/" . "tmp_" . "$cno" . ".html";
   # cno
   my $cno = -1;
   ($cno) = $ARGV[0];
   # open.
+  say STDERR "    make : temporatory html made from log.";
   open(my $fh, ">", $tmp_HTML)
     or die "Cannot open $tmp_HTML: $!";
     # read line from STDIN(logStr)
@@ -80,7 +81,7 @@ sub modify_log{
       # write.
       print $fh "$line" . "<br>";
     }
-    close($fh);
+  close($fh);
 }
 
 modify_log();
