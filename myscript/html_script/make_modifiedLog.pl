@@ -10,7 +10,6 @@ use File::Copy qw/copy move/;
 # symbol
 use Fcntl;
 
-
 # tmp_file and maked tmp_HTML_file.
 my $tmp_HTML = ""; 
 my $index = 0;
@@ -32,7 +31,7 @@ my @patturns = ($err, $info, $warn, $err2, $info2, $warn2, $err3, $info3, $warn3
 # NOTE_: set COLORS from config.
 my $err_color = "red";
 my $info_color = "blue";
-my $warn_color = "yellow";
+my $warn_color = "orange";
 my @colors = ($err_color, $info_color, $warn_color, 
 	      $err_color, $info_color, $warn_color,
 	      $err_color, $info_color, $warn_color,

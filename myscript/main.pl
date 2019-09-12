@@ -50,10 +50,10 @@ my $COUCHDB = 1;
 my $FOSSOLOGY = 2;
 my $POSTGRESQL = 3;
 my $NGINX = 4;
-my $CSV_SEARCH = 5;
+my $CVS_SEARCH = 5;
 # COMPORNENT_NAME
-my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search"); # $sw360 = catalina / liferay
-my $project_name;; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
+my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "cvs_search"); # $sw360 = catalina / liferay
+my $project_name; # NOTE: not furtured . get PROJECT NAME function from sw360chores's configuration.
 
 # read options
 my $timestamp = '';
@@ -70,7 +70,7 @@ my $couchdb = '';
 my $fossology = '';
 my $postgresql = '';
 my $nginx      = '';
-my $csv_search = '';
+my $cvs_search = '';
 #  path of logFiles.
 my $logFolder     = '';
 my $sw360_path = '';
@@ -78,7 +78,7 @@ my $couchdb_path = '';
 my $fossology_path = '';
 my $postgresql_path = '';
 my $nginx_path      = '';
-my $csv_search_path = '';
+my $cvs_search_path = '';
 
 # target
 my @targets = (); # compornent no.
@@ -113,7 +113,7 @@ my @greps = (); #
       $fossology = $target->{'fossology'} // $fossology;
       $postgresql = $target->{'postgresql'} // $postgresql;
       $nginx = $target->{'nginx'} // $nginx;
-      $csv_search = $target->{'csv_search'} // $csv_search;
+      $cvs_search = $target->{'cvs_search'} // $cvs_search;
     }
     $debug = $target->{'debug'} // $debug;
   }
@@ -129,14 +129,14 @@ my @greps = (); #
     $fossology_path = $path->{'fossology'} // $fossology_path;
     $postgresql_path = $path->{'postgresql'} // $postgresql_path;
     $nginx_path = $path->{'nginx'} // $nginx;
-    $csv_search_path = $path->{'csv_search'} // $csv_search_path;
+    $cvs_search_path = $path->{'cvs_search'} // $cvs_search_path;
   
     push(@paths, $logFolder . "/" . $sw360_path);
     push(@paths, $logFolder . "/" . $couchdb_path);
     push(@paths, $logFolder . "/" . $fossology_path);
     push(@paths, $logFolder . "/" . $postgresql_path);
     push(@paths, $logFolder . "/" . $nginx_path);
-    push(@paths, $logFolder . "/" . $csv_search_path);
+    push(@paths, $logFolder . "/" . $cvs_search_path);
   }
 
   GetOptions (
@@ -228,21 +228,21 @@ if($debug) {
     if(!yesno("    fossology")){ $fossology = 0;  }else {$fossology = 1;}
     if(!yesno("    postgresql")){ $postgresql = 0;  }else {$postgresql = 1;}
     if(!yesno("    nginx")){ $nginx = 0;  }else {$nginx = 1;}
-    if(!yesno("    csv_search")){ $csv_search = 0;  } else {$csv_search = 1;}
+    if(!yesno("    cvs_search")){ $cvs_search = 0;  } else {$cvs_search = 1;}
   }
   say STDERR "    \$sw360      = " . get_yesOrNo($sw360);
   say STDERR "    \$couchdb    = " . get_yesOrNo($couchdb);
   say STDERR "    \$fossology  = " . get_yesOrNo($fossology);
   say STDERR "    \$postgresql = " . get_yesOrNo($postgresql);
   say STDERR "    \$nginx      = " . get_yesOrNo($nginx);
-  say STDERR "    \$csv_search = " . get_yesOrNo($csv_search);
+  say STDERR "    \$cvs_search = " . get_yesOrNo($cvs_search);
   say STDERR "    \$debug      = $debug";
   if ($sw360 == 1){ push(@targets, 0); } 
   if ($couchdb == 1){ push(@targets, 1); } 
   if ($fossology == 1){ push(@targets, 2); } 
   if ($postgresql == 1){ push(@targets, 3); } 
   if ($nginx == 1){ push(@targets, 4); } 
-  if ($csv_search == 1){ push(@targets, 5); };
+  if ($cvs_search == 1){ push(@targets, 5); };
 
   # if default 
   #   say STDERR "  targetLog_path(default):
@@ -256,7 +256,7 @@ if($debug) {
     if ($fossology){say STDERR "    \$fossology_path  = $fossology_path";}
     if ($postgresql){say STDERR "    \$postgresql_path = $postgresql_path";}
     if ($nginx){say STDERR "    \$nginx_path      = $nginx_path";}
-    if ($csv_search){ say STDERR "    \$csv_search_path = $csv_search_path";}
+    if ($cvs_search){ say STDERR "    \$cvs_search_path = $cvs_search_path";}
   }
 }
 get_grep_patturn();
