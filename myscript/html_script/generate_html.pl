@@ -117,7 +117,7 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
 
   # set group link. 
   $result = "$spaces<!--$group_no-->\n";
-  $result = $result . "$spaces<li><a href=\"./html_logs/$group_name.html\" target=group>$group_name $time_stamp_day $time_stamp_time</a></li>\n";
+  $result = $result . "$spaces<li><a href=\"./html_logs/$group_name/$group_name.html\" target=group>$group_name $time_stamp_day $time_stamp_time</a></li>\n";
   $result = $result . "$spaces<ul class=\"$group_name\">\n";
   # set targets list with each options.
   $spaces = $space x 16;
@@ -129,7 +129,7 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
     $cname  = $COMPORNENTS[$datas[$i][0]];
     $opt    = $datas[$i][3];
     $cno    = $datas[$i][0];
-    $result = $result . "$spaces<li><a href=\"./html_logs/$group_name-$cno.html\" target=group>$cname</a> $opt</li>\n";
+    $result = $result . "$spaces<li><a href=\"./html_logs/$group_name/$group_name-$cno.html\" target=group>$cname</a> $opt</li>\n";
   }
   $spaces = $space x 12;
   $result = $result . "$spaces</ul>\n";	
@@ -215,7 +215,7 @@ sub make_log_page{
   my $cno;
   my $name;
   ($name, $cno) = @_;
-  $log_page_file = "./html_script/html_logs/" . "$name" . ".html";
+  $log_page_file = "./html_script/html_logs/$group_name/" . "$name" . ".html";
 
   my $tmp_file = "./tmp/tmp_" . "$cno" . ".html";
   move($tmp_file, $log_page_file) or die "Can't move \"$tmp_file\" to \"$log_page_file\": $!";
@@ -224,7 +224,7 @@ sub make_log_page{
 sub make_logs_GUI_page{
   my $space = " ";
   my $spaces;
-  open my $fh, ">", "./html_script/html_logs/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
+  open my $fh, ">", "./html_script/html_logs/$group_name/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
     or die "./html_script/html_logs/$logs_gui_HTML を書き込みモードでオープンすることができません。: $!";
     print $fh "<!DOCTYPE html>\n";
     print $fh "\n";

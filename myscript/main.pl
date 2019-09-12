@@ -35,6 +35,8 @@ use feature qw(say);
      --save
      --html
      grep-patturn: cmd arguments
+     --update [$group_no] : update from groupNOs. 
+ 
  # evironmental variables---
  ## $COMPORNENT
     is the compornent name of the chores containers
@@ -62,6 +64,7 @@ my $lookonly = '';
 my $interactive = '';
 my $save = "";
 my $html = "";
+my $update = "";
 my $debug      = '1';
 
 # variables of compornents
@@ -87,6 +90,14 @@ my @paths   = (); # path of logFile copied by this script.
 # greps
 my @greps = (); #
 
+# group.
+my $g_no = -1;
+my $g_name = "";
+# group_info-files and folder
+my $group_folder;
+my $info_file;
+
+
 ##########################################################
 { # parse config and read command line arguments
   my $configFile = "../configuration/configuration.pl";
@@ -96,7 +107,7 @@ my @greps = (); #
     die "Error reading $configFile: $!" unless defined $config;
     $project_name = $config->{'projectName'} // $project_name;
     #$cveSearch = $config->{'cveSearch'} // $cveSearch;
-  } 	
+  }
 	
   my $targetFile = "./target.pl";
   # my $pathFile = "./path.pl";
@@ -147,6 +158,7 @@ my @greps = (); #
     'lookonly' => \$lookonly, 
     'save'     => \$save,
     'html'     => \$html,
+    'update=i' => \$update,
   ) or pod2usage();
 
   sub grep_interactive(){
@@ -220,30 +232,74 @@ sub get_oneStr_targets(){
   return $str;
 }
 
-if($debug) {
-  say STDERR "  variables: ";
-  if($interactive){
-    if(!yesno("    sw360")){ $sw360 = 0;  }else {$sw360 = 1;}
-    if(!yesno("    couchdb")){ $couchdb = 0;  }else {$couchdb = 1;}
-    if(!yesno("    fossology")){ $fossology = 0;  }else {$fossology = 1;}
-    if(!yesno("    postgresql")){ $postgresql = 0;  }else {$postgresql = 1;}
-    if(!yesno("    nginx")){ $nginx = 0;  }else {$nginx = 1;}
-    if(!yesno("    cvs_search")){ $cvs_search = 0;  } else {$cvs_search = 1;}
-  }
-  say STDERR "    \$sw360      = " . get_yesOrNo($sw360);
-  say STDERR "    \$couchdb    = " . get_yesOrNo($couchdb);
-  say STDERR "    \$fossology  = " . get_yesOrNo($fossology);
-  say STDERR "    \$postgresql = " . get_yesOrNo($postgresql);
-  say STDERR "    \$nginx      = " . get_yesOrNo($nginx);
-  say STDERR "    \$cvs_search = " . get_yesOrNo($cvs_search);
-  say STDERR "    \$debug      = $debug";
-  if ($sw360 == 1){ push(@targets, 0); } 
-  if ($couchdb == 1){ push(@targets, 1); } 
-  if ($fossology == 1){ push(@targets, 2); } 
-  if ($postgresql == 1){ push(@targets, 3); } 
-  if ($nginx == 1){ push(@targets, 4); } 
-  if ($cvs_search == 1){ push(@targets, 5); };
+sub get_group_info{ # parse argument. argument is groupNo.
+  my $group_no;
+  ($group_no) = @_;
+  $group_folder = "./html_script/html_logs/group$group_no/";
+  $info_file    = "$group_folder" . "info.pl";
 
+  my $grs;
+  my $g_name;
+  my $ts;
+  if (-e $info_file){
+    say STDERR "    [INFO]read info file from: $info_file";
+    my $info = do($info_file);
+      die "Error parsing $info_file: $@" if $@;
+      die "Error reading $info_file: $!" unless defined $info;
+    $g_name = $info -> {'groupName'}   // $g_name;
+    $grs      = $info -> {'greps'}         // $grs;
+    $ts = $info -> {'targetNos'};
+  }else{
+    say STDERR "    [ERROR]  not exist $info_file";
+    exit;
+  }
+  return ($g_name, $grs, $ts);
+}
+
+if($debug) {
+  if ($update){
+    if ($interactive){
+      say STDERR "sorry..., This script isn't covered --update option and --interactive option is selected both... pls improve...";
+      exit;
+    }
+    $g_no = $update;
+    say STDERR "  updates: ";
+    say STDERR "    groupNOs: $g_no";
+    say STDERR "    [INFO]  GET group_info in $g_no.";
+    my $ts;
+    eval `./html_script/get_group_info.pl`;
+    die $@ if $@;
+    ($g_name, $greps[0], $ts) = get_group_info($g_no);
+    @targets = split(/ /, $ts);
+    #print `./html_script/get_group_info.pl $g_no`;
+    say STDERR "      \$group_name =  $g_name";
+    say STDERR "      \$greps      =  $greps[0]";
+    say STDERR "      \@targets    =  @targets"; 
+  }
+  else{
+    say STDERR "  variables: ";
+    if($interactive){
+      if(!yesno("    sw360")){ $sw360 = 0;  }else {$sw360 = 1;}
+      if(!yesno("    couchdb")){ $couchdb = 0;  }else {$couchdb = 1;}
+      if(!yesno("    fossology")){ $fossology = 0;  }else {$fossology = 1;}
+      if(!yesno("    postgresql")){ $postgresql = 0;  }else {$postgresql = 1;}
+      if(!yesno("    nginx")){ $nginx = 0;  }else {$nginx = 1;}
+      if(!yesno("    cvs_search")){ $cvs_search = 0;  } else {$cvs_search = 1;}
+    }
+    say STDERR "    \$sw360      = " . get_yesOrNo($sw360);
+    say STDERR "    \$couchdb    = " . get_yesOrNo($couchdb);
+    say STDERR "    \$fossology  = " . get_yesOrNo($fossology);
+    say STDERR "    \$postgresql = " . get_yesOrNo($postgresql);
+    say STDERR "    \$nginx      = " . get_yesOrNo($nginx);
+    say STDERR "    \$cvs_search = " . get_yesOrNo($cvs_search);
+    say STDERR "    \$debug      = $debug";
+    if ($sw360 == 1){ push(@targets, 0); } 
+    if ($couchdb == 1){ push(@targets, 1); } 
+    if ($fossology == 1){ push(@targets, 2); } 
+    if ($postgresql == 1){ push(@targets, 3); } 
+    if ($nginx == 1){ push(@targets, 4); } 
+    if ($cvs_search == 1){ push(@targets, 5); };
+  }
   # if default 
   #   say STDERR "  targetLog_path(default):
   # else 
@@ -259,6 +315,7 @@ if($debug) {
     if ($cvs_search){ say STDERR "    \$cvs_search_path = $cvs_search_path";}
   }
 }
+
 get_grep_patturn();
 if ($debug){
   say STDERR "  greps:";
@@ -273,7 +330,8 @@ if ($debug){
 { # get_log(): get_log from @_(cname),
   # save()   : And save to @paths when user select --save option,
   # look()   : And look,  when user select --look option.
- 
+  # update() : 
+
   # set ENV
   ## cmd
   my @cmd = ("docker", "logs");    
@@ -377,6 +435,16 @@ sub main{ # exec ALL cmd, it is based on option.
     # get_log. $res
     say STDERR "  \$logStr =  docker logs $cname";
     my $logStr = get_log($cno, $cname);
+
+    if ($update){
+      say STDERR "  ---[update]---";
+      say STDERR "   exec: \$logstr | , update_log(gno=$g_no, cno=$cno)";
+      my $arg = "$g_no" . " " . "$cno";
+      open(my $fh, "| ./html_script/make_modifiedLog.pl  $arg")
+        or die "Couldn't open less cmd : $!";
+      print $fh "$logStr";
+      close($fh);
+    }
 
     if ($lookonly){
       say STDERR "  ---[lookonly]---";
