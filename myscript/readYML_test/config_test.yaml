@@ -14,7 +14,7 @@ using :
     - sw360_dev_sw360cvs_search
   syslog:
     - daito_fossology  
-  jounald:
+  journald:
     - test
 
 containers: 

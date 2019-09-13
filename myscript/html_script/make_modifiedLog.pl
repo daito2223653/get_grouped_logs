@@ -9,6 +9,8 @@ use warnings;
 use File::Copy qw/copy move/;
 # symbol
 use Fcntl;
+use Getopt::Long qw(GetOptions);
+
 
 # tmp_file and maked tmp_HTML_file.
 my $tmp_HTML = ""; 
@@ -37,6 +39,14 @@ my @colors = ($err_color, $info_color, $warn_color,
 	      $err_color, $info_color, $warn_color,
 	      "tan", "sandybrown", "skyblue", "gray", "black");  # it is error when user put more 5.
 
+# option
+my $update = "";
+GetOptions (
+  # handle imgaes
+  'update' => \$update,
+) or pod2usage();
+
+
 # cno
 my $cno = -1;
 
@@ -48,16 +58,16 @@ for ( my $i = 1; $i <= $#ARGV; $i++ ) {
 print "     All_greps : @patturns\n";
 print "     colors: @colors\n";
 
-#  main
-sub modify_log{
-  ($cno) = $ARGV[0];
+#  main ARGV[0] is cno, other  STDIN is log. 
+#  if ARGV >   
+sub modify_log{  #modified log and make ./tmp/tmp_$cno.html
   my $toCall;
-  $tmp_HTML = "./tmp/" . "tmp_" . "$cno" . ".html";
   # cno
   my $cno = -1;
   ($cno) = $ARGV[0];
+  $tmp_HTML = "./tmp/" . "tmp_" . "$cno" . ".html";
   # open.
-  say STDERR "     make : temporatory html made from log.";
+  say STDERR "     make : temporatory html made from log. => $tmp_HTML";
   open(my $fh, ">", $tmp_HTML)
     or die "Cannot open $tmp_HTML: $!";
     # read line from STDIN(logStr)
@@ -123,9 +133,9 @@ sub update_log{
   say STDERR "     update!!";
 }
 
-if ($#ARGV+1 == 1){
+if (!$update){
   modify_log();
 }
-if ($#ARGV+1 == 2){
+if ($update){
   update_log();
 }

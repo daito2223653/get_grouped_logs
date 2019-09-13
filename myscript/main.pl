@@ -440,7 +440,7 @@ sub main{ # exec ALL cmd, it is based on option.
       say STDERR "  ---[update]---";
       say STDERR "   exec: \$logstr | , update_log(gno=$g_no, cno=$cno)";
       my $arg = "$g_no" . " " . "$cno";
-      open(my $fh, "| ./html_script/make_modifiedLog.pl  $arg")
+      open(my $fh, "| ./html_script/make_modifiedLog.pl --update  $arg")
         or die "Couldn't open less cmd : $!";
       print $fh "$logStr";
       close($fh);

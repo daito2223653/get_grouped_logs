@@ -142,9 +142,7 @@ sub read_yaml{
 sub get_envStr{
   my @containers = split /\s+/, "@CONTAINERS";
   #print @containers;
-  my $cmd_str = "";
   my $flg = 0;
-  print @USING, "\n";
 
   my $cons = "(";
   my $conNos= "("; 
@@ -164,33 +162,43 @@ sub get_envStr{
   $conNos = $conNos . ")";
   $using = $using . ")";
 
-  print "$using\n";
+  my $cmd = "(";
+  my $cn = "(";
+  my $cmd_str = "(";
 
   $flg = 0;
-  for my $cmd (@CMD){
+  for my $no (@cmd_nos){
     if ($flg++ > 0){
-      $cmd_str = $cmd_str . ", $cmd";
+      $cmd_str = $cmd_str . ", $cmd_names[$no]";
+      $cn      = $cn      . ", $cmd_nos[$no]";
+      $cmd      = $cmd      . ", $CMD[$no]"
     }else{
-      $cmd_str = $cmd;
+      $cmd_str = $cmd_str .  $cmd_names[$no];
+      $cmd = $cmd . $CMD[$no];
+      $cn = $cn . $cmd_nos[$no];
     }
   }
+  $cmd = $cmd . ")";
+  $cn = $cn . ")";
+  $cmd_str = $cmd_str . ")";
 
 
 my $line = <<"EOS";
 #NOTE: don't config!
-CONTAINERS => @CONTAINERS; 
-containers_nos => @containers_nos;
-CMD => $cmd_str;
-cmd_names => @cmd_names;  
-cmd_nos => @cmd_nos;
-USING => @USING;
-DEFAULT_CONTAINERS => @DEFAULT_CONTAINERS;
+our \@_CONTAINERS = $cons; 
+our \@_containers_nos = $conNos;
+our \@_CMD = $cmd;
+our \@_cmd_names = $cmd_str;  
+our \@_cmd_nos = $cn;
+our \@_USING = @USING;
+our \@_DEFAULT_CONTAINERS = @DEFAULT_CONTAINERS;
+1;
 EOS
 
   return $line;
 }
 
-sub writeEnv_from_yaml{
+sub write_env_to_yaml{
   my $outputFile="YML_info.pl";
   # make str.
   my $line = get_envStr();
@@ -201,7 +209,21 @@ sub writeEnv_from_yaml{
   close ($fh);
 }
 
-###############################  MAIN ##################
+sub read_env{
+  my $inputFile = "./YML_info.pl";
+  require($inputFile);
+  our @_cmd_nos;
+  print "@_cmd_nos\n";  
+  @CONTAINERS = @_CONTAINERS; #ALL CONTAINERS_NAME array.
+  @containers_nos = @_containers_nos; #ALL CONTAINERS NOs, corrsponded @
+  @CMD = @_CMD; # ALL COMMAND. be enable to serach cmd_no. 実際に実行されるcmd
+  my @cmd_names = (); # cmd_name (ex. json, syslog, .)
+  my @cmd_nos = (); #cmd_no array used to search command.
+  my @USING = (); # コンテナが使うコマンドの番号の配列(コンテナ番号の配列と対応している). cmd_no array that is enable to search container_no.
+  my @DEFAULT_CONTAINERS = (); #conteriner_no array.
+  
+}
+
 { # parse cmd argument.
   GetOptions (
     # handle imgaes
@@ -211,14 +233,21 @@ sub writeEnv_from_yaml{
     'exec'         => \$exec,
   ) or pod2usage();
 }
+###############################  MAIN ##################
 
+# variable
 my $cname;
 my $cno;
 my $logStr;
-
 my $path_file; # this is ..../myscript/logs/#cname.log
+our @_cmd_nos;
 
-# $path;
+sub read_env{
+  my $inputFile = "./YML_info.pl";
+  require($inputFile);
+  our @_cmd_nos;
+  print "@_cmd_nos\n";  
+  
 
 sub main(){
   print "\nmain\n";
@@ -233,11 +262,12 @@ sub main(){
 if ($setup){
   read_yaml();
   #yesorno();
-  writeEnv_from_yaml();
+  write_env_to_yaml();
 }elsif ($checkSetting){
-	#read_env();
+  read_env();
 }
 if ($exec){
+  read_env();
   main();
 }
 
