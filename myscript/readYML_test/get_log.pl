@@ -182,7 +182,6 @@ sub get_envStr{
   $cn = $cn . ")";
   $cmd_str = $cmd_str . ")";
 
-
 my $line = <<"EOS";
 #NOTE: don't config!
 our \@_CONTAINERS = $cons; 
@@ -224,6 +223,7 @@ sub read_env{
   
 }
 
+###############################  MAIN ##################
 { # parse cmd argument.
   GetOptions (
     # handle imgaes
@@ -249,6 +249,13 @@ sub read_env{
   print "@_cmd_nos\n";  
   
 
+my $cname;
+my $cno;
+my $logStr;
+
+my $path_file; # this is ..../myscript/logs/#cname.log
+
+
 sub main(){
   print "\nmain\n";
   ($cname) = $ARGV[0];
@@ -268,6 +275,11 @@ if ($setup){
 }
 if ($exec){
   read_env();
+  writeEnv_from_yaml();
+}elsif ($checkSetting){
+	#read_env();
+}
+if ($exec){
   main();
 }
 
