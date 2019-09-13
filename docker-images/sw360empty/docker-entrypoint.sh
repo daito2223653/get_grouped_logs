@@ -210,6 +210,7 @@ fi
 
 ################################################################################
 # Setup for FOSSology
+
 if [ "$FOSSOLOGY_HOST" ] && [ "$FOSSOLOGY_PORT" ]; then
     echo "fossology.host = $FOSSOLOGY_HOST" > /etc/sw360/fossology.properties
     echo "fossology.port = $FOSSOLOGY_PORT" >> /etc/sw360/fossology.properties

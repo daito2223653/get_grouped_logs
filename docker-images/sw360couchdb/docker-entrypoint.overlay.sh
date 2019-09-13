@@ -10,6 +10,7 @@
 
 if [ "$COUCHDB_LUCENE_HOST" ]; then
     sed -i -r 's/\[httpd_global_handlers\]/[httpd_global_handlers]\n_fti = {couch_httpd_proxy, handle_proxy_req, <<"http:\/\/'"$COUCHDB_LUCENE_HOST"':5985">>}/' /usr/local/etc/couchdb/local.ini
+    
 fi
 
 if [ "$(ls -A /usr/local/var/lib/couchdb)" ]; then
@@ -25,6 +26,13 @@ COUCHDB_PASSWORD_FILE=/run/secrets/COUCHDB_PASSWORD
 if [ -f "$COUCHDB_PASSWORD_FILE" ]; then
     export COUCHDB_PASSWORD=$(cat "$COUCHDB_PASSWORD_FILE")
 fi
+
+# written by daito
+# couchdb's log file = /dev/null -> file = /usr/local/var/log/couchdb/couch.log 
+echo "------------------------ written by daito at /sw360chores/docker-images/sw360couchdb/docker-entrypoint.sh  -----------------"
+sed -i -e "s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g"  /usr/local/etc/couchdb/default.ini
+echo "sed -e s/file = \/dev\/null/file = \/usr\/local\/var\/log\/couchdb\/couch.log/g  \/usr\/local\/etc\/couchdb\/default.ini"
+
 
 exec /docker-entrypoint.sh "$@"
 

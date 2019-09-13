@@ -1,5 +1,5 @@
 {
-    projectName => 'sw360',
+    projectName => 'sw360_dev',
     prod        => 0,
     cveSearch   => 0,
     swarm       => 0,

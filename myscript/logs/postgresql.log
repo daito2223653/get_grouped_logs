@@ -1,0 +1,15 @@
+LOG:  database system was interrupted; last known up at 2019-09-06 04:55:39 UTC
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1D69DF0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  column "state_" of relation "release_" already exists
+STATEMENT:  alter table Release_ add state_ integer
+ERROR:  relation "resourcecode" does not exist at character 22
+STATEMENT:  select count(*) from ResourceCode
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
