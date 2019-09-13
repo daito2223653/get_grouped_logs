@@ -22,9 +22,9 @@ my $err3 = "error";
 my $info = "Info";
 my $info2 = "INFO";
 my $info3 = "info";
-my $warn = "Warning";
+my $warn = "WARN";
 my $warn2 = "WARNING";
-my $warn3 = "Warning";
+my $warn3 = "Warn";
 my @patturns = ($err, $info, $warn, $err2, $info2, $warn2, $err3, $info3, $warn3);
 
 # printed colors 
