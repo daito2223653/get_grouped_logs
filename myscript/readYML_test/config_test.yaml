@@ -1,0 +1,41 @@
+defaults: #pls type complite name
+  - sw360_dev_sw360 
+  - sw360_dev_sw360couchdb 
+  - sw360_dev_sw360postgresql 
+  - daito_fossology
+  - test
+
+using :
+  json: 
+    - sw360_dev_sw360
+    - sw360_dev_sw360couchdb
+    - sw360_dev_sw360postgresql
+    - sw360_dev_sw360nginx
+    - sw360_dev_sw360cvs_search
+  syslog:
+    - daito_fossology  
+  jounald:
+    - test
+
+containers: 
+  sw360_dev: 
+    - sw360
+    - sw360couchdb 
+    - sw360postgresql
+    - sw360nginx
+    - sw360cvs_search
+  daito:
+    - fossology 
+  none:
+    - test
+
+cmd : # log_type : 対応する物1つのログ出力コマンド
+  json : docker logs #container
+  syslog : cat /var/log/message grep # container_name
+  journald : jounalctl -l --no-paper -u # container_name
+
+# not used
+optionss :
+  timestamp : 
+    json : -t  
+  
