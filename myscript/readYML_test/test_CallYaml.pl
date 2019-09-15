@@ -72,6 +72,6 @@ my $log_folder;
 
 
 
-my @logStr = `./get_log.pl sw360_dev_sw360 --setup  --check --exec`;
+my @logStr = `get_log.pl sw360_dev_sw360 --setup`;
 
 print "@logStr";

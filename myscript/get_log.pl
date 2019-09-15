@@ -4,31 +4,42 @@ use Pod::Usage;
 
 use strict;
 use warnings;
-
 # symbol
 use Fcntl;
-
 use Getopt::Long qw(GetOptions);
 use Pod::Usage;
 use feature qw(say);
-
 use strict;
 use YAML ();
 use Data::Dumper ();
-
 
 # option
 my $checkSetting = "";
 my $setup = "";
 my $default = "";
 my $exec = "";
+my $timestamp = "";
+
+{ # parse cmd argument.
+  GetOptions (
+    # handle imgaes
+    'checkSetting' => \$checkSetting,
+    'default'      => \$default,
+    'setup'        => \$setup,
+    'exec'         => \$exec,
+    'timestamp'         => \$timestamp,
+  ) or pod2usage();
+}
 
 # open and read config.yaml
-my $filename = "./config_test.yaml";
+my $filename = "./config.yaml";
 open(IN, $filename) or die("cannot open $filename.: $!");
 read(IN, my $input, (-s $filename));
 close(IN);
 my $yaml = YAML::Load("$input");
+
+# write config info to config_info.pl.
+my $infoFIle="./config_info.pl";
 
 #ENV VARIABLES###############################################################
 my @CONTAINERS = (); #ALL CONTAINERS_NAME array.
@@ -40,12 +51,36 @@ my @USING = (); # コンテナが使うコマンドの番号の配列(コンテ�
 my @DEFAULT_CONTAINERS = (); #conteriner_no array.
 #ENV VARIABLES#######################################################
 
+sub get_cno_from_cname($){
+  my $cname;
+  ($cname) = @_;
+  my $cno;
+  foreach $cno (@containers_nos){
+    if ($CONTAINERS[$cno] eq $cname){
+      return $cno;
+    }
+  }
+}
+
+sub get_cmdno_from_cmdName($){
+  my $cmd_name;
+  ($cmd_name) = @_;
+  my $cmno;
+  foreach $cmno (@cmd_nos){
+    if ($cmd_names[$cmno] eq $cmd_name){
+      return $cmno;
+    }
+  }
+}
+
+# read config data from yaml.
 sub read_yaml{
   my $no = 0;
   if ($checkSetting) { 
     print Data::Dumper::Dumper($yaml);
     print "container ---------------------------------\n";
   }
+  # read containers.
   my $con_hashs = $yaml->{"containers"};
   for my $proj (keys %$con_hashs) {
     my @cons = @{$con_hashs->{$proj}};
@@ -59,7 +94,7 @@ sub read_yaml{
     if ($checkSetting) { print "[$proj] : @{$con_hashs->{$proj}}\n"; }
   }
   $no = 0;
-
+  # read commands.
   if ($checkSetting) { print "cmd ---------------------------------------\n"; }
   my $cmd_hashs = $yaml->{"cmd"};
   for my $hash (sort keys %$cmd_hashs) {
@@ -70,28 +105,6 @@ sub read_yaml{
     if ($checkSetting) { print "$hash : $cmd_hashs->{$hash}\n"; }
   }
   $no = 0;
-
-  sub get_cno_from_cname($){
-    my $cname;
-    ($cname) = @_;
-    my $cno;
-    foreach $cno (@containers_nos){
-      if ($CONTAINERS[$cno] eq $cname){
-        return $cno;
-      }
-    }
-  }
-
-  sub get_cmdno_from_cmdName($){
-    my $cmd_name;
-    ($cmd_name) = @_;
-    my $cmno;
-    foreach $cmno (@cmd_nos){
-      if ($cmd_names[$cmno] eq $cmd_name){
-        return $cmno;
-      }
-    }
-  }
 
   if ($checkSetting) { print "using ------------------------------------\n"; }
   # @USING init
@@ -139,7 +152,8 @@ sub read_yaml{
   }
 }
 
-sub get_envStr{
+# write data to yml_info.pl.
+sub write_data{
   my @containers = split /\s+/, "@CONTAINERS";
   #print @containers;
   my $flg = 0;
@@ -171,16 +185,28 @@ sub get_envStr{
     if ($flg++ > 0){
       $cmd_str = $cmd_str . ", $cmd_names[$no]";
       $cn      = $cn      . ", $cmd_nos[$no]";
-      $cmd      = $cmd      . ", $CMD[$no]"
+      $cmd      = $cmd      . ", \"$CMD[$no]\""
     }else{
       $cmd_str = $cmd_str .  $cmd_names[$no];
-      $cmd = $cmd . $CMD[$no];
+      $cmd = $cmd . "\"$CMD[$no]\"";
       $cn = $cn . $cmd_nos[$no];
     }
   }
   $cmd = $cmd . ")";
   $cn = $cn . ")";
   $cmd_str = $cmd_str . ")";
+
+  # default
+  $flg = 0;
+  my $defa_str = "(";
+  for my $cno (@DEFAULT_CONTAINERS){
+    if ($flg++ > 0){
+      $defa_str = $defa_str . ", $cno";
+    }else{
+      $defa_str = $defa_str . $cno;
+    }
+  }
+  $defa_str = $defa_str .")";
 
 my $line = <<"EOS";
 #NOTE: don't config!
@@ -189,101 +215,80 @@ our \@_containers_nos = $conNos;
 our \@_CMD = $cmd;
 our \@_cmd_names = $cmd_str;  
 our \@_cmd_nos = $cn;
-our \@_USING = @USING;
-our \@_DEFAULT_CONTAINERS = @DEFAULT_CONTAINERS;
+our \@_USING = $using;
+our \@_DEFAULT_CONTAINERS =  $defa_str;
 1;
 EOS
-
   return $line;
 }
 
-sub write_env_to_yaml{
-  my $outputFile="YML_info.pl";
+sub write_pl{
   # make str.
-  my $line = get_envStr();
-  
+  my $line = write_data();
   print $line;
-  open (my $fh, ">", $outputFile) or die "$!"; 
-    print $fh $line;    
+  # write to info.pl
+  open (my $fh, ">", $infoFIle) or die "$!"; 
+  print $fh $line;    
   close ($fh);
 }
 
-sub read_env{
-  my $inputFile = "./YML_info.pl";
-  require($inputFile);
+sub read_pl{
+  require($infoFIle);
+  our @_CONTAINERS;
+  our @_containers_nos;
+  our @_CMD;
+  our @_cmd_names;
   our @_cmd_nos;
-  print "@_cmd_nos\n";  
+  our @_USING;
+  our @_DEFAULT_CONTAINERS;
+
   @CONTAINERS = @_CONTAINERS; #ALL CONTAINERS_NAME array.
   @containers_nos = @_containers_nos; #ALL CONTAINERS NOs, corrsponded @
   @CMD = @_CMD; # ALL COMMAND. be enable to serach cmd_no. 実際に実行されるcmd
-  my @cmd_names = (); # cmd_name (ex. json, syslog, .)
-  my @cmd_nos = (); #cmd_no array used to search command.
-  my @USING = (); # コンテナが使うコマンドの番号の配列(コンテナ番号の配列と対応している). cmd_no array that is enable to search container_no.
-  my @DEFAULT_CONTAINERS = (); #conteriner_no array.
-  
+  @cmd_names = @_cmd_names; # cmd_name (ex. json, syslog, .)
+  @cmd_nos = @_cmd_nos; #cmd_no array used to search command.
+  @USING = @_USING; # コンテナが使うコマンドの番号の配列(コンテナ番号の配列と対応している). cmd_no array that is enable to search container_no.
+  @DEFAULT_CONTAINERS = @_DEFAULT_CONTAINERS; #conteriner_no array.  
+  if($checkSetting){
+    print "@_cmd_nos\n";  
+  }
 }
 
 ###############################  MAIN ##################
-{ # parse cmd argument.
-  GetOptions (
-    # handle imgaes
-    'checkSetting' => \$checkSetting,
-    'default'      => \$default,
-    'setup'        => \$setup,
-    'exec'         => \$exec,
-  ) or pod2usage();
-}
-###############################  MAIN ##################
-
-# variable
 my $cname;
 my $cno;
 my $logStr;
 my $path_file; # this is ..../myscript/logs/#cname.log
-our @_cmd_nos;
 
-sub read_env{
-  my $inputFile = "./YML_info.pl";
-  require($inputFile);
-  our @_cmd_nos;
-  print "@_cmd_nos\n";  
-  
-
-my $cname;
-my $cno;
-my $logStr;
-
-my $path_file; # this is ..../myscript/logs/#cname.log
-
-
+my @toCall;
 sub main(){
-  print "\nmain\n";
-  ($cname) = $ARGV[0];
-  $cno = get_cno_from_cname($cname);
-  print "cno $cno : $cname\n";
-  $logStr = "EXEC: $CMD[$USING[$cno]] $CONTAINERS[$cno]\n";
-  print $logStr;
+  ($cno) = $ARGV[0];
+  print "cno $cno : $CONTAINERS[$cno]\n";
+  # set toCalls. #########
+  push(@toCall, $CMD[$USING[$cno]]); #command.
+  push(@toCall, $CONTAINERS[$cno]);  #conteiner_name.
+  if ($timestamp && $cmd_names[$cno] eq "json"){
+    push(@toCall, "-t")              #timestamp option.
+  }
+  # exec.
+  my $logs = `@toCall 2>&1`;
+  print "main: logs\n$logStr";
+  # return.
   return ($logStr, "gheajgjoo");
 }
 
 if ($setup){
   read_yaml();
   #yesorno();
-  write_env_to_yaml();
-}elsif ($checkSetting){
-  read_env();
+  if ($checkSetting){
+    read_pl();
+  }
+  write_pl();
+}
+if ($checkSetting){
+  read_pl();
 }
 if ($exec){
-  read_env();
-  writeEnv_from_yaml();
-}elsif ($checkSetting){
-	#read_env();
-}
-if ($exec){
+  read_pl();
   main();
 }
-
-sub test{
-  return "test";
-}
-

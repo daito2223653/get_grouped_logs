@@ -38,4 +38,15 @@ cmd : # log_type : 対応する物1つのログ出力コマンド
 optionss :
   timestamp : 
     json : -t  
-  
+# not used
+isEnable: 
+  - sw360
+  - sw360couchdb
+  - sw360postgresql
+  - daito_fossology
+  - test
+# not used
+logPath:
+  folder: ~/tmp/
+  path  : extension
+  isTimestamp : yes  
