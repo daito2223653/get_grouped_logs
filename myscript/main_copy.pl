@@ -1,18 +1,13 @@
 #!/usr/bin/env perl
 
 use Pod::Usage;
-
 use strict;
 use warnings;
-
 # symbol
 use Fcntl;
-
 use Getopt::Long qw(GetOptions);
 use Pod::Usage;
-
 use feature qw(say);
-
 ######################################################################################
 # NOTE: ?
 =head1 SYNOPSIS
@@ -43,8 +38,7 @@ use feature qw(say);
  ## $TARGET
     is the target file name of the $COMPORNENT's log. Default is $COMPORNET_{no}.log
 =cut
-
- ##############################################################################
+##############################################################################
 # read options
 my $timestamp = '';
 my $config  = '1';
@@ -62,25 +56,22 @@ my @containers_nos;# COMPORNENT_NO.
 my @CONTAINERS;# COMPORNENT_NAME.
 my @DEFAULT_CONTAINERS;# default containers.
 my @targets = (); # conteiners user select. 
-my $paths   = (); # path of logFile copied by this script.
+my @dists   = (); # path of logFile copied by this script.
 # info file.
 my $info_file = "./config_info.pl";
-# return log(string type) to call get_log.pl and conteniner_no as command argument.
-# log_folder/
-# defaults.
-my $log_folder = "~/tmp/";
-my $log_extension = ".log";
-
+# dist_folder 
+my $dist_folder = "~/tmp/";
+my $dist_extension = ".log";
 # greps
 my @greps = (); #
-# group.
+# groups.
 my $g_no = -1;
 my $g_name = "";
 my $group_folder;
 my $ginfo_file; # group info file.
 
 ##########################################################
-{ # parse config and read command line arguments
+{ # parse config and read command line arguments. 
   GetOptions (
     # handle imgaes
     'timestamp' => \$timestamp,
@@ -91,7 +82,7 @@ my $ginfo_file; # group info file.
     'html'     => \$html,
     'update=i' => \$update,
   ) or pod2usage();
-  
+
   # read setting.
   require($info_file);
   our @_CONTAINERS;
@@ -102,8 +93,9 @@ my $ginfo_file; # group info file.
   @DEFAULT_CONTAINERS = @_DEFAULT_CONTAINERS; #conteriner_no array.  
 }
 
-{ # utility
-  sub get_grep_patturn{ # get grep-patturns, it is gived as this-> ./main.pl error warn network connect GET
+
+{ # utility functions. get_grep_patturn(), yesno, get_targets_oneline, get_group_info
+  sub set_grep_patturn{ # get grep-patturns, it is gived as this-> ./main.pl error warn network connect GET
     # --interactive : you can type grep_patturns each compornents. when greps gived as cmd_argument, all compornents target.
     my $grep = "";
     foreach my $arg (@ARGV){
@@ -136,19 +128,7 @@ my $ginfo_file; # group info file.
     return($default);
   }
 
-  sub get_yesOrNo{
-    my $isyes;
-    ($isyes) = @_;
-
-    if($isyes){
-      return "yes";
-    }
-    else{
-      return "no";
-    }
-  }
-
-  sub get_oneStr_targets(){
+  sub get_targets_oneline(){
     my $str = "";
     foreach my $cno (@targets){
       $str = $str . "$CONTAINERS[$cno] ";
@@ -156,7 +136,7 @@ my $ginfo_file; # group info file.
     return $str;
   }
 
-  sub get_group_info{ # parse argument. argument is groupNo.
+  sub get_group_info($){ # parse argument. argument is groupNo.
     my $group_no;
     ($group_no) = @_;
     $group_folder = "./html_script/html_logs/group$group_no/";
@@ -181,70 +161,111 @@ my $ginfo_file; # group info file.
   }
 }
 
-if($debug) {
-  # updata.
+{ #set targets, grep-patturns, group_info and dist_paths. 
+
   if ($update){
+    # set group info.
     if ($interactive){
       say STDERR "sorry..., This script isn't covered --update option and --interactive option is selected both... pls improve...";
       exit;
     }
-    $g_no = $update;
-    say STDERR "  updates: ";
+    else{   # get and set group info.
+      $g_no = $update;
+      my $ts;
+      eval `./html_script/get_group_info.pl`;
+      die $@ if $@;
+      ($g_name, $greps[0], $ts) = get_group_info($g_no);
+      @targets = split(/ /, $ts);
+    }
+  }else{
+    # set targets.
+    if ($interactive){
+      my $yesno = yesno("   TARGET SELECT FROM: y-> ALL CONTAINER / no-> [DEFAULTS]");
+      if ($yesno){ 
+        # from All containers.
+        for my $cno (@containers_nos){
+          if (yesno("    $CONTAINERS[$cno]")){
+              push(@targets, $cno);
+          }
+        }
+      }
+      else{
+        # from defaults.
+        for my $cno (@DEFAULT_CONTAINERS){
+          if (yesno("    $CONTAINERS[$cno]")){
+              push(@targets, $cno);
+          }
+        }
+      }
+    }else{
+      # NOTE: NO FURTURED.
+      @targets = @DEFAULT_CONTAINERS;
+    }
+    # set greps.
+    set_grep_patturn();
+  }
+
+  if ($save){
+    # set dist path.
+    my $path = '';
+    # set file_path
+    for my $cno (@targets){
+      $path = "$dist_folder" . "$CONTAINERS[$cno]" . "$dist_extension";
+      push(@dists, $path);
+    }
+  }
+}
+
+# debug.
+if($debug) {
+  if($update){
+    # updata.
     say STDERR "    groupNOs: $g_no";
     say STDERR "    [INFO]  GET group_info in $g_no.";
-    my $ts;
-    eval `./html_script/get_group_info.pl`;
-    die $@ if $@;
-    # get group info.
-    ($g_name, $greps[0], $ts) = get_group_info($g_no);
-    @targets = split(/ /, $ts);
     say STDERR "      \$group_name =  $g_name";
     say STDERR "      \$greps      =  $greps[0]";
-    say STDERR "      \@targets    =  @targets"; 
+    say STDERR "      \@targets    =  " . "@targets"; 
   }
   else{
+    # without update. print targets.
     say STDERR "  variables: ";
-    # set targets.
-    for my $cno (@DEFAULT_CONTAINERS){
-      if($interactive){
-        if (yesno("    $CONTAINERS[$cno]")){
-          push(@targets, $cno);
-        }
-      }else{
-        push(@targets, $cno);
-      }
-    }
-    # print conteiners user select.
-    for my $cno (@DEFAULT_CONTAINERS){
+    for my $cno (@targets){
       my $yes_or_no = "";
       if (grep { $_ eq $cno} @targets){ 
-        # targets == conteriner no in DEFAULT_CONTAINERS.
         $yes_or_no = "yes";
       }else{
         $yes_or_no = "no";
       }
       say STDERR "    $CONTAINERS[$cno]     = $yes_or_no";
     }
-    say STDERR "    \$debug      = $debug";
   }
-  # print paths.
+  say STDERR "    \$debug      = $debug";
+
   if ($save){
-    say STDERR "  Log_path: ";
-    say STDERR "    \$folder          = $log_folder";
-    foreach my $cno (@DEFAULT_CONTAINERS){
-      say STDERR "    \$$CONTAINERS[$cno]_path      = `$CONTAINERS[$cno].$log_extension"; }
+    # print paths.
+    say STDERR "  Distination: ";
+    say STDERR "    \$folder          = $dist_folder";
+    for (my $i = 0; $i <  $#targets; $i++){
+      say STDERR "    $CONTAINERS[$targets[$i]]_path      = `$dists[$i]"; 
+    }
   }
+
+  if (!$update){
+    say STDERR "  greps:";
+    say STDERR "    patturn => @greps";
+    say STDERR "    targets => " . get_targets_oneline();
+  }
+  say STDERR ""; 
+  my $isYes = yesno("are you ok ?");
+  if(!$isYes){ exit }
 }
 
-{ # get_log(): get_log from @_(cname),
+{ # main function.
+  # get_log(): get_log from @_(cname),
   # save()   : And save to @paths when user select --save option,
   # look()   : And look,  when user select --look option.
   # update() : 
 
-  # set ENV
-  ## cmd
-  my @cmd = ("docker", "logs");    
-  my @toCall; push(@toCall, @cmd); # cmd and arguments
   ## compornent_name
   my $cname;                  
   my $cno;
@@ -297,8 +318,8 @@ sub main{ # exec ALL cmd, it is based on option.
   my $count = 0; #exec count.
   my $cname; # compornent_name # = $project_name . "_sw360";
   my $cno;   # compornent_no.
-  
-  my $arg = ""; # for generate_html.pl 
+  my $arg = ""; # aruguments for --html and --update options, handed over to  other program.
+  my $logStr = "";  # get_log's result.
 
   say STDERR "------ [main] ------";
   foreach my $cno (@targets) {  
@@ -308,16 +329,26 @@ sub main{ # exec ALL cmd, it is based on option.
 
     # get_log. $res
     say STDERR "  \$logStr =  ./get_log.pl $cno --exec";
-    my $logStr = get_log($cno, $cname);
+    $logStr = get_log($cno, $cname);
 
     if ($update){
       say STDERR "  ---[update]---";
-      say STDERR "   exec: \$logstr | , update_log(gno=$g_no, cno=$cno)";
-      my $arg = "$g_no" . " " . "$cno";
+      say STDERR "   exec: \$logstr | , make_modifiedLog.pl --update (gno=$g_no, cno=$cno)";
+      # make_modifiedLog.pl --update
+      $arg = "$g_no" . " " . "$cno " . $greps[0];
       open(my $fh, "| ./html_script/make_modifiedLog.pl --update  $arg")
         or die "Couldn't open less cmd : $!";
       print $fh "$logStr";
       close($fh);
+      $arg = "$g_no $greps[0]";
+      # generate_html.pl --update
+      if ($count == ($#targets+1)){
+        say STDERR   " [INFO] EXEC generate_html --update(arg:$arg)";
+	      # arg : cno anything greps cno2 anything greps2...
+        system(`./html_script/generate_html.pl --update $arg`) == 0
+		      or die "Couldn't system ./html_script/generate_html.pl --update: $!";
+      }
+
     }
 
     if ($lookonly){
@@ -328,19 +359,12 @@ sub main{ # exec ALL cmd, it is based on option.
     if ($save){
       say STDERR "  ---[save]---";
       say STDERR "   exec:save(\$path, \$logStr)"; 
-      my $path = '';
-      # set file_path
-      $path = "$log_folder" . "$CONTAINERS[$cno].$log_extension";
-      save($path, $logStr);
+      save($dists[$count-1], $logStr);
     }
     if ($html){
       say STDERR "  ---[html]---";
-      # if $interactive say STDERR "   exec: \$logStr | ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[$count-1])"; # modify_log.pl. and generate_html.
       say STDERR "   [INFO] EXEC \$logStr | ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[0])"; # modify_log.pl. and generate_html.
-      #if ($interactive){ my $grep = $greps[$count-1]; }
-      #else {  
       my $grep = $greps[0];
-      #}
       open(my $fh, "| ./html_script/make_modifiedLog.pl  $cno $grep")
         or die "Couldn't open less cmd : $!";
       print $fh "$logStr";
@@ -351,14 +375,13 @@ sub main{ # exec ALL cmd, it is based on option.
         say STDERR   " [INFO] EXEC generate_html (arg:$arg)";
 	      # arg : cno anything greps cno2 anything greps2...
         system(`./html_script/generate_html.pl $arg`) == 0
-		or die " [ERROR]Couldn't system ./html_script/generate_html.pl: $!";
+		      or die " [ERROR]Couldn't system ./html_script/generate_html.pl: $!";
       }
     }
     say STDERR "   [INFO] CMD ok! \n";
   }
   return 1;
 }
-
 
 # main -----------
 if (main()){

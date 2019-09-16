@@ -1,79 +1,134 @@
 #!/usr/bin/env perl
 
-use Pod::Usage;
+# cmd arg is gived (--html):  c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN} 
+# cmd arg is gived (--update [no]):  c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN} 
 
+# c_no: conteiner no.
+# c_name: conteinre name.
+# g_no : group no.
+
+use Pod::Usage;
 use strict;
 use warnings;
-
 # symbol
 use Fcntl;
-
 use Getopt::Long qw(GetOptions);
 use Pod::Usage;
-
 # use for time stamp
 use Time::Piece;
-
 use File::Copy;
 
 # files
 my $info_file  = "./html_script/info.pl";
 my $main_file  = "./html_script/main.html"; 
 my $menus_file = "./html_script/menus.html"; 
+my $config_file = "./config_info.pl";
 
-our @datas = (); # it is made from cmd arguments .
-# cmd arg is gived like c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN} 
-my $sum_datas = 0; # sum of datas. ()
-my $data_index = 0; # data index
-my $group_no;
-my $group_name;
+my @datas = (); # it is made from cmd arguments .
+my $sum_datas = 0; # sum of datas. 
 my $time_stamp_day;
 my $time_stamp_time;
 
-# is used temporatory in some functions.
-my $target ="";    
-my $write_data = "";
-my $option = "";
+# group info. used --update option selected
+my $group_no;      # group no 
+my $group_name;    # group name,
 
-# NOTE: get COMPORNENTS config
-my @COMPORNENTS = ("sw360", "couchdb", "fossology", "postgres", "nginx", "csv_search");
+# config info.
+my @containers_nos;# COMPORNENT_NO.
+my @CONTAINERS;# COMPORNENT_NAME.
+
+# option.
+my $update = "";
 
 # prottype 
 sub get_new_menu($$$);
 
-{ # parse cmd argument
+sub get_group_info($){ # parse argument. argument is groupNo.
+  my $group_no;
+  ($group_no) = @_;
+  my $group_folder = "./html_script/html_logs/group$group_no/";
+  my $ginfo_file    = "$group_folder" . "info.pl";
+
+  my $grs;
+  my $g_name;
+  my $ts;
+  if (-e $ginfo_file){
+    say STDERR "    [INFO]read info file from: $ginfo_file";
+    my $info = do($ginfo_file);
+      die "Error parsing $ginfo_file: $@" if $@;
+      die "Error reading $ginfo_file: $!" unless defined $info;
+    $g_name = $info -> {'groupName'}   // $g_name;
+    $grs      = $info -> {'greps'}         // $grs;
+    $ts = $info -> {'targetNos'};
+  }else{
+    say STDERR "    [ERROR]  not exist $ginfo_file";
+    exit;
+  }
+  return ($g_name, $grs, $ts);
+}
+
+{ # parse cmd argument and option.  
+  # read setting.
+  require($info_file);
+  our @_CONTAINERS;
+  our @_containers_nos;
+  @CONTAINERS = @_CONTAINERS; #ALL CONTAINERS_NAME array.
+  @containers_nos = @_containers_nos; #ALL CONTAINERS NOs, corrsponded @
+
+  GetOptions (
+    'update=i' => \$update,
+  );
+
+  # set datas.
+  my $greps = "";
+  my @targets;
   my $index = 0; # argindex
   my @data = ();
-
   my $cno;
   my $cname;
   my $anything;
-  my $greps = ""; 
-  my $grep = "";
-
-  while ($index != ($#ARGV + 1) ){ # ARGV  = c_no1 c_name1 anything {greps1} c_no2 anithing {grep3} ... c_noN c_nameN anythingN {grepN}
-    $cno   = $ARGV[$index];     $index = $index+1;
-    $anything = $ARGV[$index]; $index = $index+1;
-    $greps = "";
-    while ($index != ($#ARGV + 1) && $ARGV[$index] !~ /^[0-9]$/){
-      $greps = "$greps" . "$ARGV[$index] ";     
-      $index = $index+1;
+  # from group info.
+  if ($update){
+    $group_no = $update;
+    my $ts;
+    # windows
+    #eval `./html_script/get_group_info.pl`;
+    #die $@ if $@;
+    ($group_name, $greps, $ts) = get_group_info($group_no);
+    @targets = split(/ /, $ts);
+    foreach $cno (@targets){
+      @data = ($cno, $cname, $anything, $greps);
+      $datas[$sum_datas] = [ @data ]; 
+      $sum_datas = $sum_datas + 1;
     }
-    @data = ($cno, $cname, $anything, $greps);
-    $datas[$sum_datas] = [ @data ];     
-    $sum_datas = $sum_datas + 1;
   }
-  say STDERR "  sum_datas : $sum_datas";
-} 
-
-{ # parse info.pl
-  if (-e $info_file){
-    my $info=do($info_file);
-        die "Error parsing $info_file: $@" if $@;
-        die "Error reading $info_file: $!" unless defined $info;
-    $group_no = $info -> {'nextGroupNo'}   // $group_no;
-    say STDERR "  log group NO: $group_no";
+  else{
+    # from arguments.
+    while ($index != ($#ARGV + 1) ){ # ARGV  = c_no1 anything {greps1} c_no2 anithing {grep3} ... c_noN anythingN {grepN}
+      $cno   = $ARGV[$index];     $index = $index+1;
+      $anything = $ARGV[$index]; $index = $index+1;
+      while ($index != ($#ARGV + 1) && $ARGV[$index] !~ /^[0-9]$/){
+        # untill number come.
+        $greps = "$greps" . "$ARGV[$index] ";     
+        $index = $index+1;
+      }
+      @data = ($cno, $cname, $anything, $greps);
+      $datas[$sum_datas] = [ @data ];     
+      $sum_datas = $sum_datas + 1;
+    }
+      # parse info.pl (get and set next group no.)
+    if (-e $info_file){
+      my $info=do($info_file);
+      die "Error parsing $info_file: $@" if $@;
+      die "Error reading $info_file: $!" unless defined $info;
+      $group_no = $info -> {'nextGroupNo'}   // $group_no;
+      $group_name = "group" . "$group_no";
+    }
   }
+  say STDERR "  log group N0: $group_no";
+  say STDERR "  sum_datas : $sum_datas"; 
+  say STDERR "  group name: $group_name";
+  say STDERR "  greps     : $datas[0][0]";
 }
 
 sub get_time_stamp(){ # return now-time_stamp_daya and  now-time_stamp_time.
@@ -84,7 +139,6 @@ sub get_time_stamp(){ # return now-time_stamp_daya and  now-time_stamp_time.
   my $time_stamp_day  = "$year" . "/" . "$mon" . "/" . "$mday" . "(" . "$wdays[$wday]" . ")";
   my $time_stamp_time = "$hour" . ":" . "$min" . ":" ."$sec" ;
   say STDERR "  timestamp : $time_stamp_day  $time_stamp_time";
-
   return ($time_stamp_day, $time_stamp_time);
 }
 
@@ -126,7 +180,7 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
   my $opt = "";
   my $cno = 0;
   for (my $i = 0; $i < $sum_datas; $i++){
-    $cname  = $COMPORNENTS[$datas[$i][0]];
+    $cname  = $CONTAINERS[$datas[$i][0]];
     $opt    = $datas[$i][3];
     $cno    = $datas[$i][0];
     $result = $result . "$spaces<li><a href=\"./html_logs/$group_name/$group_name-$cno.html\" target=group>$cname</a> $opt</li>\n";
@@ -142,6 +196,14 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
 sub update_menu_page{
   my @lines;
 
+  my $modify_lineno;
+  if ($update){
+    $modify_lineno = $group_no;
+  }
+  else{
+    $modify_lineno = "next";
+  }
+
   # read All lines.
   open(my $menus_fh, "<", $menus_file)
     or die "Cannot open $menus_file: $!";
@@ -154,12 +216,11 @@ sub update_menu_page{
   # modify. 
   foreach my $line (@lines){  
     # patturn match.
-    if ($line !~ /<!--next-->/){
+    if ($line !~ /<!--$modify_lineno-->/){
       print $menus_fh2 "$line"; 
     }
     else{
-      # if <!--next-->
-      $group_name = "group" . "$group_no";
+      # if <!--$modify_lineno-->
       # get timeStamp 
       ($time_stamp_day, $time_stamp_time) = get_time_stamp();
       # get option 
@@ -183,74 +244,59 @@ sub update_info_file{
 }
 
 update_menu_page();
-update_info_file();
-
-#$HtmlPackage::datas = \@datas;
-#$HtmlPackage::sum_datas = $sum_datas;
-
-# 変数の共有 ???
-#system("echo_make_.pl @ARGV $") == 0 or die "Can't execute echo_make_logs_GUI.pl: $!";
-
-# --- ??? 
-#my @test = $HtmlPackage::datas;
-#my @data1 = $test[0][0][0];
-#my @data2 = $test[0][0][1];
-
-#my $target01 = $data1[0];
-#print "test: $target01 ";
-
-### make_logs_GUI_page ### 変数の共有ができなかったから、ここで直接打つ, 本来なら -> make_logs_GUI_page　へ
-# set file_name.
-
-my $logs_gui_folder = "$group_name";
-my $logs_gui_HTML = "$group_name" . ".html";
-#print "$logs_gui_folder\n";
-#print "$logs_gui_HTML\n";
-mkdir "./html_script/html_logs/" . "$logs_gui_folder" # NOTE: In windows, can't do
-  or die "$logs_gui_folder is not maked error at <> : $!";
-
-sub make_log_page{
-  my $log_page_file;
-  my $index;
-  my $cno;
-  my $name;
-  ($name, $cno) = @_;
-  $log_page_file = "./html_script/html_logs/$group_name/" . "$name" . ".html";
-
-  my $tmp_file = "./tmp/tmp_" . "$cno" . ".html";
-  move($tmp_file, $log_page_file) or die "Can't move \"$tmp_file\" to \"$log_page_file\": $!";
+if (!$update){ 
+  update_info_file();
 }
 
-sub make_logs_GUI_page{
+my $log_group_folder = "./html_script/html_logs/group$group_no/";
+my $log_group_home = "group$group_no" . ".html";
+print "$log_group_folder\n";
+print "$log_group_home\n";
+mkdir "./html_script/html_logs/" . "$log_group_folder" # NOTE: In windows, can't do
+  or die "$log_group_folder is not maked error at <> : $!";
+
+sub make_log_frome{
+  my $log_frame_file;
+  my $index;
+  my $cno;
+  my $franme_name;
+  ($franme_name, $cno) = @_;
+  $log_frame_file = "$log_group_folder" . "$franme_name" . ".html";
+
+  my $tmp_file = "./tmp_" . "$cno" . ".html";
+  move($tmp_file, $log_frame_file) or die "Can't move \"$tmp_file\" to \"$log_frame_file\": $!";
+}
+
+sub make_log_group_home{
   my $space = " ";
   my $spaces;
-  open my $fh, ">", "./html_script/html_logs/$group_name/" ."$logs_gui_HTML"  # NOTE: create it  to logsFoder.
-    or die "./html_script/html_logs/$logs_gui_HTML を書き込みモードでオープンすることができません。: $!";
-    print $fh "<!DOCTYPE html>\n";
-    print $fh "\n";
-    print $fh "<html>\n";
-    $spaces = $space x 4;
-    my $cno;
-    my $cname;
-    my $opt;
-    my $name;
-    my $result;
-    print $fh "$spaces<h1>$group_name</h1>\n";
-    for (my $i = 0; $i < $sum_datas; $i++){
-      $cno   = $datas[$i][0]; 
-      $cname = $COMPORNENTS[$cno];
-      $opt    = $datas[$i][3];
-      # "$spaces<li>$cname $opt</li>\n";
-      $name = "$group_name" . "-" . "$cno";
-      print $fh "$space<font color=\"green\" size=\"4\">$cname:option{$opt}</font><br>\n";
-      print $fh "$spaces<iframe src=\"$name.html\" width=1100 height=400></iframe>\n";
-      make_log_page($name, $cno);
-      say STDERR "  maked log page [$cname, $opt]";
-    }
-    say STDERR "  updateed logs page!!";
-    print $fh "</html>\n";
+  my $cno;
+  my $cname;
+  my $opt;
+  my $franme_name;
+  my $result;
+ 
+  open my $fh, ">", "$log_group_folder" ."$log_group_home"  # NOTE: create it  to logsFoder.
+    or die "./html_script/html_logs/$log_group_home を書き込みモードでオープンすることができません。: $!";
+  print $fh "<!DOCTYPE html>\n";
+  print $fh "\n";
+  print $fh "<html>\n";
+  $spaces = $space x 4;
+  print $fh "$spaces<h1>$group_name</h1>\n";
+  for (my $i = 0; $i < $sum_datas; $i++){
+    $cno   = $datas[$i][0]; 
+    $cname = $CONTAINERS[$cno];
+    $opt    = $datas[$i][3]; # greps
+    # "$spaces<li>$cname $opt</li>\n";
+    $franme_name = "group$group_no" . "-" . "$cno";
+    print $fh "$space<font color=\"green\" size=\"4\">$cname:option{$opt}</font><br>\n";
+    print $fh "$spaces<iframe src=\"$franme_name.html\" width=1100 height=400></iframe>\n";
+    make_log_page($franme_name, $cno);
+    say STDERR "  maked log page [$cname, $opt]";
+  }
+  say STDERR "  updateed logs page!!";
+  print $fh "</html>\n";
   close $fh;
 }
 
-
-make_logs_GUI_page();
+make_log_group_home();

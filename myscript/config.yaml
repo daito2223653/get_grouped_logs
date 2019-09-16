@@ -45,8 +45,9 @@ isEnable:
   - sw360postgresql
   - daito_fossology
   - test
+  
 # not used
-logPath:
+destination:
   folder: ~/tmp/
-  path  : extension
-  isTimestamp : yes  
+  path  : .log
+  isTimestamp : no

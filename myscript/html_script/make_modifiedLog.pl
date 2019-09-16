@@ -1,16 +1,13 @@
 #!/usr/bin/env perl
 
 use Pod::Usage;
-
 use strict;
 use warnings;
-
 # file copy
 use File::Copy qw/copy move/;
 # symbol
 use Fcntl;
 use Getopt::Long qw(GetOptions);
-
 
 # tmp_file and maked tmp_HTML_file.
 my $tmp_HTML = ""; 
@@ -52,9 +49,21 @@ my $cno = -1;
 
 # add other_patturn, from cmd arguments. 
 # NOTE: print error, when user put more 3 arguments. ;
-for ( my $i = 1; $i <= $#ARGV; $i++ ) { 
-  push(@patturns, $ARGV[$i]);
+
+sub push_greps_fromARGV(){
+  if (!$update){ 
+    for ( my $i = 1; $i <= $#ARGV; $i++ ) { 
+      push(@patturns, $ARGV[$i]);
+    }
+  }
+  else{
+    for (my $i = 2; $i <= $#ARGV; $i++){
+      push(@patturns, $ARGV[$i]);
+    }
+  }
 }
+
+# debug
 print "     All_greps : @patturns\n";
 print "     colors: @colors\n";
 
@@ -65,7 +74,7 @@ sub modify_log{  #modified log and make ./tmp/tmp_$cno.html
   # cno
   my $cno = -1;
   ($cno) = $ARGV[0];
-  $tmp_HTML = "./tmp/" . "tmp_" . "$cno" . ".html";
+  $tmp_HTML = "./tmp_" . "$cno" . ".html";
   # open.
   say STDERR "     make : temporatory html made from log. => $tmp_HTML";
   open(my $fh, ">", $tmp_HTML)
@@ -133,6 +142,7 @@ sub update_log{
   say STDERR "     update!!";
 }
 
+push_greps_fromARGV();
 if (!$update){
   modify_log();
 }
