@@ -41,7 +41,7 @@ my @CONTAINERS;# COMPORNENT_NAME.
 my $update = "";
 
 # prottype 
-sub get_new_menu($$$);
+sub get_new_menu($$);
 
 sub get_group_info($){ # parse argument. argument is groupNo.
   my $group_no;
@@ -69,7 +69,7 @@ sub get_group_info($){ # parse argument. argument is groupNo.
 
 { # parse cmd argument and option.  
   # read setting.
-  require($info_file);
+  require($config_file);
   our @_CONTAINERS;
   our @_containers_nos;
   @CONTAINERS = @_CONTAINERS; #ALL CONTAINERS_NAME array.
@@ -129,6 +129,7 @@ sub get_group_info($){ # parse argument. argument is groupNo.
   say STDERR "  sum_datas : $sum_datas"; 
   say STDERR "  group name: $group_name";
   say STDERR "  greps     : $datas[0][0]";
+
 }
 
 sub get_time_stamp(){ # return now-time_stamp_daya and  now-time_stamp_time.
@@ -158,11 +159,11 @@ sub read_html(){
     return (@lines);
 }
 
-sub get_new_menu($$$){ # return new_menu.html (string of html type).
-  my $group_name;
+sub get_new_menu($$){ # return new_menu.html (string of html type).
+  my $group_home;
   my $time_stamp_day;
   my $time_stamp_time;
-  ($group_name, $time_stamp_day, $time_stamp_time) = @_;
+  ($time_stamp_day, $time_stamp_time) = @_;
   my $result;
 
   my $space = " ";
@@ -171,8 +172,8 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
 
   # set group link. 
   $result = "$spaces<!--$group_no-->\n";
-  $result = $result . "$spaces<li><a href=\"./html_logs/$group_name/$group_name.html\" target=group>$group_name $time_stamp_day $time_stamp_time</a></li>\n";
-  $result = $result . "$spaces<ul class=\"$group_name\">\n";
+  $result = $result . "$spaces<li><a href=\"./html_logs/group$group_no/group$group_no.html\" target=group>[NO:$group_no]$group_name $time_stamp_day $time_stamp_time</a></li>\n";
+  $result = $result . "$spaces<ul class=\"group$group_no\">\n";
   # set targets list with each options.
   $spaces = $space x 16;
   # set each log link.
@@ -180,10 +181,11 @@ sub get_new_menu($$$){ # return new_menu.html (string of html type).
   my $opt = "";
   my $cno = 0;
   for (my $i = 0; $i < $sum_datas; $i++){
-    $cname  = $CONTAINERS[$datas[$i][0]];
+    print "$cname \n"; # NOTE
     $opt    = $datas[$i][3];
     $cno    = $datas[$i][0];
-    $result = $result . "$spaces<li><a href=\"./html_logs/$group_name/$group_name-$cno.html\" target=group>$cname</a> $opt</li>\n";
+    $cname  = $CONTAINERS[$cno];
+    $result = $result . "$spaces<li><a href=\"./html_logs/group$group_no/group$group_no.html\" target=group>$cname</a> $opt</li>\n";
   }
   $spaces = $space x 12;
   $result = $result . "$spaces</ul>\n";	
@@ -223,9 +225,8 @@ sub update_menu_page{
       # if <!--$modify_lineno-->
       # get timeStamp 
       ($time_stamp_day, $time_stamp_time) = get_time_stamp();
-      # get option 
-      # print 
-      my $new_menu = get_new_menu($group_name, $time_stamp_day, $time_stamp_time);
+      # print. get new menu.
+      my $new_menu = get_new_menu($time_stamp_day, $time_stamp_time);
       print $menus_fh2 "$new_menu";
     }
   }
@@ -255,7 +256,7 @@ print "$log_group_home\n";
 mkdir "./html_script/html_logs/" . "$log_group_folder" # NOTE: In windows, can't do
   or die "$log_group_folder is not maked error at <> : $!";
 
-sub make_log_frome{
+sub make_log_frame{
   my $log_frame_file;
   my $index;
   my $cno;
@@ -291,7 +292,7 @@ sub make_log_group_home{
     $franme_name = "group$group_no" . "-" . "$cno";
     print $fh "$space<font color=\"green\" size=\"4\">$cname:option{$opt}</font><br>\n";
     print $fh "$spaces<iframe src=\"$franme_name.html\" width=1100 height=400></iframe>\n";
-    make_log_page($franme_name, $cno);
+    make_log_frame($franme_name, $cno);
     say STDERR "  maked log page [$cname, $opt]";
   }
   say STDERR "  updateed logs page!!";
@@ -299,4 +300,32 @@ sub make_log_group_home{
   close $fh;
 }
 
+sub make_group_info(){
+  my $log_group_folder = "./html_script/html_logs/group$group_no/";
+  my $group_info_file = $log_group_folder . "info.pl";
+  my $cno;
+
+  open(my $fh, ">", $group_info_file)
+  or die "Cannot open $group_info_file: $!";
+  my @targets = ();
+  for (my $i = 0; $i < $sum_datas; $i++){
+    $cno   = $datas[$i][0]; 
+    push(@targets, $cno);
+  }
+my $line = <<"EOS";
+#NOTE: don't config!
+{
+groupName => "$group_name",
+greps => "$datas[0][3]",
+targetNos => "@targets",
+updateInterval => "",
+}
+EOS
+  return $line;
+}
+
 make_log_group_home();
+
+if (!$update){
+  make_group_info();
+}

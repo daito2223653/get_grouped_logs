@@ -7,7 +7,6 @@ defaults: #pls type complite name
 
 using :
   json: 
-    - sw360_dev_sw360
     - sw360_dev_sw360couchdb
     - sw360_dev_sw360postgresql
     - sw360_dev_sw360nginx
@@ -16,6 +15,8 @@ using :
     - daito_fossology  
   journald:
     - test
+  error:
+    - sw360_dev_sw360
 
 containers: 
   sw360_dev: 
@@ -33,6 +34,7 @@ cmd : # log_type : 対応する物1つのログ出力コマンド
   json : docker logs #container
   syslog : cat /var/log/message grep # container_name
   journald : jounalctl -l --no-paper -u # container_name
+  error     : docker logs [target] | grep -i ERROR 
 
 # not used
 optionss :

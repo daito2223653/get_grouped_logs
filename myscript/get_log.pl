@@ -225,7 +225,9 @@ EOS
 sub write_pl{
   # make str.
   my $line = write_data();
-  print $line;
+  if($checkSetting){
+    print $line;
+  }
   # write to info.pl
   open (my $fh, ">", $infoFIle) or die "$!"; 
   print $fh $line;    
@@ -250,7 +252,14 @@ sub read_pl{
   @USING = @_USING; # コンテナが使うコマンドの番号の配列(コンテナ番号の配列と対応している). cmd_no array that is enable to search container_no.
   @DEFAULT_CONTAINERS = @_DEFAULT_CONTAINERS; #conteriner_no array.  
   if($checkSetting){
-    print "@_cmd_nos\n";  
+    print "\n";
+    print "cmd_nos => @cmd_nos\n";  
+    print "cmd     => @CMD\n";
+    print "cmd names => @cmd_names\n";
+    print "conteiner_no => @containers_nos\n";
+    print "conteiners => @CONTAINERS \n";
+    print "USING       => @USING\n";
+    print "defaults    => @DEFAULT_CONTAINERS";
   }
 }
 
@@ -263,29 +272,38 @@ my $path_file; # this is ..../myscript/logs/#cname.log
 my @toCall;
 sub main(){
   ($cno) = $ARGV[0];
-  print "cno $cno : $CONTAINERS[$cno]\n";
   # set toCalls. #########
-  push(@toCall, $CMD[$USING[$cno]]); #command.
-  push(@toCall, $CONTAINERS[$cno]);  #conteiner_name.
+  my $command ="";
+  $command = "$CMD[$USING[$cno]]" ;#. "$CONTAINERS[$cno]";
+  if ($command =~ /\[target\]/){
+    print "test\n";
+    $command =~ s/\[target\]/$CONTAINERS[$cno]/;
+    push(@toCall, $command);
+  }
+  else {
+    push(@toCall, $CMD[$USING[$cno]]); #command.
+    push(@toCall, $CONTAINERS[$cno]);  #conteiner_name.
+  }
   if ($timestamp && $cmd_names[$cno] eq "json"){
     push(@toCall, "-t")              #timestamp option.
   }
-  # exec.
-  my $logs = `@toCall 2>&1`;
-  print "main: logs\n$logStr";
+  # exec. 
+  # debug
+  my $call = "echo test";
+  say STDERR "   at get_log.pl--- toCall: \"@toCall.\"";
+  my $logStr = `$call`;
+
+  say STDERR  "   main: logs\n$logStr";
   # return.
-  return ($logStr, "gheajgjoo");
+  return $logStr;
 }
 
 if ($setup){
   read_yaml();
   #yesorno();
-  if ($checkSetting){
-    read_pl();
-  }
   write_pl();
 }
-if ($checkSetting){
+elsif ($checkSetting){
   read_pl();
 }
 if ($exec){

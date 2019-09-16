@@ -308,7 +308,7 @@ if($debug) {
       return `./get_log.pl $cno --exec --timestamp`;
     }
     else{
-      return `./get_log.pl $cno --exec`;
+      return `get_log.pl $cno --exec`;
     }
   }
 }
@@ -325,11 +325,12 @@ sub main{ # exec ALL cmd, it is based on option.
   foreach my $cno (@targets) {  
     $count = $count+1;
     $cname = $CONTAINERS[$cno];
-    say STDERR "[COMORNENT]-$cname, greps-$greps[0]      :$count";
+    say STDERR "[COMORNENT] NO:@containers_nos[$cno] NAME: $cname GREPS: $greps[0]       :$count ----------------";
 
     # get_log. $res
     say STDERR "  \$logStr =  ./get_log.pl $cno --exec";
     $logStr = get_log($cno, $cname);
+    say STDERR "  \$logStr =  $logStr";
 
     if ($update){
       say STDERR "  ---[update]---";
@@ -363,18 +364,18 @@ sub main{ # exec ALL cmd, it is based on option.
     }
     if ($html){
       say STDERR "  ---[html]---";
-      say STDERR "   [INFO] EXEC \$logStr | ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[0])"; # modify_log.pl. and generate_html.
+      say STDERR "   [INFO] EXEC \$logStr | perl ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[0])"; # modify_log.pl. and generate_html.
       my $grep = $greps[0];
-      open(my $fh, "| ./html_script/make_modifiedLog.pl  $cno $grep")
+      open(my $fh, "| perl ./html_script/make_modifiedLog.pl  $cno $grep")
         or die "Couldn't open less cmd : $!";
       print $fh "$logStr";
       close($fh);
 
       $arg = $arg ."$cno " . "none " . "$greps[0] ";
       if ($count == ($#targets+1)){
-        say STDERR   " [INFO] EXEC generate_html (arg:$arg)";
+        say STDERR   " [INFO] EXEC perl generate_html (arg:$arg)";
 	      # arg : cno anything greps cno2 anything greps2...
-        system(`./html_script/generate_html.pl $arg`) == 0
+        system(`perl ./html_script/generate_html.pl $arg`) == 0
 		      or die " [ERROR]Couldn't system ./html_script/generate_html.pl: $!";
       }
     }

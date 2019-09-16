@@ -14,7 +14,7 @@ my $tmp_HTML = "";
 my $index = 0;
 
 # paturn match
-# NOTE_: set patturns from config.
+# NOTE_: set patturns from config.  
 my $err = "Error";
 my $err2 = "ERROR";
 my $err3 = "error";
