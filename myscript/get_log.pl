@@ -276,7 +276,6 @@ sub main(){
   my $command ="";
   $command = "$CMD[$USING[$cno]]" ;#. "$CONTAINERS[$cno]";
   if ($command =~ /\[target\]/){
-    print "test\n";
     $command =~ s/\[target\]/$CONTAINERS[$cno]/;
     push(@toCall, $command);
   }
@@ -288,12 +287,9 @@ sub main(){
     push(@toCall, "-t")              #timestamp option.
   }
   # exec. 
-  # debug
-  my $call = "echo test";
-  say STDERR "   at get_log.pl--- toCall: \"@toCall.\"";
-  my $logStr = `$call`;
+  print  "  # at get_log.pl--- toCall: \"@toCall.\" !";
+  my $logStr = `@toCall 2>&1`;
 
-  say STDERR  "   main: logs\n$logStr";
   # return.
   return $logStr;
 }

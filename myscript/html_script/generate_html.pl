@@ -253,7 +253,7 @@ my $log_group_folder = "./html_script/html_logs/group$group_no/";
 my $log_group_home = "group$group_no" . ".html";
 print "$log_group_folder\n";
 print "$log_group_home\n";
-mkdir "./html_script/html_logs/" . "$log_group_folder" # NOTE: In windows, can't do
+mkdir "./html_script/html_logs/group$group_no" # NOTE: In windows, can't do
   or die "$log_group_folder is not maked error at <> : $!";
 
 sub make_log_frame{

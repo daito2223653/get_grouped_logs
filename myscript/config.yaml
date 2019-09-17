@@ -2,21 +2,20 @@ defaults: #pls type complite name
   - sw360_dev_sw360 
   - sw360_dev_sw360couchdb 
   - sw360_dev_sw360postgresql 
-  - daito_fossology
-  - test
 
 using :
   json: 
+    - sw360_dev_sw360
     - sw360_dev_sw360couchdb
     - sw360_dev_sw360postgresql
     - sw360_dev_sw360nginx
     - sw360_dev_sw360cvs_search
   syslog:
-    - daito_fossology  
+    - _fossology  
   journald:
     - test
   error:
-    - sw360_dev_sw360
+          #- sw360_dev_sw360
 
 containers: 
   sw360_dev: 

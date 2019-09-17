@@ -54,13 +54,16 @@ my $debug      = '1';
 # setting info.
 my @containers_nos;# COMPORNENT_NO.
 my @CONTAINERS;# COMPORNENT_NAME.
+my @USING;
+my @CMD;
+my @cmd_names;
 my @DEFAULT_CONTAINERS;# default containers.
 my @targets = (); # conteiners user select. 
 my @dists   = (); # path of logFile copied by this script.
 # info file.
 my $info_file = "./config_info.pl";
 # dist_folder 
-my $dist_folder = "~/tmp/";
+my $dist_folder = "/home/daitokeigo/tmp/";
 my $dist_extension = ".log";
 # greps
 my @greps = (); #
@@ -88,8 +91,14 @@ my $ginfo_file; # group info file.
   our @_CONTAINERS;
   our @_containers_nos;
   our @_DEFAULT_CONTAINERS;
+  our @_CMD;
+  our @_USING;
+  our @_cmd_names;
   @CONTAINERS = @_CONTAINERS; #ALL CONTAINERS_NAME array.
   @containers_nos = @_containers_nos; #ALL CONTAINERS NOs, corrsponded @
+  @CMD = @_CMD;
+  @cmd_names = @_cmd_names;
+  @USING =  @_USING;
   @DEFAULT_CONTAINERS = @_DEFAULT_CONTAINERS; #conteriner_no array.  
 }
 
@@ -299,17 +308,35 @@ if($debug) {
   sub get_log{
     my $cno = -1;
     ($cno, $cname) = @_; 
+    my @toCall;
     # error hundler
     if ($cno < 0 and 5 < $cno){ # NOTE: dokcer_compornent is not exist error
       say STDERR "cno is more 0 least 5. error at line 141. get_log function";
       exit 
     } 
-    if ($timestamp){
-      return `./get_log.pl $cno --exec --timestamp`;
+    my $command ="";
+    $command = "$CMD[$USING[$cno]]" ;#. "$CONTAINERS[$cno]";
+    if ($command =~ /\[target\]/){
+      $command =~ s/\[target\]/$CONTAINERS[$cno]/;
+      push(@toCall, $command);
     }
-    else{
-      return `get_log.pl $cno --exec`;
+    else {
+      push(@toCall, $CMD[$USING[$cno]]); #command.
+      push(@toCall, $CONTAINERS[$cno]);  #conteiner_name.
     }
+    if ($timestamp && $cmd_names[$USING[$cno]] eq "json"){
+      push(@toCall, "-t")              #timestamp option.
+    }
+    # exec. 
+    say STDERR  "  toCall: \"@toCall.\"";
+    my $logStr = `@toCall 2>&1`;
+ 
+    # error hundler
+    if ($logStr =~ "^Error"){
+      print "   [ERROR] $logStr";
+      exit;
+    }
+    return $logStr;
   }
 }
 
@@ -330,7 +357,6 @@ sub main{ # exec ALL cmd, it is based on option.
     # get_log. $res
     say STDERR "  \$logStr =  ./get_log.pl $cno --exec";
     $logStr = get_log($cno, $cname);
-    say STDERR "  \$logStr =  $logStr";
 
     if ($update){
       say STDERR "  ---[update]---";
@@ -366,7 +392,7 @@ sub main{ # exec ALL cmd, it is based on option.
       say STDERR "  ---[html]---";
       say STDERR "   [INFO] EXEC \$logStr | perl ./html_script/make_modifiedLog.pl arg=(\$cno=$cno, \@greps=$greps[0])"; # modify_log.pl. and generate_html.
       my $grep = $greps[0];
-      open(my $fh, "| perl ./html_script/make_modifiedLog.pl  $cno $grep")
+      open(my $fh, "| ./html_script/make_modifiedLog.pl  $cno $grep")
         or die "Couldn't open less cmd : $!";
       print $fh "$logStr";
       close($fh);
@@ -375,7 +401,7 @@ sub main{ # exec ALL cmd, it is based on option.
       if ($count == ($#targets+1)){
         say STDERR   " [INFO] EXEC perl generate_html (arg:$arg)";
 	      # arg : cno anything greps cno2 anything greps2...
-        system(`perl ./html_script/generate_html.pl $arg`) == 0
+        system("./html_script/generate_html.pl $arg") == 0
 		      or die " [ERROR]Couldn't system ./html_script/generate_html.pl: $!";
       }
     }
