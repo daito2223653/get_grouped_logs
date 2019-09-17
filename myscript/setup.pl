@@ -16,18 +16,12 @@ use Data::Dumper ();
 # option
 my $checkSetting = "";
 my $setup = "";
-my $default = "";
-my $exec = "";
-my $timestamp = "";
 
 { # parse cmd argument.
   GetOptions (
     # handle imgaes
     'checkSetting' => \$checkSetting,
-    'default'      => \$default,
     'setup'        => \$setup,
-    'exec'         => \$exec,
-    'timestamp'         => \$timestamp,
   ) or pod2usage();
 }
 
@@ -269,6 +263,8 @@ my $cno;
 my $logStr;
 my $path_file; # this is ..../myscript/logs/#cname.log
 
+# no used
+=pod
 my @toCall;
 sub main(){
   ($cno) = $ARGV[0];
@@ -293,6 +289,7 @@ sub main(){
   # return.
   return $logStr;
 }
+=cut
 
 if ($setup){
   read_yaml();
@@ -301,8 +298,4 @@ if ($setup){
 }
 elsif ($checkSetting){
   read_pl();
-}
-if ($exec){
-  read_pl();
-  main();
 }
